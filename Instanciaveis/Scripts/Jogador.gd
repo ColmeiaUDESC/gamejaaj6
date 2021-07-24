@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const VELOCIDADE = 36
+const VELOCIDADE = 250
 var movimento = Vector2()
 
 func _process(_delta):
