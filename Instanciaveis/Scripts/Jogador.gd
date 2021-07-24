@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const VELOCIDADE = 20
+const VELOCIDADE = 36
 var movimento = Vector2()
 
 func _process(_delta):
@@ -18,4 +18,4 @@ func _process(_delta):
 		direcao += Vector2(1, 0)
 
 	movimento = direcao.normalized() * VELOCIDADE
-	move_and_slide(movimento)
+	movimento = move_and_slide(movimento)
