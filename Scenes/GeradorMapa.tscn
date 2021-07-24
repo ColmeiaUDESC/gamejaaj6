@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/GeradorMapa.gd" type="Script" id=1]
+[ext_resource path="res://Salas/SalaBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Salas/SalaBoss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Salas/SalaInicial.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Salas/SalaComBuraco.tscn" type="PackedScene" id=5]
+
+[node name="GeradorDeMapas" type="YSort"]
+script = ExtResource( 1 )
+sala_inicial = ExtResource( 4 )
+salas_do_boss = [ ExtResource( 3 ) ]
+salas = [ ExtResource( 2 ), ExtResource( 5 ) ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 20, 20 )
