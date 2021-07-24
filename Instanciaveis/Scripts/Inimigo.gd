@@ -1,43 +1,37 @@
 extends KinematicBody2D
 
-var random = RandomNumberGenerator.new()
-enum {
-	AGUARDO,
-	ATAQUE,
-	SEGUIR
-}
-
-const VELOCIDADE = 20
+const VELOCIDADE = 1000
 var jogador = null
-onready var state = AGUARDO
-
-var timer = 0
-var timer_limit = 1000
+var direcao = Vector2.ZERO
 var movimento = Vector2.ZERO
 
-func _physics_process(delta):		
-	var movimento = Vector2.ZERO
-	if state == SEGUIR:
-		movimento = position.direction_to(jogador.position) * VELOCIDADE
-		
-	move_and_slide(movimento)
+func _ready():
+	$GerenciadorEstados.iniciar(self)
+
+
+func _physics_process(delta):
+	$GerenciadorEstados.executar(delta)
+	movimento = direcao * VELOCIDADE * delta
+	movimento = move_and_slide(movimento)
+
 
 func _on_Visao_body_entered(body):
-	if body.name == "Jogador": 
+	if body.name == "Jogador":
 		jogador = body
-		state = SEGUIR
-		
-func _on_Visao_body_exited(_body):
-	state = AGUARDO
+		$GerenciadorEstados.mudar_estado("Seguir")
+
+
+func _on_Visao_body_exited(body):
+	if body == jogador:
+		$GerenciadorEstados.mudar_estado("Aguardo")
+		jogador = null
+
 
 func _on_Area_de_ataque_body_entered(body):
-	if body.name == "Jogador": 
-		jogador = body
-		state = ATAQUE
-		
-func _on_Area_de_ataque_body_exited(_body):
-	state = SEGUIR
-	
+	if body == jogador:
+		$GerenciadorEstados.mudar_estado("Atacar")
 
 
-
+func _on_Area_de_ataque_body_exited(body):
+	if body == jogador:
+		$GerenciadorEstados.mudar_estado("Seguir")

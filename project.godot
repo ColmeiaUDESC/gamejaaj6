@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Estado",
+"language": "GDScript",
+"path": "res://Instanciaveis/Scripts/Estado.gd"
+} ]
+_global_script_class_icons={
+"Estado": ""
+}
+
 [application]
 
 config/name="GameJaaj6colmeia"
