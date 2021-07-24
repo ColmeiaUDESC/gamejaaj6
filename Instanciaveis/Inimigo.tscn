@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Instanciaveis/Scripts/Inimigo.gd" type="Script" id=1]
+[ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.8158
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 46.5104
+height = 7.1326
+
+[node name="Inimigo" type="KinematicBody2D"]
+position = Vector2( 96, 72 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Colisao" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area_de_ataque" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_de_ataque"]
+shape = SubResource( 2 )
+
+[node name="Visao" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao"]
+rotation = 0.785398
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Area_de_ataque" to="." method="_on_Area_de_ataque_body_entered"]
+[connection signal="body_exited" from="Area_de_ataque" to="." method="_on_Area_de_ataque_body_exited"]
+[connection signal="body_entered" from="Visao" to="." method="_on_Visao_body_entered"]
+[connection signal="body_exited" from="Visao" to="." method="_on_Visao_body_exited"]

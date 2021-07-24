@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mock_char.png-d9a853933bd7fc9c1d56d0bce0d508a9.stex"
+path="res://.import/fundo.png-ad8aea48e9e74636a7f3c42d97675c3d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Test-Assets/mock_char.png"
-dest_files=[ "res://.import/mock_char.png-d9a853933bd7fc9c1d56d0bce0d508a9.stex" ]
+source_file="res://Conteudos/Counteudo-Teste/fundo.png"
+dest_files=[ "res://.import/fundo.png-ad8aea48e9e74636a7f3c42d97675c3d.stex" ]
 
 [params]
 
