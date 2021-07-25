@@ -17,3 +17,9 @@ cena_salas_do_boss = [ ExtResource( 4 ) ]
 cenas_salas = [ ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="Jogador" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 5, 5 )
+
+[node name="Camera2D" parent="Jogador" index="2"]
+zoom = Vector2( 5, 5 )
+
+[editable path="Jogador"]
