@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const VELOCIDADE = 250
+export var velocidade = 250
 var movimento = Vector2()
 
 func _process(_delta):
@@ -17,5 +17,5 @@ func _process(_delta):
 	elif Input.is_action_pressed("ui_right"):
 		direcao += Vector2(1, 0)
 
-	movimento = direcao.normalized() * VELOCIDADE
+	movimento = direcao.normalized() * velocidade
 	movimento = move_and_slide(movimento)

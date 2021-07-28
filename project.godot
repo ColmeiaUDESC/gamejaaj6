@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Estado",
 "language": "GDScript",
-"path": "res://Instanciaveis/Scripts/Estado.gd"
+"path": "res://Instanciaveis/Estados/Estado.gd"
 } ]
 _global_script_class_icons={
 "Estado": ""
@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GameJaaj6colmeia"
-run/main_scene="res://Scenes/Teste.tscn"
+run/main_scene="res://Cenas/Teste.tscn"
 
 [display]
 
