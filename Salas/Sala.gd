@@ -43,7 +43,7 @@ func ao_entrar() -> void:
 		_spawnar_inimigos()
 
 	emit_signal("entrou")
-	print(get_path(), ":entro")
+#	print(get_path(), ":entro")
 
 
 func ao_sair() -> void:
@@ -51,13 +51,13 @@ func ao_sair() -> void:
 	_abrir_portas()
 	_resetar_inimigos()
 	emit_signal("saiu")
-	print(get_path(), ":saiu")
+#	print(get_path(), ":saiu")
 
 
 func ao_completar() -> void:
 	_abrir_portas()
 	emit_signal("completo")
-	print(get_path(), ":completo")
+#	print(get_path(), ":completo")
 
 
 func mudar_sala(dir: Vector2) -> void:

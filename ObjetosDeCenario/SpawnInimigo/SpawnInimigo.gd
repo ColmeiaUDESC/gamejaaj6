@@ -16,7 +16,7 @@ func resetar() -> void:
 	if inimigo:
 		inimigo.queue_free()
 
-	print(get_path(),":reseto")
+#	print(get_path(),":reseto")
 
 
 func _on_Delay_timeout():
@@ -27,4 +27,4 @@ func _on_Delay_timeout():
 		$Particles2D.emitting = true
 	# TODO: Fazer uma animacaozinha/Spawnar uma particula quando o inimigo spawnar
 
-	print(get_path(),":spawno")
+#	print(get_path(),":spawno")
