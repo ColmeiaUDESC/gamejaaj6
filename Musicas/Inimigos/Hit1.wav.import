@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hit1.wav-dde91b7ddfa0ed13d15b60c031b7c67b.sample"
+
+[deps]
+
+source_file="res://Musicas/Inimigos/Hit1.wav"
+dest_files=[ "res://.import/Hit1.wav-dde91b7ddfa0ed13d15b60c031b7c67b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
