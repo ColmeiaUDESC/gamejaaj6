@@ -5,6 +5,7 @@ var movimento = Vector2()
 var vida_max = 12.0
 var vida_atual = 12.0
 var regeneracao = 0.5
+var depois_do_ataque = false
 
 func _process(_delta):
 	# Everything works like you're used to in a top-down game
@@ -30,9 +31,24 @@ func _process(_delta):
 		vida_atual -= 1
 
 
+
+func inflinge_dano(dano):
+	if !depois_do_ataque:
+			vida_atual -= dano
+			intangivel() 
+
+
 func _on_Regen_HP_timeout():
 	if (vida_atual + regeneracao) < vida_max:
 		vida_atual += regeneracao
 	
 	elif (vida_atual + regeneracao) >= vida_max:
 		vida_atual = vida_max
+
+
+func intangivel():
+	depois_do_ataque = true
+	$Intangibilidade.start()
+
+func _on_Intangibilidade_timeout():
+	depois_do_ataque = false

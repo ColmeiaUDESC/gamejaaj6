@@ -71,7 +71,7 @@ shape = SubResource( 4 )
 visible = false
 z_index = 10
 frames = SubResource( 5 )
-frame = 3
+frame = 1
 playing = true
 offset = Vector2( -10, 0 )
 
@@ -87,4 +87,5 @@ offset = Vector2( -10, 0 )
 [connection signal="body_exited" from="Area_de_ataque" to="." method="_on_Area_de_ataque_body_exited"]
 [connection signal="body_entered" from="Visao" to="." method="_on_Visao_body_entered"]
 [connection signal="body_exited" from="Visao" to="." method="_on_Visao_body_exited"]
-[connection signal="body_entered" from="Ataque" to="." method="_on_Ataque_body_entered"]
+[connection signal="body_entered" from="Ataque" to="GerenciadorEstados/Atacar" method="_on_Ataque_body_entered"]
+[connection signal="body_exited" from="Ataque" to="GerenciadorEstados/Atacar" method="_on_Ataque_body_exited"]

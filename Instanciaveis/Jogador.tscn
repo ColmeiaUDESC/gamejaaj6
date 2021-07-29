@@ -30,8 +30,11 @@ smoothing_enabled = true
 [node name="HP" parent="UI" instance=ExtResource( 3 )]
 
 [node name="Regen_HP" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Intangibilidade" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Regen_HP" to="." method="_on_Regen_HP_timeout"]
+[connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
