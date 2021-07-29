@@ -74,22 +74,40 @@ __meta__ = {
 }
 
 [node name="Componentes" type="YSort" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Paredes" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Portas" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Objetos" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Jogador" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Inimigos" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Projeteis" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Animacoes" type="AnimationPlayer" parent="."]
 anims/aparecendo = SubResource( 1 )
 anims/sumindo = SubResource( 2 )
-
-[connection signal="entrou" from="." to="." method="abrir_portas"]
-[connection signal="saiu" from="." to="." method="fechar_portas"]
