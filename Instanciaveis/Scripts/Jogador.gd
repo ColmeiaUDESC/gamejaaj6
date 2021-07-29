@@ -6,6 +6,12 @@ var vida_max = 12.0
 var vida_atual = 12.0
 var regeneracao = 0.5
 var depois_do_ataque = false
+onready var tween_transicao := $TweenCamera
+onready var player_animacao := $AnimationPlayer
+
+const VELOCIDADE_BASE := 250
+var velocidade := VELOCIDADE_BASE
+var movimento := Vector2()
 
 func _process(_delta):
 	# Everything works like you're used to in a top-down game
@@ -52,3 +58,10 @@ func intangivel():
 
 func _on_Intangibilidade_timeout():
 	depois_do_ataque = false
+
+
+func transicionar_camera(nova_pos_global: Vector2) -> void:
+	tween_transicao.interpolate_property($Camera2D, "global_position", global_position, nova_pos_global, 0.25, Tween.TRANS_QUAD)
+	tween_transicao.start()
+	yield(tween_transicao, "tween_completed")
+	position = Vector2.ZERO

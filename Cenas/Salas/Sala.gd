@@ -25,14 +25,8 @@ func _ready() -> void:
 			portas.append(porta)
 			var _erro = porta.connect("body_entered", self, "_ao_corpo_encostar_porta", [porta.direcao])
 
-	for spawn_inimigo in $Componentes/Inimigos.get_children():
-		spawn_inimigos.append(spawn_inimigo)
-
-	if spawn_inimigos.size() == 0:
-		_completo = true
-
-	call_deferred("_esconder")
-	call_deferred("_abrir_portas")
+	call_deferred("esconder")
+	call_deferred("abrir_portas")
 #	print(get_path(), ":ready pronto")
 
 
@@ -42,6 +36,7 @@ func ao_entrar() -> void:
 		_fechar_portas()
 		_spawnar_inimigos()
 
+	_abrir_portas()
 	emit_signal("entrou")
 #	print(get_path(), ":entro")
 
@@ -119,6 +114,15 @@ func _resetar_inimigos() -> void:
 		spawn_inimigo.resetar()
 
 	_cont_inimigos_ativos = 0
+
+
+
+func pegar_pos_global_porta_na_direcao(dir: Vector2) -> Vector2:
+	for porta in portas:
+		if porta.direcao == dir:
+			return porta.global_position
+
+	return global_position
 
 
 func _ao_corpo_encostar_porta(corpo: Node2D, dir_porta: Vector2) -> void:
