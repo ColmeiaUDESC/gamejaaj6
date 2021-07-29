@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hit5.wav-fd3f4852e169697f86579ec1387382c2.sample"
+
+[deps]
+
+source_file="res://Conteudos/Musicas/Inimigos/Hit5.wav"
+dest_files=[ "res://.import/Hit5.wav-fd3f4852e169697f86579ec1387382c2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

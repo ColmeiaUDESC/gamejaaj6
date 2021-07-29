@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Estado",
 "language": "GDScript",
-"path": "res://Instanciaveis/Scripts/Estado.gd"
+"path": "res://Instanciaveis/Estados/Estado.gd"
 } ]
 _global_script_class_icons={
 "Estado": ""
@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GameJaaj6colmeia"
-run/main_scene="res://Scenes/Teste.tscn"
+run/main_scene="res://Cenas/Teste.tscn"
 
 [display]
 
@@ -53,29 +53,6 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
-}
-
-[input]
-
-move_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
- ]
-}
-move_left={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
- ]
-}
-move_right={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
- ]
-}
-move_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
- ]
 }
 
 [layer_names]

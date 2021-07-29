@@ -10,15 +10,15 @@
 position = Vector2( 160, 92 )
 texture = ExtResource( 2 )
 
-[node name="Jogador" parent="." instance=ExtResource( 1 )]
-position = Vector2( 88, 96 )
+[node name="Inimigo" parent="Sala" instance=ExtResource( 3 )]
+position = Vector2( -4, 0 )
 
-[node name="Inimigo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160.5, 103.5 )
+[node name="Jogador" parent="Sala" instance=ExtResource( 1 )]
+position = Vector2( -63.2627, 0.754623 )
+velocidade = 60
 
 [node name="Paredes" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Paredes"]
 position = Vector2( 160, 92 )
-polygon = PoolVector2Array( -60, -28, 0, -56, 44, -32, 44, -56, 64, -44, 64, -24, 120, 8, 120, 16, -4, 80, -124, 16, -124, 4, -80, -16, -80, -40, -60, -48, -60, -60, -136, -28, -136, 24, -4, 96, 128, 28, 128, -28, 4, -88, -60, -60 )
+polygon = PoolVector2Array( -60, -16, 0, -52, 120, 16, -4, 80, -120, 16, -60, -16, -60, -52, -120, -20, -124, 20, -4, 84, 124, 20, 124, -20, 4, -84, -60, -52 )

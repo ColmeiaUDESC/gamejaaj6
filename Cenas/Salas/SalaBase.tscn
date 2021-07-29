@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/tileset_teste.tres" type="TileSet" id=1]
+[ext_resource path="res://Cenas/Salas/Sala.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "aparecendo"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "sumindo"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="SalaBase" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Chao" type="TileMap" parent="."]
+position = Vector2( 0, 32 )
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 64 )
+show_collision = true
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Componentes" type="YSort" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Paredes" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Portas" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Objetos" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Jogador" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Inimigos" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Projeteis" type="YSort" parent="Componentes"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Animacoes" type="AnimationPlayer" parent="."]
+anims/aparecendo = SubResource( 1 )
+anims/sumindo = SubResource( 2 )
