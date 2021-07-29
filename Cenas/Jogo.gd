@@ -8,7 +8,11 @@ func _ready():
 	_iniciar_jogo()
 
 
-func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO):
+func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO) -> void:
+	if not $DelayMudarSala.is_stopped():
+		return
+	$DelayMudarSala.start()
+
 	if sala_atual:
 		sala_atual.ao_sair()
 
