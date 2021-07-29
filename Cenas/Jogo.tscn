@@ -24,7 +24,7 @@ scale = Vector2( 5, 5 )
 zoom = Vector2( 5, 5 )
 
 [node name="DelayMudarSala" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [editable path="Jogador"]

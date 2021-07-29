@@ -2,6 +2,7 @@ extends Node2D
 
 var sala_atual: Node2D
 var jogador: KinematicBody2D
+var mudando_de_sala := false
 
 signal transicao_mudanca_de_sala_iniciada
 signal transicao_mudanca_de_sala_finalizada
@@ -12,9 +13,9 @@ func _ready():
 
 
 func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO) -> void:
-	if not $DelayMudarSala.is_stopped():
+	if not $DelayMudarSala.is_stopped() or mudando_de_sala:
 		return
-	$DelayMudarSala.start()
+	mudando_de_sala = true
 
 	nova_sala.mostrar()
 
@@ -35,6 +36,8 @@ func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO) -> 
 	nova_sala.inserir_jogador(jogador, direcao_porta)
 	nova_sala.ao_entrar()
 	sala_atual = nova_sala
+	mudando_de_sala = false
+	$DelayMudarSala.start()
 
 
 func _iniciar_jogo() -> void:
