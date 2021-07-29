@@ -15,7 +15,7 @@ position = Vector2( -4, 0 )
 
 [node name="Jogador" parent="Sala" instance=ExtResource( 1 )]
 position = Vector2( -63.2627, 0.754623 )
-velocidade = 60
+velocidade = 60.0
 
 [node name="Paredes" type="StaticBody2D" parent="."]
 

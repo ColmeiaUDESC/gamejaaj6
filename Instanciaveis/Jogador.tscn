@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
@@ -68,11 +68,11 @@ autostart = true
 [node name="Intangibilidade" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Regen_HP" to="." method="_on_Regen_HP_timeout"]
-[connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
-
 [node name="TweenCamera" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/aparecer = SubResource( 1 )
 anims/sumir = SubResource( 2 )
+
+[connection signal="timeout" from="Regen_HP" to="." method="_on_Regen_HP_timeout"]
+[connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
