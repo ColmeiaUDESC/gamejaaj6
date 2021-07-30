@@ -1,15 +1,6 @@
-[gd_resource type="TileSet" load_steps=6 format=2]
+[gd_resource type="TileSet" load_steps=3 format=2]
 
 [ext_resource path="res://Assets/piso_01-export.png" type="Texture" id=1]
-
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 8, 0, 8, 16, 0, 32, 8, 16, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 24, 0, 24, 16, 8, 16, 8, 0, 8, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 8, 0, 24, 0, 24, 8, 16, 8, 8, 8, 8, 8, 8, 8 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 8, 0, 8, 16, 0, 32, 8, 16, 16 )
@@ -73,9 +64,9 @@ points = PoolVector2Array( 0, 8, 0, 8, 16, 0, 32, 8, 16, 16 )
 3/z_index = 0
 4/name = "piso_01-export.png 4"
 4/texture = ExtResource( 1 )
-4/tex_offset = Vector2( 0, 0 )
+4/tex_offset = Vector2( -16, 8 )
 4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 32, 16, 32 )
+4/region = Rect2( 0, 40, 16, 24 )
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
@@ -87,9 +78,9 @@ points = PoolVector2Array( 0, 8, 0, 8, 16, 0, 32, 8, 16, 16 )
 4/z_index = 0
 6/name = "piso_01-export.png 6"
 6/texture = ExtResource( 1 )
-6/tex_offset = Vector2( 0, 0 )
+6/tex_offset = Vector2( 0, 8 )
 6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 16, 32, 16, 32 )
+6/region = Rect2( 16, 40, 16, 24 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
@@ -99,48 +90,6 @@ points = PoolVector2Array( 0, 8, 0, 8, 16, 0, 32, 8, 16, 16 )
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
-7/name = "piso_01-export.png 7"
-7/texture = ExtResource( 1 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 32, 48, 32, 16 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 2 )
-7/shape_one_way = false
-7/shape_one_way_margin = 1.0
-7/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-7/z_index = 0
-8/name = "piso_01-export.png 8"
-8/texture = ExtResource( 1 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 32, 32, 32, 16 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape = SubResource( 3 )
-8/shape_one_way = false
-8/shape_one_way_margin = 1.0
-8/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-8/z_index = 0
 9/name = "piso_01-export.png 9"
 9/texture = ExtResource( 1 )
 9/tex_offset = Vector2( 0, 0 )
@@ -151,35 +100,182 @@ points = PoolVector2Array( 0, 8, 0, 8, 16, 0, 32, 8, 16, 16 )
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 1 )
 9/shape_one_way = false
-9/shape_one_way_margin = 1.0
-9/shapes = [ {
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+15/name = "piso_01-export.png 15"
+15/texture = ExtResource( 1 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 64, 32, 16 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "piso_01-export.png 16"
+16/texture = ExtResource( 1 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 80, 32, 16 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
+17/name = "piso_01-export.png 17"
+17/texture = ExtResource( 1 )
+17/tex_offset = Vector2( 0, -48 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 32, 32, 32, 64 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "piso_01-export.png 18"
+18/texture = ExtResource( 1 )
+18/tex_offset = Vector2( 0, -48 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 64, 32, 32, 64 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+19/name = "piso_01-export.png 19"
+19/texture = ExtResource( 1 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 96, 64, 32, 32 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
+20/name = "piso_01-export.png 20"
+20/texture = ExtResource( 1 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 96, 32, 32 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shape_offset = Vector2( 0, 0 )
+20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape_one_way = false
+20/shape_one_way_margin = 0.0
+20/shapes = [  ]
+20/z_index = 0
+21/name = "piso_01-export.png 21"
+21/texture = ExtResource( 1 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 32, 96, 32, 32 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shape_offset = Vector2( 0, 0 )
+21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+21/shape_one_way = false
+21/shape_one_way_margin = 0.0
+21/shapes = [  ]
+21/z_index = 0
+22/name = "piso_01-export.png 22"
+22/texture = ExtResource( 1 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 64, 96, 32, 32 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shape_offset = Vector2( 0, 0 )
+22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+22/shape_one_way = false
+22/shape_one_way_margin = 0.0
+22/shapes = [  ]
+22/z_index = 0
+23/name = "piso_01-export.png 23"
+23/texture = ExtResource( 1 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 96, 96, 32, 32 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 0, 0 )
+23/navigation_offset = Vector2( 0, 0 )
+23/shape_offset = Vector2( 0, 0 )
+23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+23/shape_one_way = false
+23/shape_one_way_margin = 0.0
+23/shapes = [  ]
+23/z_index = 0
+24/name = "piso_01-export.png 24"
+24/texture = ExtResource( 1 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 32, 128, 32, 32 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 0, 0 )
+24/navigation_offset = Vector2( 0, 0 )
+24/shape_offset = Vector2( 0, 0 )
+24/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+24/shape = SubResource( 1 )
+24/shape_one_way = false
+24/shape_one_way_margin = 1.0
+24/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-9/z_index = 0
-10/name = "piso_01-export.png 10"
-10/texture = ExtResource( 1 )
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 64, 32, 32, 32 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shape_offset = Vector2( 0, 0 )
-10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-10/shape = SubResource( 4 )
-10/shape_one_way = false
-10/shape_one_way_margin = 1.0
-10/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 4 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-10/z_index = 0
+24/z_index = 0
+25/name = "piso_01-export.png 25"
+25/texture = ExtResource( 1 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 0, 128, 16, 32 )
+25/tile_mode = 0
+25/occluder_offset = Vector2( 0, 0 )
+25/navigation_offset = Vector2( 0, 0 )
+25/shape_offset = Vector2( 0, 0 )
+25/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+25/shape_one_way = false
+25/shape_one_way_margin = 0.0
+25/shapes = [  ]
+25/z_index = 0
+26/name = "piso_01-export.png 26"
+26/texture = ExtResource( 1 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 128, 80, 32, 64 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 0, 0 )
+26/navigation_offset = Vector2( 0, 0 )
+26/shape_offset = Vector2( 0, 0 )
+26/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+26/shape_one_way = false
+26/shape_one_way_margin = 0.0
+26/shapes = [  ]
+26/z_index = 0
