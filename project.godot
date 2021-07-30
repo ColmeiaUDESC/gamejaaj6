@@ -26,6 +26,7 @@ run/main_scene="res://Cenas/Teste.tscn"
 [autoload]
 
 DadosSave="*res://Conteudos/Autoloads/DadosSave.gd"
+Globais="*res://Conteudos/Autoloads/Globais.gd"
 
 [display]
 
@@ -59,11 +60,25 @@ texture={
 "svg/scale": 1.0
 }
 
+[input]
+
+ataque_offensivo={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+ataque_purificacao={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
 [layer_names]
 
 2d_physics/layer_1="cenario"
 2d_physics/layer_2="jogador"
-2d_physics/layer_3="inimigos"
+2d_physics/layer_3="inimigo"
+2d_physics/layer_4="projetil"
 
 [physics]
 

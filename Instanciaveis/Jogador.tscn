@@ -1,8 +1,53 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
 [ext_resource path="res://UI/HP.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Instanciaveis/Ataque.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Instanciaveis/Projeteis/ProjetilPurificacao.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Instanciaveis/SpritePersonagem.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Instanciaveis/Scripts/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=8]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 8 )
+shader_param/brilho_purificacao = 5.0
+shader_param/progresso_purificacao = 0.0
+shader_param/coeficiente_mix_dano = 0.0
+shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
+shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "intangibilidade"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "aparecer"
@@ -45,17 +90,34 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+cena_projetil_purificacao = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -5.5 )
+[node name="Sprite" parent="." instance=ExtResource( 6 )]
+material = SubResource( 2 )
+position = Vector2( 0, -6 )
 texture = ExtResource( 2 )
+
+[node name="PosProjetil" type="Position2D" parent="."]
+position = Vector2( 0, -6 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
 
+[node name="Ataque" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -6 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite" parent="Ataque" index="1"]
+speed_scale = 2.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
+script = ExtResource( 7 )
+estabilizacao = 0.8
+deslocamento_maximo = Vector2( 30, 30 )
+rolamento_maximo = 0.3
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -71,8 +133,12 @@ one_shot = true
 [node name="TweenCamera" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 3 )
 anims/aparecer = SubResource( 1 )
 anims/sumir = SubResource( 2 )
+anims/intangibilidade = SubResource( 4 )
 
 [connection signal="timeout" from="Regen_HP" to="." method="_on_Regen_HP_timeout"]
 [connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
+
+[editable path="Ataque"]
