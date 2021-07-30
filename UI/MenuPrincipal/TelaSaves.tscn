@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/MenuPrincipal/ControladorTelaSaves.gd" type="Script" id=1]
+
+[node name="TelaSaves" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ListaSaves" type="HBoxContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 148.0
+size_flags_vertical = 3
+
+[node name="MargemSave1" type="MarginContainer" parent="ListaSaves"]
+margin_right = 104.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="BotaoSave1" type="Button" parent="ListaSaves/MargemSave1"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 96.0
+margin_bottom = 140.0
+text = "Save 1"
+
+[node name="MargemSave2" type="MarginContainer" parent="ListaSaves"]
+margin_left = 108.0
+margin_right = 212.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="BotaoSave2" type="Button" parent="ListaSaves/MargemSave2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 96.0
+margin_bottom = 140.0
+text = "Save 2"
+
+[node name="MargemSave3" type="MarginContainer" parent="ListaSaves"]
+margin_left = 216.0
+margin_right = 320.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="BotaoSave3" type="Button" parent="ListaSaves/MargemSave3"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 96.0
+margin_bottom = 140.0
+text = "Save 3"
+
+[node name="MargemBotaoVoltar" type="MarginContainer" parent="."]
+margin_top = 152.0
+margin_right = 320.0
+margin_bottom = 180.0
+custom_constants/margin_right = 96
+custom_constants/margin_left = 96
+custom_constants/margin_bottom = 8
+
+[node name="BotaoVoltar" type="Button" parent="MargemBotaoVoltar"]
+margin_left = 96.0
+margin_right = 224.0
+margin_bottom = 20.0
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ListaSaves/MargemSave1/BotaoSave1" to="." method="_on_BotaoSave1_pressed"]
+[connection signal="pressed" from="ListaSaves/MargemSave2/BotaoSave2" to="." method="_on_BotaoSave2_pressed"]
+[connection signal="pressed" from="ListaSaves/MargemSave3/BotaoSave3" to="." method="_on_BotaoSave3_pressed"]

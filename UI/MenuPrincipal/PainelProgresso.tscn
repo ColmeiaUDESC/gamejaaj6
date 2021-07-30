@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Conteudos/Counteudo-Teste/demonho.png" type="Texture" id=1]
+[ext_resource path="res://Conteudos/Counteudo-Teste/anjo.png" type="Texture" id=2]
+[ext_resource path="res://Conteudos/Shaders/grayscale.shader" type="Shader" id=3]
+[ext_resource path="res://Conteudos/Counteudo-Teste/neutro.png" type="Texture" id=4]
+[ext_resource path="res://UI/MenuPrincipal/ControladorPainelProgresso.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/ativo = true
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/ativo = true
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/ativo = true
+
+[node name="PainelProgresso" type="PanelContainer"]
+margin_right = 126.0
+margin_bottom = 48.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 119.0
+margin_bottom = 41.0
+
+[node name="Titulo" type="Label" parent="VBoxContainer"]
+margin_right = 112.0
+margin_bottom = 14.0
+text = "Nome psg"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Progresso" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 112.0
+margin_bottom = 34.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Puro" type="TextureRect" parent="VBoxContainer/Progresso"]
+material = SubResource( 1 )
+margin_left = 28.0
+margin_right = 44.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Neutro" type="TextureRect" parent="VBoxContainer/Progresso"]
+material = SubResource( 2 )
+margin_left = 48.0
+margin_right = 64.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Mal" type="TextureRect" parent="VBoxContainer/Progresso"]
+material = SubResource( 3 )
+margin_left = 68.0
+margin_right = 84.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+expand = true
