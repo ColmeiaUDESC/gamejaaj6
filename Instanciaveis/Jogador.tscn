@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Instanciaveis/SpritePersonagem.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Instanciaveis/Scripts/Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=8]
+[ext_resource path="res://UI/BarraPureza.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
@@ -91,6 +92,7 @@ __meta__ = {
 "_edit_group_": true
 }
 cena_projetil_purificacao = ExtResource( 5 )
+pureza_maxima = 20
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 5 )
@@ -100,16 +102,16 @@ texture = ExtResource( 2 )
 [node name="PosProjetil" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
-
 [node name="Ataque" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -6 )
 collision_layer = 0
 collision_mask = 4
 
 [node name="Sprite" parent="Ataque" index="1"]
-speed_scale = 2.0
+speed_scale = 4.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -122,6 +124,16 @@ rolamento_maximo = 0.3
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HP" parent="UI" instance=ExtResource( 3 )]
+
+[node name="Pureza" parent="UI" instance=ExtResource( 9 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -61.0
+margin_top = -20.0
+margin_right = 61.0
+margin_bottom = -14.0
 
 [node name="Regen_HP" type="Timer" parent="."]
 wait_time = 3.0

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/UIPureza.gd" type="Script" id=1]
+[ext_resource path="res://Conteudos/Counteudo-Teste/anjo.png" type="Texture" id=2]
+[ext_resource path="res://Conteudos/Counteudo-Teste/demonho.png" type="Texture" id=3]
+[ext_resource path="res://Conteudos/Counteudo-Teste/neutro.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.506266, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 0.427451, 0.427451, 0.427451, 1, 0.164062, 1, 0.882446, 1 )
+
+[node name="Pureza" type="ProgressBar"]
+margin_right = 122.0
+margin_bottom = 6.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+gradiente = SubResource( 3 )
+razao_impuro = 0.2
+razao_puro = 0.2
+imagem_puro = ExtResource( 2 )
+imagem_neutro = ExtResource( 4 )
+imagem_impuro = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
