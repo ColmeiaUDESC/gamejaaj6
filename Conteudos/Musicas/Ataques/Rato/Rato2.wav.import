@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Hit5.wav-d043d7f6ddc8efc7c3dbf7c775b6600c.sample"
+path="res://.import/Rato2.wav-438c0014a1fe91a5be8dd76219750634.sample"
 
 [deps]
 
-source_file="res://Conteudos/Musicas/Ataques/Padrão/Hit5.wav"
-dest_files=[ "res://.import/Hit5.wav-d043d7f6ddc8efc7c3dbf7c775b6600c.sample" ]
+source_file="res://Conteudos/Musicas/Ataques/Rato/Rato2.wav"
+dest_files=[ "res://.import/Rato2.wav-438c0014a1fe91a5be8dd76219750634.sample" ]
 
 [params]
 

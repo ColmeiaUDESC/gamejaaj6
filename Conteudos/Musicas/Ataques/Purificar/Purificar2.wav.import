@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Purificar2.wav-b2dec615a9c42ee0759a999275e60781.sample"
+
+[deps]
+
+source_file="res://Conteudos/Musicas/Ataques/Purificar/Purificar2.wav"
+dest_files=[ "res://.import/Purificar2.wav-b2dec615a9c42ee0759a999275e60781.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

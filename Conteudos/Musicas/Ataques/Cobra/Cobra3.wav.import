@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Hit5.wav-d043d7f6ddc8efc7c3dbf7c775b6600c.sample"
+path="res://.import/Cobra3.wav-70ee360f56186bbc591e5b7bb84d11ab.sample"
 
 [deps]
 
-source_file="res://Conteudos/Musicas/Ataques/Padrão/Hit5.wav"
-dest_files=[ "res://.import/Hit5.wav-d043d7f6ddc8efc7c3dbf7c775b6600c.sample" ]
+source_file="res://Conteudos/Musicas/Ataques/Cobra/Cobra3.wav"
+dest_files=[ "res://.import/Cobra3.wav-70ee360f56186bbc591e5b7bb84d11ab.sample" ]
 
 [params]
 

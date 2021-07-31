@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Hit4.wav-270d040fce6900be1ec4bc010d25cf56.sample"
+path="res://.import/Hit4.wav-2fd90b40bc2ba383e5f829b72c755896.sample"
 
 [deps]
 
-source_file="res://Conteudos/Musicas/Inimigos/Hit4.wav"
-dest_files=[ "res://.import/Hit4.wav-270d040fce6900be1ec4bc010d25cf56.sample" ]
+source_file="res://Conteudos/Musicas/Ataques/Padrão/Hit4.wav"
+dest_files=[ "res://.import/Hit4.wav-2fd90b40bc2ba383e5f829b72c755896.sample" ]
 
 [params]
 
