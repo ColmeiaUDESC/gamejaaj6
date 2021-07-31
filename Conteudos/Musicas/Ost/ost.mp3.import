@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/ost.mp3-86ee6a90e7b8e2849600f3cbbf04f796.mp3str"
+path="res://.import/ost.mp3-076888654ad463358b051ca65f5aafc1.mp3str"
 
 [deps]
 
-source_file="res://Conteudos/Musicas/ost.mp3"
-dest_files=[ "res://.import/ost.mp3-86ee6a90e7b8e2849600f3cbbf04f796.mp3str" ]
+source_file="res://Conteudos/Musicas/Ost/ost.mp3"
+dest_files=[ "res://.import/ost.mp3-076888654ad463358b051ca65f5aafc1.mp3str" ]
 
 [params]
 

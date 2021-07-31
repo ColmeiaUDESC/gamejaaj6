@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FinalPuro.mp3-a54980c084430e0eb62d87c5db4a3740.mp3str"
+
+[deps]
+
+source_file="res://Conteudos/Musicas/Ost/FinalPuro.mp3"
+dest_files=[ "res://.import/FinalPuro.mp3-a54980c084430e0eb62d87c5db4a3740.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FinalNeutro.mp3-543dfe932c83732d782995d1977885d9.mp3str"
+
+[deps]
+
+source_file="res://Conteudos/Musicas/Ost/FinalNeutro.mp3"
+dest_files=[ "res://.import/FinalNeutro.mp3-543dfe932c83732d782995d1977885d9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

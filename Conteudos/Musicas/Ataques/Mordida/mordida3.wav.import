@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mordida3.wav-242b2d794c4a80623cfe4ce93968ebad.sample"
+
+[deps]
+
+source_file="res://Conteudos/Musicas/Ataques/Mordida/mordida3.wav"
+dest_files=[ "res://.import/mordida3.wav-242b2d794c4a80623cfe4ce93968ebad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
