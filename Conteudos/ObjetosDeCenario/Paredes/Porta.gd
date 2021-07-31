@@ -1,5 +1,7 @@
 extends Area2D
 
+const DESLOCAMENTO_JOGADOR_AO_ENTRAR := 128
+
 export(Vector2) var direcao: Vector2
 onready var animador_porta: AnimationPlayer = $Porta/AnimationPlayer
 
@@ -12,7 +14,6 @@ const _ASSOC_NOME_DIRECAO = {
 
 func _ready():
 	_definir_direcao_padrao()
-	call_deferred("_animar_porta_fechando")
 
 
 func converter_para_parede() -> void:
@@ -28,7 +29,7 @@ func abrir() -> void:
 
 
 func fechar() -> void:
-#	print(get_path(),":fechando")
+	print(get_path(),":fechando")
 	$CollisionShape2D.set_deferred("disabled", true)
 	_animar_porta_fechando()
 
@@ -39,6 +40,12 @@ func _animar_porta_abrindo() -> void:
 
 func _animar_porta_fechando() -> void:
 	animador_porta.play("fechar")
+
+
+func pegar_pos_teleporte_jogador(e_global: bool = false) -> Vector2:
+	var pos_porta: Vector2 = global_position if e_global else position
+	var dir_porta_centro: Vector2 = position.direction_to(Vector2.ZERO)
+	return pos_porta + dir_porta_centro * DESLOCAMENTO_JOGADOR_AO_ENTRAR
 
 
 func _definir_direcao_padrao() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Cenas/GeradorMapa.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Instanciaveis/Jogador.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Cenas/Salas/Nivel0/SalaNormalNivel0.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cenas/Salas/Nivel0/SalaComParedeNivel0.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cenas/Salas/Nivel0/SalaInicialNivel0.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Cenas/Salas/Nivel0/SalaInimigosNivel0.tscn" type="PackedScene" id=8]
 
 [node name="Jogo" type="Node2D"]
 script = ExtResource( 3 )
@@ -14,7 +15,7 @@ script = ExtResource( 3 )
 [node name="GeradorDeMapas" parent="." instance=ExtResource( 1 )]
 cena_sala_inicial = ExtResource( 7 )
 cena_salas_do_boss = [ ExtResource( 4 ) ]
-cenas_salas = [ ExtResource( 5 ), ExtResource( 6 ) ]
+cenas_salas = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ]
 
 [node name="Jogador" parent="." instance=ExtResource( 2 )]
 scale = Vector2( 5, 5 )
@@ -23,7 +24,7 @@ scale = Vector2( 5, 5 )
 zoom = Vector2( 5, 5 )
 
 [node name="DelayMudarSala" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 one_shot = true
 
 [editable path="Jogador"]

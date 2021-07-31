@@ -1,7 +1,6 @@
 extends Node2D
 
 const TAMANHO_SALA := Vector2(11,11)
-const DESLOCAMENTO_JOGADOR_AO_ENTRAR := 128
 
 var posicao_na_matriz = Vector2.ZERO
 var dir_salas_vizinhas: Array = []
@@ -31,13 +30,12 @@ func _ready() -> void:
 	if spawn_inimigos.size() == 0:
 		_completo = true
 
-	call_deferred("_esconder")
+	call_deferred("esconder")
 	call_deferred("_abrir_portas")
 #	print(get_path(), ":ready pronto")
 
 
 func ao_entrar() -> void:
-	_mostrar()
 	if not _completo:
 		_fechar_portas()
 		_spawnar_inimigos()
@@ -47,8 +45,6 @@ func ao_entrar() -> void:
 
 
 func ao_sair() -> void:
-	_esconder()
-	_abrir_portas()
 	_resetar_inimigos()
 	emit_signal("saiu")
 #	print(get_path(), ":saiu")
@@ -68,9 +64,8 @@ func inserir_jogador(jogador: KinematicBody2D, direcao_porta: Vector2) -> void:
 	if jogador.get_parent():
 		jogador.get_parent().remove_child(jogador)
 
-	var pos_porta := pegar_pos_porta_na_direcao(direcao_porta)
-	var dir_porta_centro := pos_porta.direction_to(Vector2.ZERO)
-	jogador.position = pos_porta + dir_porta_centro * DESLOCAMENTO_JOGADOR_AO_ENTRAR
+	var porta = pegar_porta_na_direcao(direcao_porta)
+	jogador.position = porta.pegar_pos_teleporte_jogador() if porta else Vector2.ZERO
 
 	$Componentes/Jogador.call_deferred("add_child", jogador)
 
@@ -82,12 +77,12 @@ func pegar_salas_vizinhas() -> Array:
 	return salas_vizinhas
 
 
-func pegar_pos_porta_na_direcao(dir: Vector2) -> Vector2:
+func pegar_porta_na_direcao(dir: Vector2) -> StaticBody2D:
 	for porta in portas:
 		if porta.direcao == dir:
-			return porta.position
+			return porta
 
-	return position
+	return null
 
 
 func _abrir_portas() -> void:
@@ -100,11 +95,11 @@ func _fechar_portas() -> void:
 		porta.fechar()
 
 
-func _mostrar() -> void:
+func mostrar() -> void:
 	$Animacoes.play("aparecendo")
 
 
-func _esconder() -> void:
+func esconder() -> void:
 	$Animacoes.play("sumindo")
 
 
