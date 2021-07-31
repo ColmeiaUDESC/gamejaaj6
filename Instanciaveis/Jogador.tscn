@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://Instanciaveis/Scripts/Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=8]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/brilho_purificacao = 5.0
@@ -17,6 +17,21 @@ shader_param/progresso_purificacao = 0.0
 shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
@@ -35,6 +50,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "intangibilidade"
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -43,29 +59,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "aparecer"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 resource_name = "sumir"
 length = 0.25
 tracks/0/type = "value"
@@ -93,7 +93,7 @@ __meta__ = {
 cena_projetil_purificacao = ExtResource( 5 )
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
-material = SubResource( 2 )
+material = SubResource( 5 )
 position = Vector2( 0, -6 )
 texture = ExtResource( 2 )
 
@@ -133,10 +133,10 @@ one_shot = true
 [node name="TweenCamera" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/aparecer = SubResource( 2 )
 anims/default = SubResource( 3 )
-anims/aparecer = SubResource( 1 )
-anims/sumir = SubResource( 2 )
 anims/intangibilidade = SubResource( 4 )
+anims/sumir = SubResource( 6 )
 
 [connection signal="timeout" from="Regen_HP" to="." method="_on_Regen_HP_timeout"]
 [connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
