@@ -25,6 +25,7 @@ func _ready() -> void:
 			var _erro = porta.connect("body_entered", self, "_ao_corpo_encostar_porta", [porta.direcao])
 
 	for spawn_inimigo in $Componentes/Inimigos.get_children():
+		spawn_inimigo.sala = self
 		spawn_inimigos.append(spawn_inimigo)
 
 	if spawn_inimigos.size() == 0:
@@ -51,6 +52,7 @@ func ao_sair() -> void:
 
 
 func ao_completar() -> void:
+	_completo = true
 	_abrir_portas()
 	emit_signal("completo")
 #	print(get_path(), ":completo")
@@ -121,7 +123,7 @@ func _ao_corpo_encostar_porta(corpo: Node2D, dir_porta: Vector2) -> void:
 		mudar_sala(dir_porta)
 
 
-func _ao_inimigo_neutralizado() -> void:
+func _ao_inimigo_neutralizado(_foi_morto: bool) -> void:
 	_cont_inimigos_ativos -= 1
 	if _cont_inimigos_ativos <= 0:
 		ao_completar()

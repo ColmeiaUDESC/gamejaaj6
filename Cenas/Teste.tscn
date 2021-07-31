@@ -12,10 +12,12 @@ texture = ExtResource( 2 )
 
 [node name="Inimigo" parent="Sala" instance=ExtResource( 3 )]
 position = Vector2( -4, 0 )
+vida_maxima = 3.0
+purificacao_maxima = 3.0
 
 [node name="Jogador" parent="Sala" instance=ExtResource( 1 )]
 position = Vector2( -63.2627, 0.754623 )
-velocidade = 60.0
+velocidade = 100
 
 [node name="Paredes" type="StaticBody2D" parent="."]
 
