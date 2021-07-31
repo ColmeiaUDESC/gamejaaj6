@@ -31,6 +31,7 @@ signal recebido_dano(dano)
 signal infligido_dano(dano, e_offensivo)
 
 func _ready() -> void:
+# warning-ignore:integer_division
 	pureza = (pureza_maxima - pureza_minima) / 2
 	$UI/Pureza.min_value = pureza_minima
 	$UI/Pureza.max_value = pureza_maxima
@@ -82,7 +83,8 @@ func inflige_dano(dano: float) -> void:
 
 
 func incrementar_pureza(qnt: int) -> void:
-	pureza += qnt
+# warning-ignore:narrowing_conversion
+	pureza = clamp(pureza + qnt, pureza_minima, pureza_maxima)
 	$UI/Pureza.definir_pureza(pureza)
 	emit_signal("pureza_mudou", pureza)
 

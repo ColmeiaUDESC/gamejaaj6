@@ -9,7 +9,7 @@ signal transicao_mudanca_de_sala_finalizada
 
 func _ready():
 	jogador = $Jogador
-	jogador.connect("morreu", self, "_ao_jogador_morrer")
+	var _err := jogador.connect("morreu", self, "_ao_jogador_morrer")
 	_iniciar_jogo()
 
 

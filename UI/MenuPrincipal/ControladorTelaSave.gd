@@ -25,4 +25,4 @@ func inicializar() -> void:
 
 
 func _on_BotaoJogar_pressed():
-	get_tree().change_scene("res://Cenas/Jogo.tscn")
+	var _err := get_tree().change_scene("res://Cenas/Jogo.tscn")

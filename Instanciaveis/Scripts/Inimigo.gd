@@ -58,8 +58,10 @@ func purificar(dano: float, agressor: Node2D) -> void:
 func mudar_de_estado(novo_estado: String) -> void:
 	if not esta_neutralizado():
 		$GerenciadorEstados.mudar_estado(novo_estado)
-	else:
+	elif not esta_morto():
 		$GerenciadorEstados.mudar_estado("Purificado")
+	else:
+		$GerenciadorEstados.mudar_estado("Parado")
 
 
 func esta_purificado() -> bool:
@@ -94,3 +96,7 @@ func _on_Area_de_ataque_body_entered(body):
 func _on_Area_de_ataque_body_exited(body):
 	if body == jogador:
 		mudar_de_estado("Seguir")
+
+
+func _ao_infligir_dano(_dano: int) -> void:
+	emit_signal("infligido_dano")
