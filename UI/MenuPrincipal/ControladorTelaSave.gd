@@ -5,8 +5,8 @@ const TEXTO_NOVO_JOGO := "Novo Jogo"
 
 
 func inicializar() -> void:
-	$MarginContainer/Botoes/BotaoJogar.text = TEXTO_NOVO_JOGO if DadosSave.dados.andar_atual == 0 else TEXTO_CONTINUAR
-	var progresso_personagens: Dictionary = DadosSave.dados.progresso_personagens
+	$MarginContainer/Botoes/BotaoJogar.text = TEXTO_NOVO_JOGO if DadosSave.andar_atual == 0 else TEXTO_CONTINUAR
+	var progresso_personagens: Dictionary = DadosSave.progresso_personagens
 	for personagem_chave in progresso_personagens.keys():
 		var puro_completo: bool = progresso_personagens[personagem_chave][0]
 		var neutro_completo: bool = progresso_personagens[personagem_chave][1]
