@@ -11,7 +11,8 @@ var vida: float
 var purificacao: float = 0.0
 
 signal neutralizado(foi_morto)
-
+signal recebido_dano(dano, agressor, e_offensivo)
+signal infligido_dano(dano, vitima)
 
 func _ready():
 	$GerenciadorEstados.iniciar(self)
@@ -26,19 +27,25 @@ func _physics_process(delta):
 	movimento = move_and_slide(movimento)
 
 
-func inflige_dano(dano: float) -> void:
+func inflige_dano(dano: float, agressor: Node2D) -> void:
 	if esta_neutralizado():
 		return
+
+	emit_signal("recebido_dano", dano, agressor, true)
+
 	vida = max(0, vida - dano)
 	$Sprite.executar_anim_dano()
+
 	if esta_morto():
 		emit_signal("neutralizado", true)
 		queue_free()
 
 
-func purificar(dano: float) -> void:
+func purificar(dano: float, agressor: Node2D) -> void:
 	if esta_neutralizado():
 		return
+
+	emit_signal("recebido_dano", dano, agressor, false)
 
 	purificacao = min(purificacao_maxima, purificacao + dano)
 	$Sprite.purificacao = purificacao
