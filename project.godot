@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="GameJaaj6colmeia"
 run/main_scene="res://Cenas/Teste.tscn"
 
+[autoload]
+
+DadosSave="*res://Conteudos/Autoloads/DadosSave.gd"
+
 [display]
 
 window/size/width=320

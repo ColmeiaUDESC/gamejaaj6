@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/MenuPrincipal/PainelProgresso.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/MenuPrincipal/ControladorTelaSave.gd" type="Script" id=2]
+
+[node name="TelaSave" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 158.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
+
+[node name="Botoes" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_right = 142.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BotaoJogar" type="Button" parent="MarginContainer/Botoes"]
+margin_top = 68.0
+margin_right = 126.0
+margin_bottom = 88.0
+text = "Novo  Jogo"
+
+[node name="BotaoVoltar" type="Button" parent="MarginContainer/Botoes"]
+margin_top = 92.0
+margin_right = 126.0
+margin_bottom = 112.0
+text = "Voltar"
+
+[node name="Progesso" type="MarginContainer" parent="."]
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Progesso"]
+margin_left = 16.0
+margin_right = 142.0
+margin_bottom = 180.0
+alignment = 1
+
+[node name="PainelProgressoBarata" parent="Progesso/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 14.0
+margin_bottom = 62.0
+titulo = "Barata"
+
+[node name="PainelProgressoMonge" parent="Progesso/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 66.0
+margin_bottom = 114.0
+titulo = "Monge"
+
+[node name="PainelProgressoTigre" parent="Progesso/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 118.0
+margin_bottom = 166.0
+titulo = "Tigre"
+
+[connection signal="pressed" from="MarginContainer/Botoes/BotaoJogar" to="." method="_on_BotaoJogar_pressed"]
