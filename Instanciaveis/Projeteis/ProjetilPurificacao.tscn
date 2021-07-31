@@ -17,7 +17,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 8.0
+radius = 4.0
 
 [node name="Projetil" instance=ExtResource( 2 )]
 modulate = Color( 0.34902, 0.34902, 0.34902, 1 )
@@ -30,4 +30,5 @@ velocidade = 128.0
 frames = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 4 )
 shape = SubResource( 3 )

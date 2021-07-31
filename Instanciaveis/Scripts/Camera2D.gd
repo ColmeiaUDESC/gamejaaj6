@@ -10,7 +10,7 @@ var trauma := 0.0
 var expoente_trauma := 2.0
 
 func adicionar_trauma(quantidade: float) -> void:
-	trauma = min(trauma + quantidade, 1.0)
+	trauma = min(1.0, max(trauma, quantidade))
 
 
 func _process(delta: float) -> void:
