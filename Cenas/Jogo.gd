@@ -9,6 +9,7 @@ signal transicao_mudanca_de_sala_finalizada
 
 func _ready():
 	jogador = $Jogador
+	jogador.connect("morreu", self, "_ao_jogador_morrer")
 	_iniciar_jogo()
 
 
@@ -51,8 +52,16 @@ func _iniciar_jogo() -> void:
 	call_deferred("_ir_para_sala_inicial") # Necessario chamar ir para sala inicial no proximo quadro para nao ter problema com as animacoes das portas
 
 
+func _notification(notif: int) -> void:
+	if notif == MainLoop.NOTIFICATION_WM_QUIT_REQUEST and DadosSave.num_save_atual != 0:
+		DadosSave.salvar()
+
+
 func _ao_jogador_morrer() -> void:
 	DadosSave.andar_atual = 0
+	DadosSave.seed_atual = 0
+	DadosSave.pureza_atual = DadosSave.PUREZA_NEUTRA
+	DadosSave.salvar()
 
 
 func _ir_para_sala_inicial() -> void:

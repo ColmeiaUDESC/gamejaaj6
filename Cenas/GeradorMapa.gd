@@ -25,7 +25,7 @@ func gerar(seed_rng: int) -> void:
 	# Gera as posicoes das cenas_salas
 	var pos_mais_longe: Vector2 = pos_salas[0]
 	while (salas_a_criar > 0):
-		var sala_escolhida: Vector2 = pos_salas[rng.randi_range(0, pos_salas.size())]
+		var sala_escolhida: Vector2 = pos_salas[rng.randi() % pos_salas.size()]
 		var pos_nova_sala: Vector2 = sala_escolhida + _dir_aleatoria(rng)
 
 		if pos_salas.has(pos_nova_sala):
