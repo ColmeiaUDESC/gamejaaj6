@@ -11,6 +11,7 @@ export(PackedScene) var cena_projetil_purificacao: PackedScene
 export(int) var pureza_maxima := 100
 export(int) var pureza_minima := 0
 export(float) var velocidade := 250.0
+export(float) var vida_por_purificacao := 1.0
 
 onready var tween_transicao := $TweenCamera
 onready var player_animacao := $AnimationPlayer
@@ -18,8 +19,7 @@ onready var player_animacao := $AnimationPlayer
 var direcao = Vector2()
 var movimento = Vector2()
 var vida_max = 12.0
-var vida_atual = 12.0
-var regeneracao = 0.5
+var vida_atual := 12.0 setget set_vida
 var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
 var _inimigos_ja_danificados := []
@@ -78,14 +78,6 @@ func incrementar_pureza(qnt: int) -> void:
 	emit_signal("pureza_mudou", pureza)
 
 
-func _on_Regen_HP_timeout():
-	if (vida_atual + regeneracao) < vida_max:
-		vida_atual += regeneracao
-
-	elif (vida_atual + regeneracao) >= vida_max:
-		vida_atual = vida_max
-
-
 func intangivel():
 	depois_do_ataque = true
 	$Intangibilidade.start()
@@ -104,12 +96,15 @@ func transicionar_camera(nova_pos_global: Vector2) -> void:
 	$Camera2D.position = Vector2.ZERO
 
 
+func set_vida(valor: float) -> void:
+	vida_atual = clamp(valor, 0, vida_max)
+
+
 func _gerenciar_ataque_offensivo() -> void:
 	if $Ataque/Sprite.playing:
 		for corpo in $Ataque.get_overlapping_bodies():
 			if corpo.has_method("inflige_dano") and not _inimigos_ja_danificados.has(corpo):
-				if not corpo.is_connected("recebido_dano", self, "_ao_infligir_dano"):
-					corpo.connect("recebido_dano", self, "_ao_infligir_dano", [], CONNECT_ONESHOT)
+				_connectar_eventos_inimigo(corpo)
 				corpo.inflige_dano(dano_ofensivo, self)
 				_inimigos_ja_danificados.append(corpo)
 
@@ -153,12 +148,23 @@ func _instanciar_projetil() -> void:
 		get_parent().add_child(projetil)
 
 
+func _connectar_eventos_inimigo(inimigo: Node2D) -> void:
+	if not inimigo.is_connected("recebido_dano", self, "_ao_infligir_dano"):
+		var _err = inimigo.connect("recebido_dano", self, "_ao_infligir_dano", [], CONNECT_ONESHOT)
+	if not inimigo.is_connected("neutralizado", self, "_ao_neutralizar"):
+		var _err = inimigo.connect("neutralizado", self, "_ao_neutralizar", [], CONNECT_ONESHOT)
+
+
 func _ao_infligir_dano(dano: float, _agressor: Node2D, e_offensivo: bool) -> void:
 	emit_signal("infligido_dano", dano, e_offensivo)
 	incrementar_pureza(-1 if e_offensivo else 1)
 	$Camera2D.adicionar_trauma(TRAUMA_AO_INFLIGIR_DANO)
 
 
+func _ao_neutralizar(foi_morto: bool) -> void:
+	if not foi_morto:
+		self.vida_atual += vida_por_purificacao
+
+
 func _ao_projetil_acertar_inimigo(inimigo: Node2D):
-	if not inimigo.is_connected("recebido_dano", self, "_ao_infligir_dano"):
-		inimigo.connect("recebido_dano", self, "_ao_infligir_dano", [], CONNECT_ONESHOT)
+	_connectar_eventos_inimigo(inimigo)

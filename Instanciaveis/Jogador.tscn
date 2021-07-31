@@ -10,7 +10,7 @@
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=8]
 [ext_resource path="res://UI/BarraPureza.tscn" type="PackedScene" id=9]
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/brilho_purificacao = 5.0
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "sumir"
 length = 0.25
 tracks/0/type = "value"
@@ -95,7 +95,7 @@ cena_projetil_purificacao = ExtResource( 5 )
 pureza_maxima = 20
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
-material = SubResource( 5 )
+material = SubResource( 1 )
 position = Vector2( 0, -6 )
 texture = ExtResource( 2 )
 
@@ -135,10 +135,6 @@ margin_top = -20.0
 margin_right = 61.0
 margin_bottom = -14.0
 
-[node name="Regen_HP" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
 [node name="Intangibilidade" type="Timer" parent="."]
 one_shot = true
 
@@ -148,9 +144,8 @@ one_shot = true
 anims/aparecer = SubResource( 2 )
 anims/default = SubResource( 3 )
 anims/intangibilidade = SubResource( 4 )
-anims/sumir = SubResource( 6 )
+anims/sumir = SubResource( 5 )
 
-[connection signal="timeout" from="Regen_HP" to="." method="_on_Regen_HP_timeout"]
 [connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
 
 [editable path="Ataque"]
