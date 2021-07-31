@@ -4,7 +4,8 @@ extends VBoxContainer
 signal save_selecionado
 
 func carregar_save(num_save: int) -> void:
-	DadosSave.carregar(num_save)
+	DadosSave.num_save_atual = num_save
+	DadosSave.carregar()
 	emit_signal("save_selecionado")
 
 

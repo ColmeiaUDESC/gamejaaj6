@@ -16,16 +16,17 @@ const _DIRECOES := [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 
 
 
-func gerar() -> void:
-	randomize()
+func gerar(seed_rng: int) -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_rng
 	var pos_salas := [Vector2.ZERO]
-	var salas_a_criar := media_salas + rand_range(-variancia_de_salas, variancia_de_salas+1) - 1
+	var salas_a_criar := media_salas + rng.randi_range(-variancia_de_salas, variancia_de_salas+1) - 1
 
 	# Gera as posicoes das cenas_salas
 	var pos_mais_longe: Vector2 = pos_salas[0]
 	while (salas_a_criar > 0):
-		var sala_escolhida: Vector2 = pos_salas[rand_range(0, pos_salas.size())]
-		var pos_nova_sala: Vector2 = sala_escolhida + _dir_aleatoria()
+		var sala_escolhida: Vector2 = pos_salas[rng.randi() % pos_salas.size()]
+		var pos_nova_sala: Vector2 = sala_escolhida + _dir_aleatoria(rng)
 
 		if pos_salas.has(pos_nova_sala):
 			continue
@@ -53,10 +54,10 @@ func gerar() -> void:
 			sala_instancia = _criar_sala(cena_sala_inicial, pos, pos_salas)
 			sala_inicial = sala_instancia
 		elif pos == pos_sala_boss:
-			sala_instancia = _criar_sala(_sala_boss_aleatoria(), pos, pos_salas)
+			sala_instancia = _criar_sala(_sala_boss_aleatoria(rng), pos, pos_salas)
 			sala_do_boss = sala_instancia
 		else:
-			sala_instancia = _criar_sala(_sala_aleatoria(), pos, pos_salas)
+			sala_instancia = _criar_sala(_sala_aleatoria(rng), pos, pos_salas)
 
 		_salas_criadas.append(sala_instancia)
 
@@ -73,16 +74,16 @@ func _converter_para_isometrico(pos: Vector2) -> Vector2:
 	return Vector2(pos.x - pos.y, pos.x + pos.y)
 
 
-func _dir_aleatoria() -> Vector2:
-	return _DIRECOES[randi() % _DIRECOES.size()]
+func _dir_aleatoria(rng: RandomNumberGenerator) -> Vector2:
+	return _DIRECOES[rng.randi() % _DIRECOES.size()]
 
 
-func _sala_aleatoria() -> PackedScene:
-	return cenas_salas[randi() % cenas_salas.size()]
+func _sala_aleatoria(rng: RandomNumberGenerator) -> PackedScene:
+	return cenas_salas[rng.randi() % cenas_salas.size()]
 
 
-func _sala_boss_aleatoria() -> PackedScene:
-	return cena_salas_do_boss[randi() % cena_salas_do_boss.size()]
+func _sala_boss_aleatoria(rng: RandomNumberGenerator) -> PackedScene:
+	return cena_salas_do_boss[rng.randi() % cena_salas_do_boss.size()]
 
 
 func _criar_sala(sala: PackedScene, pos: Vector2, pos_salas: Array):
