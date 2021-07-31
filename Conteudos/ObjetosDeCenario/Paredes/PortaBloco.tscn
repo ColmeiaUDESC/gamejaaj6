@@ -66,12 +66,26 @@ tracks/1/keys = {
 
 [node name="ControladorPorta" instance=ExtResource( 1 )]
 
+[node name="PosTeleporteJogadorEsquerda" type="Position2D" parent="." index="1"]
+position = Vector2( -16, -8 )
+
+[node name="PosTeleporteJogadorNorte" type="Position2D" parent="." index="2"]
+position = Vector2( 16, -8 )
+
+[node name="PosTeleporteJogadorSul" type="Position2D" parent="." index="3"]
+position = Vector2( -16, 8 )
+
+[node name="PosTeleporteJogadorDireita" type="Position2D" parent="." index="4"]
+position = Vector2( 16, 8 )
+
 [node name="Sprite" parent="Porta" index="0"]
+visible = false
 position = Vector2( 0, -32 )
 texture = SubResource( 1 )
 
 [node name="CollisionPolygon2D" parent="Porta" index="1"]
 polygon = PoolVector2Array( 0, 32, -64, 0, 0, -32, 64, 0 )
+disabled = true
 
 [node name="AnimationPlayer" parent="Porta" index="2"]
 anims/abrir = SubResource( 2 )

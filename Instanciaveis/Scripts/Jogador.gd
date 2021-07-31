@@ -10,7 +10,7 @@ export(float) var dano_purificacao: float = 1.0
 export(PackedScene) var cena_projetil_purificacao: PackedScene
 export(int) var pureza_maxima := 100
 export(int) var pureza_minima := 0
-export(float) var velocidade := 250.0
+export(float) var velocidade := 50.0
 export(float) var vida_por_purificacao := 1.0
 
 onready var tween_transicao := $TweenCamera

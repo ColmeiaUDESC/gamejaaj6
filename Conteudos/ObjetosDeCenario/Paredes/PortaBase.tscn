@@ -3,7 +3,7 @@
 [ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/Porta.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 28.0
+radius = 4.0
 
 [node name="ControladorPorta" type="Area2D"]
 collision_mask = 2
@@ -17,6 +17,7 @@ __meta__ = {
 }
 
 [node name="Porta" type="StaticBody2D" parent="."]
+scale = Vector2( 0.25, 0.25 )
 collision_mask = 2
 
 [node name="Sprite" type="Sprite" parent="Porta"]
