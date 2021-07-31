@@ -25,6 +25,7 @@ var _progresso_ataque_purificacao := 0.0
 var _inimigos_ja_danificados := []
 var pureza := 0
 
+signal morreu()
 signal pureza_mudou(novo_valor)
 signal recebido_dano(dano)
 signal infligido_dano(dano, e_offensivo)
@@ -64,11 +65,19 @@ func _process(delta: float) -> void:
 
 
 func inflige_dano(dano: float) -> void:
-	if not depois_do_ataque:
-		emit_signal("recebido_dano", dano)
-		vida_atual -= dano
-		$Sprite.executar_anim_dano()
-		$Camera2D.adicionar_trauma(TRAUMA_AO_RECEBER_DANO)
+	if depois_do_ataque or esta_morto():
+		return
+
+	emit_signal("recebido_dano", dano)
+	vida_atual = clamp(vida_atual - dano, 0.0, vida_max)
+	$Sprite.executar_anim_dano()
+	$Camera2D.adicionar_trauma(TRAUMA_AO_RECEBER_DANO)
+
+	if esta_morto():
+		$AnimationPlayer.play("sumir")
+		$UI/TelaGameOver.mostrar()
+		emit_signal("morreu")
+	else:
 		intangivel()
 
 
@@ -98,6 +107,10 @@ func transicionar_camera(nova_pos_global: Vector2) -> void:
 
 func set_vida(valor: float) -> void:
 	vida_atual = clamp(valor, 0, vida_max)
+
+
+func esta_morto() -> bool:
+	return vida_atual == 0
 
 
 func _gerenciar_ataque_offensivo() -> void:

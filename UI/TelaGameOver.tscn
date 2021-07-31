@@ -1,0 +1,200 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/ControladorTelaGameover.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "aparecer"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/ContainerGameOver/GameOver:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/ContainerGameOver/GameOver:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 4, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/ContainerGameOver/GameOver:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 4, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/HBoxContainer:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 1.5 ),
+"transitions": PoolRealArray( 4, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer/HBoxContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 4, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("VBoxContainer/HBoxContainer/MargemBotaoVoltar/BotaoVoltar:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("VBoxContainer/HBoxContainer/MargemBotaoReencarnar/BotaoReencarnar:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="TelaGameOver" type="Panel"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerGameOver" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 126.0
+size_flags_vertical = 3
+
+[node name="GameOver" type="Label" parent="VBoxContainer/ContainerGameOver"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 123.0
+margin_top = 56.0
+margin_right = 196.0
+margin_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 36, 7 )
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 130.0
+margin_right = 320.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 50 )
+rect_pivot_offset = Vector2( 160, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MargemBotaoReencarnar" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 158.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="BotaoReencarnar" type="Button" parent="VBoxContainer/HBoxContainer/MargemBotaoReencarnar"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 138.0
+margin_bottom = 40.0
+disabled = true
+text = "Reencarnar"
+
+[node name="MargemBotaoVoltar" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="BotaoVoltar" type="Button" parent="VBoxContainer/HBoxContainer/MargemBotaoVoltar"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 138.0
+margin_bottom = 40.0
+disabled = true
+text = "Voltar"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/aparecer = SubResource( 1 )
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MargemBotaoReencarnar/BotaoReencarnar" to="." method="_on_BotaoReencarnar_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MargemBotaoVoltar/BotaoVoltar" to="." method="_on_BotaoVoltar_pressed"]

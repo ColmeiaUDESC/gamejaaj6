@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Instanciaveis/Scripts/Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=8]
 [ext_resource path="res://UI/BarraPureza.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/TelaGameOver.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -134,6 +135,8 @@ margin_left = -61.0
 margin_top = -20.0
 margin_right = 61.0
 margin_bottom = -14.0
+
+[node name="TelaGameOver" parent="UI" instance=ExtResource( 10 )]
 
 [node name="Intangibilidade" type="Timer" parent="."]
 one_shot = true
