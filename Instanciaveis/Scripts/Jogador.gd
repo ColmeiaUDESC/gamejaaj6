@@ -42,16 +42,16 @@ func _process(delta: float) -> void:
 	# Everything works like you're used to in a top-down game
 	direcao = Vector2()
 
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("andar_pra_cima"):
 		direcao += Vector2(0, -1)
 
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("andar_pra_baixo"):
 		direcao += Vector2(0, 1)
 
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("andar_pra_esquerda"):
 		direcao += Vector2(-1, 0)
 
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("andar_pra_direita"):
 		direcao += Vector2(1, 0)
 
 	movimento = direcao.normalized() * velocidade
