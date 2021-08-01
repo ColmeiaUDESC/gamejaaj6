@@ -29,7 +29,7 @@ shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
-[node name="SpritePersonagem" type="Sprite"]
+[node name="SpritePersonagem" type="AnimatedSprite"]
 material = SubResource( 2 )
 script = ExtResource( 1 )
 

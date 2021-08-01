@@ -10,13 +10,13 @@ export(float) var dano_purificacao: float = 1.0
 export(PackedScene) var cena_projetil_purificacao: PackedScene
 export(float) var velocidade := 50.0
 export(float) var vida_por_purificacao := 1.0
+export(float) var vida_max := 12.0
 
 onready var tween_transicao := $TweenCamera
 onready var player_animacao := $AnimationPlayer
 
 var direcao = Vector2()
 var movimento = Vector2()
-var vida_max = 12.0
 var vida_atual := 12.0 setget set_vida
 var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
@@ -31,6 +31,7 @@ signal infligido_dano(dano, e_offensivo)
 func _ready() -> void:
 # warning-ignore:integer_division
 	pureza = (Globais.PUREZA_MAXIMA - Globais.PUREZA_MINIMA) / 2
+	$UI/HP.max_value = vida_max
 	$UI/Pureza.definir_pureza(pureza)
 
 
@@ -57,6 +58,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		vida_atual -= 1
 
+	if $Sprite.animation != "atacando":
+		$Sprite.flip_h = movimento.x >= 0
+		if movimento.length() > 0:
+			$Sprite.play("andando")
+		else:
+			$Sprite.play("parado")
 	_gerenciar_ataque_offensivo()
 	_gerenciar_ataque_passivo(delta)
 
@@ -129,6 +136,8 @@ func _gerenciar_ataque_offensivo() -> void:
 	var dir_jogador_mouse := global_position.direction_to(get_global_mouse_position())
 	$Ataque.atacar(dir_jogador_mouse)
 	_inimigos_ja_danificados.clear()
+	$Sprite.flip_h = dir_jogador_mouse.x <= 0
+	$Sprite.play("atacando")
 
 
 func _gerenciar_ataque_passivo(delta: float) -> void:
@@ -183,3 +192,8 @@ func _ao_neutralizar(foi_morto: bool) -> void:
 
 func _ao_projetil_acertar_inimigo(inimigo: Node2D):
 	_connectar_eventos_inimigo(inimigo)
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "atacando":
+		$Sprite.play("andando")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
-[ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/monk_attack_lateral_01.png" type="Texture" id=2]
 [ext_resource path="res://UI/HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Instanciaveis/Ataque.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Projeteis/ProjetilPurificacao.tscn" type="PackedScene" id=5]
@@ -11,6 +11,11 @@
 [ext_resource path="res://UI/BarraPureza.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/TelaGameOver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Sprites/monk_attack_lateral_02.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/monk_walking_02.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/monk_walking_03.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/monk_walking_01.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/monk_walking_04.png" type="Texture" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -20,6 +25,52 @@ shader_param/progresso_purificacao = 0.0
 shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 47, 51 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 47, 51 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 35, 55 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 35, 55 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 35, 55 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 35, 55 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 35, 55 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "atacando",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "andando",
+"speed": 5.0
+} ]
 
 [sub_resource type="Animation" id=2]
 length = 0.25
@@ -97,8 +148,9 @@ cena_projetil_purificacao = ExtResource( 5 )
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
-position = Vector2( 0, -6 )
-texture = ExtResource( 2 )
+position = Vector2( 0, -10 )
+frames = SubResource( 13 )
+animation = "andando"
 
 [node name="PosProjetil" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
@@ -125,6 +177,9 @@ rolamento_maximo = 0.3
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HP" parent="UI" instance=ExtResource( 3 )]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 128.0
 
 [node name="Pureza" parent="UI" instance=ExtResource( 9 )]
 anchor_left = 0.5
@@ -139,6 +194,7 @@ margin_bottom = -14.0
 [node name="TelaGameOver" parent="UI" instance=ExtResource( 10 )]
 
 [node name="Fade" parent="UI" instance=ExtResource( 11 )]
+visible = false
 
 [node name="Intangibilidade" type="Timer" parent="."]
 one_shot = true
@@ -151,6 +207,7 @@ anims/default = SubResource( 3 )
 anims/intangibilidade = SubResource( 4 )
 anims/sumir = SubResource( 5 )
 
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
 
 [editable path="Ataque"]
