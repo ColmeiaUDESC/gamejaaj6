@@ -23,9 +23,9 @@ func resetar() -> void:
 func _on_Delay_timeout():
 	if not inimigo:
 		inimigo = cena_inimigo.instance()
-		inimigo.position = Vector2.ZERO
+		inimigo.position = position
 		var _err = inimigo.connect("neutralizado", sala, "_ao_inimigo_neutralizado")
-		call_deferred("add_child", inimigo)
+		get_parent().call_deferred("add_child", inimigo)
 		$Particles2D.emitting = true
 	# TODO: Fazer uma animacaozinha/Spawnar uma particula quando o inimigo spawnar
 
