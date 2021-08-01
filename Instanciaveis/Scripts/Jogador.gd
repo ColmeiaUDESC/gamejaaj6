@@ -8,8 +8,6 @@ export(float) var tempo_descarregar_ataque_purificacao := 1.0
 export(float) var dano_ofensivo: float = 1.0
 export(float) var dano_purificacao: float = 1.0
 export(PackedScene) var cena_projetil_purificacao: PackedScene
-export(int) var pureza_maxima := 100
-export(int) var pureza_minima := 0
 export(float) var velocidade := 50.0
 export(float) var vida_por_purificacao := 1.0
 
@@ -32,9 +30,7 @@ signal infligido_dano(dano, e_offensivo)
 
 func _ready() -> void:
 # warning-ignore:integer_division
-	pureza = (pureza_maxima - pureza_minima) / 2
-	$UI/Pureza.min_value = pureza_minima
-	$UI/Pureza.max_value = pureza_maxima
+	pureza = (Globais.PUREZA_MAXIMA - Globais.PUREZA_MINIMA) / 2
 	$UI/Pureza.definir_pureza(pureza)
 
 
@@ -84,7 +80,7 @@ func inflige_dano(dano: float) -> void:
 
 func incrementar_pureza(qnt: int) -> void:
 # warning-ignore:narrowing_conversion
-	self.pureza = clamp(pureza + qnt, pureza_minima, pureza_maxima)
+	self.pureza = clamp(pureza + qnt, Globais.PUREZA_MINIMA, Globais.PUREZA_MAXIMA)
 
 
 func set_pureza(valor: int) -> void:

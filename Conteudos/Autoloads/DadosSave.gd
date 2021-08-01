@@ -6,8 +6,11 @@ enum Personagens {
 	Tigre = 3,
 }
 
+const INDICE_IMPURO := 0
+const INDICE_NEUTRO := 1
+const INDICE_PURO := 2
 const CAMINHO_SAVE := "user://savegame%d.save"
-const PUREZA_NEUTRA := 10
+const PUREZA_NEUTRA := 20
 const QNT_SAVES := 3
 
 var num_save_atual := 0
