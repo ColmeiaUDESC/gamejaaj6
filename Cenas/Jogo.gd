@@ -69,6 +69,8 @@ func _iniciar_jogo() -> void:
 	jogador.pureza = DadosSave.pureza_atual
 	jogador.get_node("UI/Fade").fade_out()
 	andar.gerar(DadosSave.seed_atual)
+	$Musica.stream = andar.musica
+	$Musica.play()
 	call_deferred("_ir_para_sala_inicial") # Necessario chamar ir para sala inicial no proximo quadro para nao ter problema com as animacoes das portas
 
 

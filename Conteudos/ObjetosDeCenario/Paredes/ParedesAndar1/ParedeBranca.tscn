@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/piso_01-export-export.png" type="Texture" id=1]
+[ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/ParedeBase.tscn" type="PackedScene" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 64, 32, 32 )
+
+[node name="Parede" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -9 )
+texture = SubResource( 1 )

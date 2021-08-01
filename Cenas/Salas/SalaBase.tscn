@@ -68,6 +68,7 @@ mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 64 )
 show_collision = true
+collision_layer = 16
 format = 1
 __meta__ = {
 "_edit_lock_": true

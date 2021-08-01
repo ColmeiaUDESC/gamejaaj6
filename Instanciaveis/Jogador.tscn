@@ -88,13 +88,12 @@ tracks/0/keys = {
 "jogador",
 ]]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 cena_projetil_purificacao = ExtResource( 5 )
-pureza_maxima = 20
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )

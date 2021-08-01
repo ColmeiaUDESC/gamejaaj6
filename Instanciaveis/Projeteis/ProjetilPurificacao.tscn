@@ -30,5 +30,5 @@ velocidade = 128.0
 frames = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0, 4 )
+position = Vector2( 4, 0 )
 shape = SubResource( 3 )

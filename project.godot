@@ -99,6 +99,7 @@ andar_pra_baixo={
 2d_physics/layer_2="jogador"
 2d_physics/layer_3="inimigo"
 2d_physics/layer_4="projetil"
+2d_physics/layer_5="chao"
 
 [physics]
 
