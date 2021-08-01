@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss_snake_01.png-b33f4187a5d8081a463d85514e9216ca.stex"
+path="res://.import/boss_rat___rat01.png-e02f4b9f6850f2aafd4d6621f587b50c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backup/boss_snake_01.png"
-dest_files=[ "res://.import/boss_snake_01.png-b33f4187a5d8081a463d85514e9216ca.stex" ]
+source_file="res://Assets/Sprites/boss_rat___rat01.png"
+dest_files=[ "res://.import/boss_rat___rat01.png-e02f4b9f6850f2aafd4d6621f587b50c.stex" ]
 
 [params]
 

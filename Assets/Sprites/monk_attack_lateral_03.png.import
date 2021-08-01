@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/monk_attack_01.png-6b6ce999d5bef343f7a50bc0b5dfc5e0.stex"
+path="res://.import/monk_attack_lateral_03.png-952cec435a513eb6779586fb618cfbef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backup/monk_attack_01.png"
-dest_files=[ "res://.import/monk_attack_01.png-6b6ce999d5bef343f7a50bc0b5dfc5e0.stex" ]
+source_file="res://Assets/Sprites/monk_attack_lateral_03.png"
+dest_files=[ "res://.import/monk_attack_lateral_03.png-952cec435a513eb6779586fb618cfbef.stex" ]
 
 [params]
 

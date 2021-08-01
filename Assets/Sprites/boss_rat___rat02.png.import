@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lobo_01(attacking).png-1e246c71839872cc1b1ff315bdeaec3c.stex"
+path="res://.import/boss_rat___rat02.png-934c16d6362db8596ddfba7b3c4e4126.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backup/lobo_01(attacking).png"
-dest_files=[ "res://.import/lobo_01(attacking).png-1e246c71839872cc1b1ff315bdeaec3c.stex" ]
+source_file="res://Assets/Sprites/boss_rat___rat02.png"
+dest_files=[ "res://.import/boss_rat___rat02.png-934c16d6362db8596ddfba7b3c4e4126.stex" ]
 
 [params]
 

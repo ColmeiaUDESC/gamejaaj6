@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plant_01.png-4408f87cbeb7b220ce869f7198ed145a.stex"
+path="res://.import/insect_walking_02.png-764bac85c62b8ede984d685c374abfbd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backup/plant_01.png"
-dest_files=[ "res://.import/plant_01.png-4408f87cbeb7b220ce869f7198ed145a.stex" ]
+source_file="res://Assets/Sprites/insect_walking_02.png"
+dest_files=[ "res://.import/insect_walking_02.png-764bac85c62b8ede984d685c374abfbd.stex" ]
 
 [params]
 

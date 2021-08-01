@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiger_walking2.png-7136d6685f3e3e83bcdf0fec3d9075e3.stex"
+path="res://.import/lobo_attacking_02.png-8e0ebd3cbea5b58e9f2e2101db92ec0d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backup/tiger_walking2.png"
-dest_files=[ "res://.import/tiger_walking2.png-7136d6685f3e3e83bcdf0fec3d9075e3.stex" ]
+source_file="res://Assets/Sprites/lobo_attacking_02.png"
+dest_files=[ "res://.import/lobo_attacking_02.png-8e0ebd3cbea5b58e9f2e2101db92ec0d.stex" ]
 
 [params]
 
