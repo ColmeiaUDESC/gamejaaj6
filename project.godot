@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GameJaaj6colmeia"
-run/main_scene="res://Cenas/Teste.tscn"
+run/main_scene="res://Cenas/MenuPrincipal.tscn"
 
 [autoload]
 
