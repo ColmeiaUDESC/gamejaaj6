@@ -32,7 +32,7 @@ height = 7.1326
 
 [node name="Inimigo" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -48,7 +48,6 @@ texture = ExtResource( 2 )
 shape = SubResource( 2 )
 
 [node name="Area_de_ataque" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -56,7 +55,6 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="Visao" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
