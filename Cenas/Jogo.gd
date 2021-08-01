@@ -47,6 +47,8 @@ func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO) -> 
 func finalizar_andar() -> void:
 	DadosSave.andar_atual += 1
 	DadosSave.pureza_atual = jogador.pureza
+	jogador.get_node("UI/Fade").fade_in()
+	yield(jogador.get_node("UI/Fade"), "fade_finalizado")
 	var _err = get_tree().change_scene("res://Cenas/Jogo.tscn")
 
 
@@ -58,7 +60,8 @@ func _iniciar_jogo() -> void:
 
 	andar = andares[DadosSave.andar_atual - 1].instance()
 	add_child(andar)
-	$Jogador.pureza = DadosSave.pureza_atual
+	jogador.pureza = DadosSave.pureza_atual
+	jogador.get_node("UI/Fade").fade_out()
 	andar.gerar(DadosSave.seed_atual)
 	call_deferred("_ir_para_sala_inicial") # Necessario chamar ir para sala inicial no proximo quadro para nao ter problema com as animacoes das portas
 
