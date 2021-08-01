@@ -1,59 +1,33 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/HP.gd" type="Script" id=1]
 
-[node name="HP" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.886275, 0.278431, 0.278431, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+
+[node name="HP" type="ProgressBar"]
+margin_right = 124.0
+margin_bottom = 19.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Barra2" type="ColorRect" parent="."]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 108.0
-margin_bottom = 24.0
-color = Color( 0.117647, 0.0980392, 0.0980392, 0.439216 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Barra1" type="ColorRect" parent="."]
-margin_left = 16.0
-margin_top = 12.0
-margin_right = 104.0
-margin_bottom = 20.0
-color = Color( 0.67451, 0.196078, 0.196078, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Valores" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Maximo" type="Label" parent="Valores"]
-margin_left = 57.6014
-margin_top = 9.64645
-margin_right = 79.6014
-margin_bottom = 23.6464
-text = "/0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Atual" type="Label" parent="Valores"]
-margin_left = 30.9948
-margin_top = 10.0
-margin_right = 56.9948
-margin_bottom = 24.0
-text = "0"
-align = 2
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+text = "0/0"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

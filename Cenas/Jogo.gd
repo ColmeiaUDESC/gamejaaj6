@@ -1,5 +1,11 @@
 extends Node2D
 
+const PERSONAGENS = {
+	DadosSave.Personagens.Monge: preload("res://Instanciaveis/Jogador.tscn"),
+	DadosSave.Personagens.Barata: preload("res://Instanciaveis/JogadorBarata.tscn"),
+	DadosSave.Personagens.Tigre: preload("res://Instanciaveis/JogadorTigre.tscn"),
+}
+
 export (Array, PackedScene) var andares := []
 
 var andar
@@ -11,8 +17,6 @@ signal transicao_mudanca_de_sala_iniciada
 signal transicao_mudanca_de_sala_finalizada
 
 func _ready():
-	jogador = $Jogador
-	var _err := jogador.connect("morreu", self, "_ao_jogador_morrer")
 	_iniciar_jogo()
 
 
@@ -66,11 +70,17 @@ func _iniciar_jogo() -> void:
 
 	andar = andares[DadosSave.andar_atual - 1].instance()
 	add_child(andar)
+	andar.gerar(DadosSave.seed_atual)
+
+	jogador = PERSONAGENS[DadosSave.personagem_atual].instance()
+	add_child(jogador)
 	jogador.pureza = DadosSave.pureza_atual
 	jogador.get_node("UI/Fade").fade_out()
-	andar.gerar(DadosSave.seed_atual)
+	var _err := jogador.connect("morreu", self, "_ao_jogador_morrer")
+
 	$Musica.stream = andar.musica
 	$Musica.play()
+
 	call_deferred("_ir_para_sala_inicial") # Necessario chamar ir para sala inicial no proximo quadro para nao ter problema com as animacoes das portas
 
 

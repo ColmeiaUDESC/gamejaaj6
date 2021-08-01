@@ -10,13 +10,13 @@ export(float) var dano_purificacao: float = 1.0
 export(PackedScene) var cena_projetil_purificacao: PackedScene
 export(float) var velocidade := 50.0
 export(float) var vida_por_purificacao := 1.0
+export(float) var vida_max := 12.0
 
 onready var tween_transicao := $TweenCamera
 onready var player_animacao := $AnimationPlayer
 
 var direcao = Vector2()
 var movimento = Vector2()
-var vida_max = 12.0
 var vida_atual := 12.0 setget set_vida
 var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
@@ -31,6 +31,7 @@ signal infligido_dano(dano, e_offensivo)
 func _ready() -> void:
 # warning-ignore:integer_division
 	pureza = (Globais.PUREZA_MAXIMA - Globais.PUREZA_MINIMA) / 2
+	$UI/HP.max_value = vida_max
 	$UI/Pureza.definir_pureza(pureza)
 
 

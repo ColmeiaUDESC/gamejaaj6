@@ -125,6 +125,9 @@ rolamento_maximo = 0.3
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HP" parent="UI" instance=ExtResource( 3 )]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 128.0
 
 [node name="Pureza" parent="UI" instance=ExtResource( 9 )]
 anchor_left = 0.5
@@ -139,6 +142,7 @@ margin_bottom = -14.0
 [node name="TelaGameOver" parent="UI" instance=ExtResource( 10 )]
 
 [node name="Fade" parent="UI" instance=ExtResource( 11 )]
+visible = false
 
 [node name="Intangibilidade" type="Timer" parent="."]
 one_shot = true
