@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 
 var max_purificao: float = 1.0

@@ -58,6 +58,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		vida_atual -= 1
 
+	if $Sprite.animation != "atacando":
+		$Sprite.flip_h = movimento.x >= 0
+		if movimento.length() > 0:
+			$Sprite.play("andando")
+		else:
+			$Sprite.play("parado")
 	_gerenciar_ataque_offensivo()
 	_gerenciar_ataque_passivo(delta)
 
@@ -130,6 +136,8 @@ func _gerenciar_ataque_offensivo() -> void:
 	var dir_jogador_mouse := global_position.direction_to(get_global_mouse_position())
 	$Ataque.atacar(dir_jogador_mouse)
 	_inimigos_ja_danificados.clear()
+	$Sprite.flip_h = dir_jogador_mouse.x <= 0
+	$Sprite.play("atacando")
 
 
 func _gerenciar_ataque_passivo(delta: float) -> void:
@@ -184,3 +192,8 @@ func _ao_neutralizar(foi_morto: bool) -> void:
 
 func _ao_projetil_acertar_inimigo(inimigo: Node2D):
 	_connectar_eventos_inimigo(inimigo)
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "atacando":
+		$Sprite.play("andando")
