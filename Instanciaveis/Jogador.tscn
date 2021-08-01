@@ -194,7 +194,6 @@ margin_bottom = -14.0
 [node name="TelaGameOver" parent="UI" instance=ExtResource( 10 )]
 
 [node name="Fade" parent="UI" instance=ExtResource( 11 )]
-visible = false
 
 [node name="Intangibilidade" type="Timer" parent="."]
 one_shot = true

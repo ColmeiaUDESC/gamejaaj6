@@ -8,9 +8,8 @@
 [ext_resource path="res://Conteudos/Musicas/Ost/Andar1.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Cenas/Salas/Nivel1/SalaBoss-Nivel1.tscn" type="PackedScene" id=7]
 
-[node name="GeradorDeMapas" instance=ExtResource( 1 )]
-media_salas = 8
-variancia_de_salas = 3
+[node name="Andar1" instance=ExtResource( 1 )]
+media_salas = 1
 cena_sala_inicial = ExtResource( 2 )
 musica = ExtResource( 6 )
 cena_salas_do_boss = [ ExtResource( 7 ) ]

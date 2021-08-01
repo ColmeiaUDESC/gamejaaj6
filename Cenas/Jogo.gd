@@ -93,10 +93,13 @@ func _ganhar_jogo() -> void:
 	match Globais.status_pureza(DadosSave.pureza_atual):
 		Globais.STATUS_PUREZA_IMPURO:
 			DadosSave.progresso_personagens[pers_atual][0] = true
+			DadosSave.personagem_atual = DadosSave.Personagens.Barata
 		Globais.STATUS_PUREZA_NEUTRO:
 			DadosSave.progresso_personagens[pers_atual][1] = true
+			DadosSave.personagem_atual = DadosSave.Personagens.Monge
 		Globais.STATUS_PUREZA_PURO:
 			DadosSave.progresso_personagens[pers_atual][2] = true
+			DadosSave.personagem_atual = DadosSave.Personagens.Tigre
 	DadosSave.salvar()
 
 
