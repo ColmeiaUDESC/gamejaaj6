@@ -6,7 +6,7 @@ var valor_ataque = 1
 
 func executar(_delta: float) -> void:
 	inimigo.direcao = Vector2.ZERO
-	inimigo.get_node("Ataque").atacar(inimigo.position.direction_to(inimigo.jogador.position))
+	inimigo.get_node("Ataque").atacar(inimigo.global_position.direction_to(inimigo.jogador.global_position))
 	dano()
 
 

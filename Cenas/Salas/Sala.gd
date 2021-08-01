@@ -1,5 +1,7 @@
 extends Node2D
 
+export(bool) var e_sala_boss: bool = false
+
 const TAMANHO_SALA := Vector2(11,11)
 
 var posicao_na_matriz = Vector2.ZERO
@@ -8,6 +10,7 @@ var portas := []
 var spawn_inimigos := []
 var _cont_inimigos_ativos := 0
 var _completo := false
+var _porta_final_fase
 
 signal entrou
 signal saiu
@@ -16,6 +19,13 @@ signal completo
 func _ready() -> void:
 	if $Componentes/Portas.get_child_count() != 4:
 		printerr("Erro: Ha um numero incorreto de portas presentes na sala. A sala deve possuir 4 portas")
+
+	if e_sala_boss:
+		_porta_final_fase = $Componentes/Portas.get_children()[0]
+		for porta in $Componentes/Portas.get_children():
+			if porta.global_position.distance_to(Vector2.ZERO) > _porta_final_fase.global_position.distance_to(Vector2.ZERO):
+				_porta_final_fase = porta
+		dir_salas_vizinhas.append(_porta_final_fase.direcao)
 
 	for porta in $Componentes/Portas.get_children():
 		if not dir_salas_vizinhas.has(porta.direcao):
@@ -60,6 +70,10 @@ func ao_completar() -> void:
 
 func mudar_sala(dir: Vector2) -> void:
 	get_node("/root/Jogo").mudar_de_sala(get_parent().pegar_sala_em_pos(posicao_na_matriz + dir), -dir)
+
+
+func finalizar_andar() -> void:
+	get_node("/root/Jogo").finalizar_andar()
 
 
 func inserir_jogador(jogador: KinematicBody2D, direcao_porta: Vector2) -> void:
@@ -120,6 +134,9 @@ func _resetar_inimigos() -> void:
 
 func _ao_corpo_encostar_porta(corpo: Node2D, dir_porta: Vector2) -> void:
 	if corpo.is_in_group("jogador"):
+		if e_sala_boss and _porta_final_fase.direcao == dir_porta:
+			finalizar_andar()
+			return
 		mudar_sala(dir_porta)
 
 

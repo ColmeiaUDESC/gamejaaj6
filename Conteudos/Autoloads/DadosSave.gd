@@ -38,7 +38,6 @@ func carregar() -> void:
 	var arquivo_save := File.new()
 	if not arquivo_save.file_exists(CAMINHO_SAVE % num_save_atual):
 		resetar()
-		num_save_atual = num_save_atual
 		salvar()
 		return
 
@@ -48,7 +47,6 @@ func carregar() -> void:
 
 
 func resetar() -> void:
-	num_save_atual = 0
 	personagem_atual = Personagens.Monge
 	progresso_personagens = _gerar_progresso_personagens()
 	seed_atual = 0

@@ -23,7 +23,7 @@ var vida_atual := 12.0 setget set_vida
 var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
 var _inimigos_ja_danificados := []
-var pureza := 0
+var pureza := 0 setget set_pureza
 
 signal morreu()
 signal pureza_mudou(novo_valor)
@@ -84,7 +84,11 @@ func inflige_dano(dano: float) -> void:
 
 func incrementar_pureza(qnt: int) -> void:
 # warning-ignore:narrowing_conversion
-	pureza = clamp(pureza + qnt, pureza_minima, pureza_maxima)
+	self.pureza = clamp(pureza + qnt, pureza_minima, pureza_maxima)
+
+
+func set_pureza(valor: int) -> void:
+	pureza = valor
 	$UI/Pureza.definir_pureza(pureza)
 	emit_signal("pureza_mudou", pureza)
 

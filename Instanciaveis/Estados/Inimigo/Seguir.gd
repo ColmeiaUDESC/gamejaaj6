@@ -2,4 +2,4 @@ extends Estado
 
 
 func executar(_delta: float):
-	inimigo.direcao = inimigo.position.direction_to(inimigo.jogador.position)
+	inimigo.direcao = inimigo.global_position.direction_to(inimigo.jogador.global_position)

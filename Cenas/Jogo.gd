@@ -1,5 +1,8 @@
 extends Node2D
 
+export (Array, PackedScene) var andares := []
+
+var andar
 var sala_atual: Node2D
 var jogador: KinematicBody2D
 var mudando_de_sala := false
@@ -41,14 +44,22 @@ func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO) -> 
 	$DelayMudarSala.start()
 
 
+func finalizar_andar() -> void:
+	DadosSave.andar_atual += 1
+	DadosSave.pureza_atual = jogador.pureza
+	var _err = get_tree().change_scene("res://Cenas/Jogo.tscn")
+
+
 func _iniciar_jogo() -> void:
 	if DadosSave.andar_atual == 0:
 		DadosSave.andar_atual = 1
 		DadosSave.seed_atual = rand_seed(OS.get_unix_time())[0]
 		DadosSave.pureza_atual = DadosSave.PUREZA_NEUTRA
 
+	andar = andares[DadosSave.andar_atual - 1].instance()
+	add_child(andar)
 	$Jogador.pureza = DadosSave.pureza_atual
-	$GeradorDeMapas.gerar(DadosSave.seed_atual)
+	andar.gerar(DadosSave.seed_atual)
 	call_deferred("_ir_para_sala_inicial") # Necessario chamar ir para sala inicial no proximo quadro para nao ter problema com as animacoes das portas
 
 
@@ -65,4 +76,4 @@ func _ao_jogador_morrer() -> void:
 
 
 func _ir_para_sala_inicial() -> void:
-	mudar_de_sala($GeradorDeMapas.sala_inicial)
+	mudar_de_sala(andar.sala_inicial)
