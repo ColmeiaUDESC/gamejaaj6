@@ -25,4 +25,7 @@ func inicializar() -> void:
 
 
 func _on_BotaoJogar_pressed():
+	get_parent().get_node("Fade").show()
+	get_parent().get_node("Fade").fade_in()
+	yield(get_parent().get_node("Fade"), "fade_finalizado")
 	var _err := get_tree().change_scene("res://Cenas/Jogo.tscn")
