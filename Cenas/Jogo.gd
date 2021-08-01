@@ -46,10 +46,16 @@ func mudar_de_sala(nova_sala: Node2D, direcao_porta: Vector2 = Vector2.ZERO) -> 
 
 func finalizar_andar() -> void:
 	DadosSave.andar_atual += 1
+	var prox_cena := "res://Cenas/Jogo.tscn"
 	DadosSave.pureza_atual = jogador.pureza
+	if DadosSave.andar_atual == andares.size() + 1:
+		_ganhar_jogo()
+		jogador.get_node("UI/Fade").converter_para_fade_final()
+		prox_cena = "res://Cenas/CutsceneFinal.tscn"
+
 	jogador.get_node("UI/Fade").fade_in()
 	yield(jogador.get_node("UI/Fade"), "fade_finalizado")
-	var _err = get_tree().change_scene("res://Cenas/Jogo.tscn")
+	var _err = get_tree().change_scene(prox_cena)
 
 
 func _iniciar_jogo() -> void:
@@ -64,6 +70,22 @@ func _iniciar_jogo() -> void:
 	jogador.get_node("UI/Fade").fade_out()
 	andar.gerar(DadosSave.seed_atual)
 	call_deferred("_ir_para_sala_inicial") # Necessario chamar ir para sala inicial no proximo quadro para nao ter problema com as animacoes das portas
+
+
+# Chamado quando o jogador ganha o jogo
+func _ganhar_jogo() -> void:
+	var pers_atual := DadosSave.personagem_atual
+	DadosSave.andar_atual = 0
+	DadosSave.seed_atual = 0
+#	DadosSave.pureza_atual = DadosSave.PUREZA_NEUTRA
+	match Globais.status_pureza(DadosSave.pureza_atual):
+		Globais.STATUS_PUREZA_IMPURO:
+			DadosSave.progresso_personagens[pers_atual][0] = true
+		Globais.STATUS_PUREZA_NEUTRO:
+			DadosSave.progresso_personagens[pers_atual][1] = true
+		Globais.STATUS_PUREZA_PURO:
+			DadosSave.progresso_personagens[pers_atual][2] = true
+	DadosSave.salvar()
 
 
 func _notification(notif: int) -> void:

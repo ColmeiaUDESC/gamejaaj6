@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Conteudos/Musicas/Ost/FinalNeutro.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Cenas/CutsceneFinal.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "aparecer"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="CutsceneFinal" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+velocidade_texto = 1.25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CentralizarTexto" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/CentralizarTexto"]
+margin_left = 148.0
+margin_top = 57.0
+margin_right = 172.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "sim"
+
+[node name="EnterContinuar" type="Label" parent="VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 132.0
+margin_right = 320.0
+margin_bottom = 146.0
+custom_colors/font_color = Color( 0.741176, 0.741176, 0.741176, 1 )
+text = "Pressione enter para continuar"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/EnterContinuar"]
+anims/aparecer = SubResource( 2 )
+
+[node name="Botoes" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 150.0
+margin_right = 320.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MargemBotaoReencarnar" type="MarginContainer" parent="VBoxContainer/Botoes"]
+margin_right = 158.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="BotaoReencarnar" type="Button" parent="VBoxContainer/Botoes/MargemBotaoReencarnar"]
+visible = false
+margin_left = 10.0
+margin_right = 148.0
+margin_bottom = 20.0
+disabled = true
+text = "Reencarnar"
+
+[node name="MargemBotaoVoltar" type="MarginContainer" parent="VBoxContainer/Botoes"]
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="BotaoVoltar" type="Button" parent="VBoxContainer/Botoes/MargemBotaoVoltar"]
+visible = false
+margin_left = 10.0
+margin_right = 148.0
+margin_bottom = 20.0
+disabled = true
+text = "Voltar"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[connection signal="pressed" from="VBoxContainer/Botoes/MargemBotaoReencarnar/BotaoReencarnar" to="." method="_on_BotaoReencarnar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Botoes/MargemBotaoVoltar/BotaoVoltar" to="." method="_on_BotaoVoltar_pressed"]
