@@ -65,8 +65,7 @@ vida_max = 20.0
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 1 )
-position = Vector2( 0, -5.5 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 0, -11.5 )
 frames = SubResource( 8 )
 
 [node name="Ataque" parent="." index="2"]
@@ -74,6 +73,6 @@ scale = Vector2( 1.3, 1.3 )
 
 [node name="CollisionPolygon2D" parent="." index="3"]
 position = Vector2( 0, -2 )
-polygon = PoolVector2Array( -4, 4, -9, 2, -9, -3, 0, -6, 9, -3, 9, 1, 4, 4 )
+polygon = PoolVector2Array( -4, 4, -9, 2, -9, -4, 0, -8, 9, -4, 9, 2, 4, 4 )
 
 [editable path="Ataque"]
