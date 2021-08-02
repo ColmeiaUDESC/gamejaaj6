@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/AtacarCobraBoss.gd" type="Script" id=1]
+[ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosCobra.gd" type="Script" id=3]
+[ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=4]
+[ext_resource path="res://Instanciaveis/Projeteis/ProjetilVeneno.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/boss_snake_01.png" type="Texture" id=6]
+[ext_resource path="res://Conteudos/Musicas/Ataques/Cobra/Cobra5.wav" type="AudioStream" id=7]
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/brilho_purificacao = 5.0
+shader_param/progresso_purificacao = 0.0
+shader_param/coeficiente_mix_dano = 0.0
+shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
+shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "atacando",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "andando",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 100.0
+
+[node name="Inimigo" instance=ExtResource( 2 )]
+vida_maxima = 20.0
+purificacao_maxima = 6.0
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 16 )
+position = Vector2( 0, -11 )
+frames = SubResource( 17 )
+animation = "atacando"
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -8, 4, -16, 0, -16, -12, 0, -16, 16, -12, 16, 0, 8, 4 )
+
+[node name="SomAtacar" parent="." index="2"]
+stream = ExtResource( 7 )
+
+[node name="GerenciadorEstados" parent="." index="5"]
+estado_inicial = "Padrao"
+
+[node name="Padrao" type="Node" parent="GerenciadorEstados" index="2"]
+script = ExtResource( 1 )
+qnt_tiro_radial = 4
+projetil = ExtResource( 5 )
+
+[node name="DelayTiroRadial" type="Timer" parent="GerenciadorEstados/Padrao" index="0"]
+wait_time = 0.3
+one_shot = true
+
+[node name="DelayTiroNormal" type="Timer" parent="GerenciadorEstados/Padrao" index="1"]
+wait_time = 2.0
+one_shot = true
+
+[node name="OuvinteDeEventos" type="Node" parent="." index="6"]
+script = ExtResource( 3 )
+
+[node name="Visao" type="Area2D" parent="." index="7"]
+position = Vector2( 0, -6 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao" index="0"]
+shape = SubResource( 15 )
+
+[connection signal="timeout" from="GerenciadorEstados/Padrao/DelayTiroRadial" to="GerenciadorEstados/Padrao" method="_on_DelayTiroRadial_timeout"]
+[connection signal="timeout" from="GerenciadorEstados/Padrao/DelayTiroNormal" to="GerenciadorEstados/Padrao" method="_on_DelayTiroNormal_timeout"]
+[connection signal="body_entered" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_entered"]
+[connection signal="body_exited" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_exited"]

@@ -4,12 +4,12 @@ const MUSICA_PURO = preload("res://Conteudos/Musicas/Ost/FinalPuro.mp3")
 const MUSICA_NEUTRO = preload("res://Conteudos/Musicas/Ost/FinalNeutro.mp3")
 const MUSICA_IMPURO = preload("res://Conteudos/Musicas/Ost/FinalImpuro.mp3")
 const VELOCIDADE_APARICAO_TEXTO := 0.5
-const TEXTO_PURO := """texto puro
-continuar"""
-const TEXTO_NEUTRO := """texto neutro
-continuar"""
-const TEXTO_IMPURO := """texto impuro
-continuar"""
+const TEXTO_PURO := """Você foi bom e misericordioso, meu seguidor
+Reencarne, em um ser tão puro quanto vós"""
+const TEXTO_NEUTRO := """Teu coração é bom, mas ainda possui uma energia maligna
+Reencarne em um ser mundano"""
+const TEXTO_IMPURO := """Tu foste o pior dos demonios
+Sua punição será ser uma criatura patética"""
 
 export (float) var velocidade_texto := 1.0
 

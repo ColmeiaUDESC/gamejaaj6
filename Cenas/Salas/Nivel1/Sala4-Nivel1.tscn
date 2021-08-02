@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Instanciaveis/Inimigo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instanciaveis/Inimigos/Rato.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cenas/Salas/Nivel1/SalaNormal-Nivel1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Conteudos/ObjetosDeCenario/SpawnInimigo/SpawnInimigo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Conteudos/ObjetosDeCenario/Misc/PoteLeite1.tscn" type="PackedScene" id=4]

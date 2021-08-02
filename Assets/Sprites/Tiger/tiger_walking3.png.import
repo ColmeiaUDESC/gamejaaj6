@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiger_walking3.png-24a2f728fb20bcf97645c46f0b35a86e.stex"
+path="res://.import/tiger_walking3.png-6d63118e3d198714712bcf6d9e494a5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/tiger_walking3.png"
-dest_files=[ "res://.import/tiger_walking3.png-24a2f728fb20bcf97645c46f0b35a86e.stex" ]
+source_file="res://Assets/Sprites/Tiger/tiger_walking3.png"
+dest_files=[ "res://.import/tiger_walking3.png-6d63118e3d198714712bcf6d9e494a5a.stex" ]
 
 [params]
 

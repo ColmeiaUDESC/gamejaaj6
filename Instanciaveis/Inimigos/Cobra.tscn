@@ -1,0 +1,87 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/snake_04.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/snake_01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/snake_02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/snake_03.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/snake_attack_02.png" type="Texture" id=6]
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/Atirar.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Sprites/snake_attack_03.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/snake_attack_01.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/snake_attack_04.png" type="Texture" id=10]
+[ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=11]
+[ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosCobra.gd" type="Script" id=12]
+[ext_resource path="res://Instanciaveis/Projeteis/ProjetilVeneno.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Conteudos/Musicas/Ataques/Cobra/Cobra1.wav" type="AudioStream" id=14]
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 11 )
+shader_param/brilho_purificacao = 5.0
+shader_param/progresso_purificacao = 0.0
+shader_param/coeficiente_mix_dano = 0.0
+shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
+shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "atacando",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 100.0
+
+[node name="Inimigo" instance=ExtResource( 1 )]
+vida_maxima = 8.0
+purificacao_maxima = 2.0
+velocidade = 0.0
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 14 )
+position = Vector2( 0, -9 )
+frames = SubResource( 9 )
+animation = "parado"
+playing = false
+
+[node name="SomAtacar" parent="." index="2"]
+stream = ExtResource( 14 )
+
+[node name="Visao" type="Area2D" parent="." index="3"]
+position = Vector2( 0, -6 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao" index="0"]
+shape = SubResource( 15 )
+
+[node name="OuvinteDeEventos" type="Node" parent="." index="4"]
+script = ExtResource( 12 )
+
+[node name="GerenciadorEstados" parent="." index="7"]
+estado_inicial = "Padrao"
+
+[node name="Padrao" type="Node" parent="GerenciadorEstados" index="2"]
+script = ExtResource( 7 )
+projetil = ExtResource( 13 )
+
+[node name="Timer" type="Timer" parent="GerenciadorEstados/Padrao" index="0"]
+one_shot = true
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="body_entered" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_entered"]
+[connection signal="body_exited" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_exited"]
+[connection signal="timeout" from="GerenciadorEstados/Padrao/Timer" to="GerenciadorEstados/Padrao" method="_on_Timer_timeout"]

@@ -16,6 +16,9 @@ custom_styles/bg = SubResource( 2 )
 value = 50.0
 percent_visible = false
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
