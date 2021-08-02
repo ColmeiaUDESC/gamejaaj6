@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/monk_attack_lateral_01.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/monk_attack_lateral_03.png" type="Texture" id=2]
 [ext_resource path="res://UI/HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Instanciaveis/Ataque.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Projeteis/ProjetilPurificacao.tscn" type="PackedScene" id=5]
@@ -11,7 +11,7 @@
 [ext_resource path="res://UI/BarraPureza.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/TelaGameOver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Fade.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/Sprites/monk_attack_lateral_02.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/monk_attack_lateral_04.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Sprites/monk_walking_02.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Sprites/monk_walking_03.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Sprites/monk_walking_01.png" type="Texture" id=15]
@@ -26,47 +26,19 @@ shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 47, 51 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 47, 51 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 35, 55 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 35, 55 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 35, 55 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 35, 55 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 16 )
-region = Rect2( 0, 0, 35, 55 )
-
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "atacando",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 8 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "andando",
 "speed": 5.0

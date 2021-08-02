@@ -44,6 +44,7 @@ purificacao_maxima = 6.0
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 16 )
+position = Vector2( 0, -11 )
 frames = SubResource( 17 )
 animation = "atacando"
 

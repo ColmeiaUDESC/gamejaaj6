@@ -136,7 +136,7 @@ func _gerenciar_ataque_offensivo() -> void:
 	var dir_jogador_mouse := global_position.direction_to(get_global_mouse_position())
 	$Ataque.atacar(dir_jogador_mouse)
 	_inimigos_ja_danificados.clear()
-	$Sprite.flip_h = dir_jogador_mouse.x <= 0
+	$Sprite.flip_h = dir_jogador_mouse.x >= 0
 	$Sprite.play("atacando")
 
 
