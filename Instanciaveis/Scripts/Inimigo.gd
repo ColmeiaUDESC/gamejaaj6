@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 export(float) var vida_maxima := 1.0
 export(float) var purificacao_maxima := 1.0
+export(float) var velocidade = 1000
 
-const VELOCIDADE = 1000
 var jogador = null
 var direcao = Vector2.ZERO
 var movimento = Vector2.ZERO
@@ -23,8 +23,11 @@ func _ready():
 
 func _physics_process(delta):
 	$GerenciadorEstados.executar(delta)
-	movimento = direcao * VELOCIDADE * delta
+	movimento = direcao * velocidade * delta
 	movimento = move_and_slide(movimento)
+	if $Sprite.animation != "atacando":
+		$Sprite.flip_h = movimento.x >= 0
+		$Sprite.play("andando" if movimento.length() > 0 else "parado")
 
 
 func inflige_dano(dano: float, agressor: Node2D) -> void:
@@ -35,6 +38,7 @@ func inflige_dano(dano: float, agressor: Node2D) -> void:
 
 	vida = max(0, vida - dano)
 	$Sprite.executar_anim_dano()
+	$SomDanoOffensivo.play()
 
 	if esta_morto():
 		emit_signal("neutralizado", true)
@@ -49,6 +53,7 @@ func purificar(dano: float, agressor: Node2D) -> void:
 
 	purificacao = min(purificacao_maxima, purificacao + dano)
 	$Sprite.purificacao = purificacao
+	$SomDanoPurificacao.play()
 	$Sprite.emitir_particulas_purificacao()
 	if esta_purificado():
 		set_collision_layer_bit(2, false)
@@ -78,27 +83,15 @@ func esta_neutralizado() -> bool:
 	return esta_purificado() or esta_morto()
 
 
-func _on_Visao_body_entered(body):
-	if body.name == "Jogador":
-		jogador = body
-		mudar_de_estado("Seguir")
-
-
-func _on_Visao_body_exited(body):
-	if body == jogador:
-		mudar_de_estado("Aguardo")
-		jogador = null
-
-
-func _on_Area_de_ataque_body_entered(body):
-	if body == jogador:
-		mudar_de_estado("Atacar")
-
-
-func _on_Area_de_ataque_body_exited(body):
-	if body == jogador:
-		mudar_de_estado("Seguir")
+func animar_ataque(dir: Vector2) -> void:
+	$Sprite.play("atacando")
+	$Sprite.flip_h = dir.x >= 0
 
 
 func _ao_infligir_dano(_dano: int) -> void:
 	emit_signal("infligido_dano")
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "atacando":
+		$Sprite.play("andando")

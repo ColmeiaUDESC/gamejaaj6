@@ -68,7 +68,7 @@ func _process(delta: float) -> void:
 	_gerenciar_ataque_passivo(delta)
 
 
-func inflige_dano(dano: float) -> void:
+func inflige_dano(dano: float, _agressor = null) -> void:
 	if depois_do_ataque or esta_morto():
 		return
 
