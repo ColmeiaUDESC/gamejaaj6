@@ -5,13 +5,13 @@
 [ext_resource path="res://Conteudos/Musicas/Ataques/Rato/Rato1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Instanciaveis/Ataque.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosRato.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Sprites/rat_02.png" type="Texture" id=6]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=7]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Seguir.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Sprites/rat_04.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/rat_03.png" type="Texture" id=10]
 [ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/Sprites/rat_02.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/rat_03.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/rat_01.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/rat_04.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/rat_01.png" type="Texture" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -24,17 +24,17 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "atacando",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "andando",
 "speed": 5.0

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=1]
 [ext_resource path="res://Instanciaveis/Jogador.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Sprites/insect_01.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/insect_walking_02.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/insect_walking_01.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Backup/insect_01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Backup/insect_walking_02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Backup/insect_walking_01.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -15,16 +15,16 @@ shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "atacando",
+"name": "parado",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "parado",
+"name": "atacando",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
@@ -45,7 +45,7 @@ vida_max = 5.0
 material = SubResource( 1 )
 position = Vector2( 0, -2 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 5 )
+frames = SubResource( 2 )
 
 [node name="Ataque" parent="." index="2"]
 scale = Vector2( 0.6, 0.6 )

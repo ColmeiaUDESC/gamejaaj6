@@ -12,10 +12,10 @@
 [ext_resource path="res://UI/TelaGameOver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Fade.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Sprites/monk_attack_lateral_04.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/monk_walking_02.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/monk_walking_03.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/monk_walking_01.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Sprites/monk_walking_04.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Monk/monk_walking2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Monk/monk_walking1.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Monk/monk_walking3.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Monk/monk_walking4.png" type="Texture" id=16]
 [ext_resource path="res://Conteudos/tema_interface.tres" type="Theme" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -29,17 +29,17 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "parado",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "atacando",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "andando",
 "speed": 5.0
