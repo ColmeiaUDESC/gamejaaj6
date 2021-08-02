@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/monk_walking1.png-62fc1f547f4cadd1810dae811f594ff7.stex"
+path="res://.import/monk_walking1.png-03549e1191e6bb99b425a9dd12e3cf9d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/monk_walking1.png"
-dest_files=[ "res://.import/monk_walking1.png-62fc1f547f4cadd1810dae811f594ff7.stex" ]
+source_file="res://Assets/Sprites/Monk/monk_walking1.png"
+dest_files=[ "res://.import/monk_walking1.png-03549e1191e6bb99b425a9dd12e3cf9d.stex" ]
 
 [params]
 
