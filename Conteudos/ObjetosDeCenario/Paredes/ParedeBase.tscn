@@ -3,7 +3,7 @@
 [node name="Parede" type="StaticBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -8.5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 0, 32, -64, 0, 0, -32, 64, 0 )
+polygon = PoolVector2Array( 0, 8, -16, 0, 0, -8, 16, 0 )

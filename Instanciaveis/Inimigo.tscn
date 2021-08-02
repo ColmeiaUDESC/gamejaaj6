@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Inimigo.gd" type="Script" id=1]
-[ext_resource path="res://Conteudos/Counteudo-Teste/personagem-teste.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/rat_02.png" type="Texture" id=2]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Seguir.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Instanciaveis/Estados/GerenciadorEstados.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Atacar.tscn" type="PackedScene" id=5]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Instanciaveis/SpritePersonagem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=9]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Parado.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Sprites/rat_04.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/rat_03.png" type="Texture" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -20,19 +22,36 @@ shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 8.0
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 35, 60 )
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 35, 60 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 35, 60 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "andando",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
 radius = 13.8158
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 46.5104
 height = 7.1326
 
 [node name="Inimigo" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 23
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -42,27 +61,34 @@ purificacao_maxima = 3.0
 
 [node name="Sprite" parent="." instance=ExtResource( 8 )]
 material = SubResource( 1 )
-texture = ExtResource( 2 )
+position = Vector2( 0, -17 )
+frames = SubResource( 5 )
+animation = "andando"
+frame = 1
+playing = true
 
-[node name="Colisao" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
 
 [node name="Area_de_ataque" type="Area2D" parent="."]
+position = Vector2( 0, -6 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_de_ataque"]
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="Visao" type="Area2D" parent="."]
+position = Vector2( 0, -6 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visao"]
 rotation = 0.785398
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Ataque" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -6 )
 collision_layer = 0
 collision_mask = 2
 

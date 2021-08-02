@@ -51,6 +51,8 @@ func purificar(dano: float, agressor: Node2D) -> void:
 	$Sprite.purificacao = purificacao
 	$Sprite.emitir_particulas_purificacao()
 	if esta_purificado():
+		set_collision_layer_bit(2, false)
+		set_collision_mask_bit(1, false)
 		emit_signal("neutralizado", false)
 		mudar_de_estado("Purificado")
 

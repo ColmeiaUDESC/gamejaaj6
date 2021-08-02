@@ -5,6 +5,7 @@ export (int) var variancia_de_salas := 3
 export (Vector2) var tamanho_das_salas := Vector2(10, 10)
 export (Vector2) var tamanho_das_celulas := Vector2(128, 64)
 export (PackedScene) var cena_sala_inicial: PackedScene
+export (AudioStream) var musica: AudioStream
 export (Array, PackedScene) var cena_salas_do_boss := []
 export (Array, PackedScene) var cenas_salas := []
 

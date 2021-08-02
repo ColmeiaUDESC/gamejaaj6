@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Andar1.mp3-01760cf6747fcbd158aaa323cd0c0e0e.mp3str"
+
+[deps]
+
+source_file="res://Conteudos/Musicas/Ost/Andar1.mp3"
+dest_files=[ "res://.import/Andar1.mp3-01760cf6747fcbd158aaa323cd0c0e0e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

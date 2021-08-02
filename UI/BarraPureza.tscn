@@ -27,8 +27,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 gradiente = SubResource( 3 )
-razao_impuro = 0.2
-razao_puro = 0.2
 imagem_puro = ExtResource( 2 )
 imagem_neutro = ExtResource( 4 )
 imagem_impuro = ExtResource( 3 )

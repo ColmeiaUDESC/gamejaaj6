@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Cenas/Salas/SalaBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/PortaBloco.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Conteudos/ObjetosDeCenario/Portas/PortaBloco.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/ParedeBlocoTerra.tscn" type="PackedScene" id=3]
 
 [node name="SalaBase" instance=ExtResource( 1 )]
