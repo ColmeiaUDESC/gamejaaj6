@@ -14,18 +14,18 @@ theme = ExtResource( 6 )
 script = ExtResource( 2 )
 
 [node name="BotaoJogar" parent="TelaMenuPrincipal/AreaPrincipal/AreaEsquerda/VBoxContainer" index="0"]
-margin_bottom = 27.0
+margin_bottom = 22.0
 
 [node name="BotaoSair" parent="TelaMenuPrincipal/AreaPrincipal/AreaEsquerda/VBoxContainer" index="1"]
-margin_top = 31.0
-margin_bottom = 58.0
+margin_top = 26.0
+margin_bottom = 48.0
 
 [node name="TelaSaves" parent="." instance=ExtResource( 1 )]
 visible = false
 theme = ExtResource( 6 )
 
 [node name="BotaoVoltar" parent="TelaSaves/MargemBotaoVoltar" index="0"]
-margin_bottom = 27.0
+margin_bottom = 22.0
 
 [node name="TelaSave" parent="." instance=ExtResource( 4 )]
 visible = false

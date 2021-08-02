@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Conteudos/ObjetosDeCenario/Misc/PoteLeite1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Instanciaveis/Inimigos/Rato.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Instanciaveis/Inimigos/CobraBoss.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Conteudos/ObjetosDeCenario/Misc/PoteLeite2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cenas/Salas/Nivel1/SalaNormal-Nivel1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Conteudos/ObjetosDeCenario/SpawnInimigo/SpawnInimigo.tscn" type="PackedScene" id=5]
@@ -74,36 +74,4 @@ position = Vector2( -48, 24 )
 position = Vector2( 48, -24 )
 
 [node name="SpawnInimigo" parent="Componentes/Inimigos" index="0" instance=ExtResource( 5 )]
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo2" parent="Componentes/Inimigos" index="1" instance=ExtResource( 5 )]
-position = Vector2( -32, 0 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo3" parent="Componentes/Inimigos" index="2" instance=ExtResource( 5 )]
-position = Vector2( -16, -8 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo4" parent="Componentes/Inimigos" index="3" instance=ExtResource( 5 )]
-position = Vector2( 0, -16 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo5" parent="Componentes/Inimigos" index="4" instance=ExtResource( 5 )]
-position = Vector2( 16, -8 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo6" parent="Componentes/Inimigos" index="5" instance=ExtResource( 5 )]
-position = Vector2( 32, 0 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo7" parent="Componentes/Inimigos" index="6" instance=ExtResource( 5 )]
-position = Vector2( 16, 8 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo8" parent="Componentes/Inimigos" index="7" instance=ExtResource( 5 )]
-position = Vector2( 0, 16 )
-cena_inimigo = ExtResource( 2 )
-
-[node name="SpawnInimigo9" parent="Componentes/Inimigos" index="8" instance=ExtResource( 5 )]
-position = Vector2( -16, 8 )
 cena_inimigo = ExtResource( 2 )
