@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Conteudos/Musicas/Ost/FinalNeutro.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Cenas/CutsceneFinal.gd" type="Script" id=2]
+[ext_resource path="res://Conteudos/tema_interface.tres" type="Theme" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -25,6 +26,7 @@ tracks/0/keys = {
 [node name="CutsceneFinal" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -41,23 +43,27 @@ __meta__ = {
 
 [node name="CentralizarTexto" type="CenterContainer" parent="VBoxContainer"]
 margin_right = 320.0
-margin_bottom = 128.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="VBoxContainer/CentralizarTexto"]
-margin_left = 148.0
-margin_top = 57.0
-margin_right = 172.0
+margin_left = 60.0
+margin_top = 55.0
+margin_right = 260.0
 margin_bottom = 71.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "sim"
+autowrap = true
 
 [node name="EnterContinuar" type="Label" parent="VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 132.0
+margin_top = 130.0
 margin_right = 320.0
 margin_bottom = 146.0
 custom_colors/font_color = Color( 0.741176, 0.741176, 0.741176, 1 )
@@ -89,7 +95,7 @@ custom_constants/margin_bottom = 10
 visible = false
 margin_left = 10.0
 margin_right = 148.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 disabled = true
 text = "Reencarnar"
 
@@ -107,7 +113,7 @@ custom_constants/margin_bottom = 10
 visible = false
 margin_left = 10.0
 margin_right = 148.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 disabled = true
 text = "Voltar"
 

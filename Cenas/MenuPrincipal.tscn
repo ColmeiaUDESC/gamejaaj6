@@ -1,21 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/MenuPrincipal/TelaSaves.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/MenuPrincipal/ControladorTelaPrincipal.gd" type="Script" id=2]
 [ext_resource path="res://UI/MenuPrincipal/TelaMenuPrincipal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/MenuPrincipal/TelaSave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Fade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Conteudos/tema_interface.tres" type="Theme" id=6]
 
 [node name="MenuPrincipal" type="CanvasLayer"]
 
 [node name="TelaMenuPrincipal" parent="." instance=ExtResource( 3 )]
+theme = ExtResource( 6 )
 script = ExtResource( 2 )
+
+[node name="BotaoJogar" parent="TelaMenuPrincipal/AreaPrincipal/AreaEsquerda/VBoxContainer" index="0"]
+margin_bottom = 27.0
+
+[node name="BotaoSair" parent="TelaMenuPrincipal/AreaPrincipal/AreaEsquerda/VBoxContainer" index="1"]
+margin_top = 31.0
+margin_bottom = 58.0
 
 [node name="TelaSaves" parent="." instance=ExtResource( 1 )]
 visible = false
+theme = ExtResource( 6 )
+
+[node name="BotaoVoltar" parent="TelaSaves/MargemBotaoVoltar" index="0"]
+margin_bottom = 27.0
 
 [node name="TelaSave" parent="." instance=ExtResource( 4 )]
 visible = false
+theme = ExtResource( 6 )
 
 [node name="Fade" parent="." instance=ExtResource( 5 )]
 visible = false
