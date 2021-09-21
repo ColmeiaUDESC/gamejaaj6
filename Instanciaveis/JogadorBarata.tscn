@@ -1,10 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=1]
 [ext_resource path="res://Instanciaveis/Jogador.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Sprites/Backup/insect_01.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Backup/insect_walking_02.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Backup/insect_walking_01.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Barata/Barata6.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Barata/Barata1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Barata/Barata2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Barata/Barata11.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Barata/Barata5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Barata/Barata10.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Barata/Barata4.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Barata/Barata3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Barata/Barata9.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Barata/Barata12.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Barata/Barata13.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Barata/Barata7.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Barata/Barata8.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Barata/Barata14.png" type="Texture" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -17,20 +28,45 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "atacando",
-"speed": 5.0
+"name": "atacando_lado",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "atacando_frente",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "atacando_costas",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "rezando",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "andando",
-"speed": 5.0
+"name": "andando_frente",
+"speed": 10.0
 } ]
 
 [node name="Jogador" instance=ExtResource( 2 )]
@@ -43,14 +79,17 @@ vida_max = 5.0
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 1 )
-position = Vector2( 0, -2 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 0, -8 )
 frames = SubResource( 2 )
 
+[node name="PosProjetil" parent="." index="1"]
+position = Vector2( 0, -2 )
+
 [node name="Ataque" parent="." index="2"]
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 0, -4 )
 
 [node name="CollisionPolygon2D" parent="." index="3"]
-polygon = PoolVector2Array( -1, 2, -3, 1, -4, -1, 0, -2, 4, -1, 3, 1, 1, 2 )
+position = Vector2( 0, -2 )
+polygon = PoolVector2Array( -3, 2, -6, 1, -8, -1, 0, -2, 8, -1, 6, 1, 3, 2 )
 
 [editable path="Ataque"]

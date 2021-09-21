@@ -1,11 +1,28 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Instanciaveis/Jogador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=2]
-[ext_resource path="res://Assets/Sprites/tiger_walking1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/tiger_walking4.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/tiger_walking3.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/tiger_walking2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre16.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre19.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre7.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre17.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre11.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre13.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre10.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre6.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre12.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre3.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre9.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre4.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre1.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre8.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre18.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre14.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre20.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre15.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre21.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Tigre/Tigre5.png" type="Texture" id=23]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -16,45 +33,46 @@ shader_param/coeficiente_mix_dano = 0.0
 shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 60, 24 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 60, 24 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 60, 24 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 60, 24 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 60, 24 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 60, 24 )
-
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "atacando",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 3 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "andando",
+"name": "atacando_lado",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "atacando_frente",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "atacando_costas",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "rezando",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 5 ), ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "andando_frente",
 "speed": 5.0
 } ]
 
@@ -65,14 +83,12 @@ vida_max = 20.0
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 1 )
-position = Vector2( 0, -11.5 )
-frames = SubResource( 8 )
+frames = SubResource( 2 )
 
 [node name="Ataque" parent="." index="2"]
 scale = Vector2( 1.3, 1.3 )
 
 [node name="CollisionPolygon2D" parent="." index="3"]
-position = Vector2( 0, -2 )
 polygon = PoolVector2Array( -4, 4, -9, 2, -9, -4, 0, -8, 9, -4, 9, 2, 4, 4 )
 
 [editable path="Ataque"]
