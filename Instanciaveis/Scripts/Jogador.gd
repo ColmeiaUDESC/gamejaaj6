@@ -58,14 +58,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		vida_atual -= 1
 
-	if $Sprite.animation != "atacando":
-		$Sprite.flip_h = movimento.x >= 0
-		if movimento.length() > 0:
-			$Sprite.play("andando")
-		else:
-			$Sprite.play("parado")
 	_gerenciar_ataque_offensivo()
 	_gerenciar_ataque_passivo(delta)
+	_gerenciar_animacoes()
 
 
 func inflige_dano(dano: float, _agressor = null) -> void:
@@ -122,22 +117,36 @@ func esta_morto() -> bool:
 	return vida_atual == 0
 
 
+func _gerenciar_animacoes() -> void:
+	if $Ataque.atacando:
+		var dir_ataque: Vector2 = Vector2.RIGHT.rotated($Ataque.rotation)
+		var sufixo := _pegar_suffixo_anim_dir(dir_ataque)
+		$Sprite.play("atacando_" + sufixo)
+		$Sprite.flip_h = dir_ataque.x < 0 if sufixo == "lado" else false
+	else:
+		if direcao.length() > 0:
+			var sufixo := _pegar_suffixo_anim_dir(direcao)
+			$Sprite.play("andando_" + sufixo)
+			$Sprite.flip_h = direcao.x < 0 if sufixo == "lado" else false
+		else:
+			$Sprite.flip_h = false
+			$Sprite.play("rezando" if Input.is_action_pressed("ataque_purificacao") else "parado")
+
+
 func _gerenciar_ataque_offensivo() -> void:
-	if $Ataque/Sprite.playing:
+	if $Ataque.atacando:
 		for corpo in $Ataque.get_overlapping_bodies():
 			if corpo.has_method("inflige_dano") and not _inimigos_ja_danificados.has(corpo):
 				_connectar_eventos_inimigo(corpo)
 				corpo.inflige_dano(dano_ofensivo, self)
 				_inimigos_ja_danificados.append(corpo)
 
-	if not Input.is_action_just_pressed("ataque_offensivo") or $Ataque/Sprite.playing:
+	if not Input.is_action_just_pressed("ataque_offensivo") or $Ataque.atacando:
 		return
 
 	var dir_jogador_mouse := global_position.direction_to(get_global_mouse_position())
 	$Ataque.atacar(dir_jogador_mouse)
 	_inimigos_ja_danificados.clear()
-	$Sprite.flip_h = dir_jogador_mouse.x >= 0
-	$Sprite.play("atacando")
 
 
 func _gerenciar_ataque_passivo(delta: float) -> void:
@@ -197,3 +206,14 @@ func _ao_projetil_acertar_inimigo(inimigo: Node2D):
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "atacando":
 		$Sprite.play("andando")
+
+
+func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
+	var phi := dir.angle()
+
+	if phi >= PI/4 - 0.1 and phi <= 3*PI/4 + 0.1:
+		return "frente"
+	elif phi <= -PI/4 + 0.1 and phi >= -3*PI/4 - 0.1:
+		return "costas"
+
+	return "lado"

@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/monk_attack_lateral_03.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Monk/monk7.png" type="Texture" id=2]
 [ext_resource path="res://UI/HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Instanciaveis/Ataque.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Projeteis/ProjetilPurificacao.tscn" type="PackedScene" id=5]
@@ -11,37 +11,74 @@
 [ext_resource path="res://UI/BarraPureza.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/TelaGameOver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Fade.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/Sprites/monk_attack_lateral_04.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Sprites/Monk/monk_walking2.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Sprites/Monk/monk_walking1.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/Monk/monk_walking3.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Sprites/Monk/monk_walking4.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Monk/monk11.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Monk/monk12.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Monk/monk8.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Monk/monk15.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Monk/monk1.png" type="Texture" id=16]
 [ext_resource path="res://Conteudos/tema_interface.tres" type="Theme" id=17]
+[ext_resource path="res://Assets/Sprites/Monk/monk5.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Monk/monk10.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Monk/monk18.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Monk/monk4.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Monk/monk6.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Monk/monk2.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Monk/monk14.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/Monk/monk19.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Monk/monk13.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Monk/monk16.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Monk/monk17.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Monk/monk20.png" type="Texture" id=30]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
-shader_param/brilho_purificacao = 5.0
+shader_param/brilho_purificacao = 2.0
 shader_param/progresso_purificacao = 0.0
 shader_param/coeficiente_mix_dano = 0.0
-shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
+shader_param/cor_purificacao = Color( 0.262745, 0.792157, 0.815686, 1 )
 shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "atacando",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 27 ) ],
 "loop": true,
-"name": "andando",
+"name": "atacando_lado",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "atacando_frente",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "atacando_costas",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "rezando",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "andando_frente",
 "speed": 5.0
 } ]
 
@@ -118,23 +155,24 @@ cena_projetil_purificacao = ExtResource( 5 )
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
-position = Vector2( 0, -10 )
+position = Vector2( 0, -16 )
 frames = SubResource( 2 )
-animation = "andando"
+animation = "parado"
 
 [node name="PosProjetil" type="Position2D" parent="."]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -13 )
 
 [node name="Ataque" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -13 )
 collision_layer = 0
 collision_mask = 4
 restringir_ataque = false
 
 [node name="Sprite" parent="Ataque" index="1"]
-speed_scale = 4.0
+speed_scale = 2.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -4 )
 polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
