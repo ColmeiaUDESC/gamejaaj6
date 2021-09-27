@@ -17,7 +17,7 @@ onready var player_animacao := $AnimationPlayer
 
 var direcao = Vector2()
 var movimento = Vector2()
-var vida_atual := 12.0 setget set_vida
+var vida_atual := 0.0 setget set_vida
 var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
 var _inimigos_ja_danificados := []
@@ -33,6 +33,7 @@ func _ready() -> void:
 	pureza = (Globais.PUREZA_MAXIMA - Globais.PUREZA_MINIMA) / 2
 	$UI/HP.max_value = vida_max
 	$UI/Pureza.definir_pureza(pureza)
+	self.vida_atual = vida_max
 
 
 func _process(delta: float) -> void:
