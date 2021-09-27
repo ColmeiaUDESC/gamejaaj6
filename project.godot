@@ -20,8 +20,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GameJaaj6colmeia"
+config/name="Em Busca do Nirvana"
+config/description="Em Busca do Nirvana foi criado como submissão para o GameJaaj 6, hospedado por Amdré Young, com o tema Ciclos. O jogo se trata de um monge querendo atingir o nirvana. Para isso, ele explora as ruínas de um templo antigo, na qual habita criaturas sagradas. O monge terá que fazer uma escolha entre atacar ou purificar tais habitantes, e tal escolha afetará o julgamento dos deuses em sua reencarnação."
 run/main_scene="res://Cenas/MenuPrincipal.tscn"
+config/icon="res://Assets/iconeJam.png"
 
 [autoload]
 
