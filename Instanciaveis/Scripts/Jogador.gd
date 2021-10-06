@@ -61,10 +61,6 @@ func _process(delta: float) -> void:
 	movimento = (direcao.normalized() * velocidade + _velocidade_empurrao) * delta
 	movimento = move_and_slide(movimento)
 
-	# Debug
-	if Input.is_action_just_pressed("ui_select"):
-		vida_atual -= 1
-
 	_gerenciar_ataque_offensivo()
 	_gerenciar_ataque_passivo(delta)
 	_gerenciar_animacoes()
