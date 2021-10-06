@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const TRAUMA_AO_RECEBER_DANO := .5
 const TRAUMA_AO_INFLIGIR_DANO := .2
+const CORTE_EMPURRAO := 100.0 # Se o modulo da _velocidade_empurrao for menor que CORTE_EMPURRAO, nao sera mais processado empurrao
 
 export(float) var tempo_carregar_ataque_purificacao := 1.0
 export(float) var tempo_descarregar_ataque_purificacao := 1.0
@@ -11,6 +12,9 @@ export(PackedScene) var cena_projetil_purificacao: PackedScene
 export(float) var velocidade := 50.0
 export(float) var vida_por_purificacao := 1.0
 export(float) var vida_max := 12.0
+export(float) var forca_empurrao_offensivo = 5000.0
+export(float, 1.0, 100.0) var desaceleracao_empurrao = 3.0
+export(float, 1.0, 100.0) var resistencia_empurrao = 1.0
 
 onready var tween_transicao := $TweenCamera
 onready var player_animacao := $AnimationPlayer
@@ -21,6 +25,7 @@ var vida_atual := 0.0 setget set_vida
 var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
 var _inimigos_ja_danificados := []
+var _velocidade_empurrao: Vector2 = Vector2()
 var pureza := 0 setget set_pureza
 
 signal morreu()
@@ -52,7 +57,8 @@ func _process(delta: float) -> void:
 	elif Input.is_action_pressed("andar_pra_direita"):
 		direcao += Vector2(1, 0)
 
-	movimento = direcao.normalized() * velocidade
+	_processar_empurrao(delta)
+	movimento = (direcao.normalized() * velocidade + _velocidade_empurrao) * delta
 	movimento = move_and_slide(movimento)
 
 	# Debug
@@ -79,6 +85,10 @@ func inflige_dano(dano: float, _agressor = null) -> void:
 		emit_signal("morreu")
 	else:
 		intangivel()
+
+
+func inflingir_empurrao(vel: Vector2) -> void:
+	_velocidade_empurrao = vel / resistencia_empurrao
 
 
 func incrementar_pureza(qnt: int) -> void:
@@ -140,6 +150,7 @@ func _gerenciar_ataque_offensivo() -> void:
 			if corpo.has_method("inflige_dano") and not _inimigos_ja_danificados.has(corpo):
 				_connectar_eventos_inimigo(corpo)
 				corpo.inflige_dano(dano_ofensivo, self)
+				corpo.inflingir_empurrao(global_position.direction_to(corpo.global_position) * forca_empurrao_offensivo)
 				_inimigos_ja_danificados.append(corpo)
 
 	if not Input.is_action_just_pressed("ataque_offensivo") or $Ataque.atacando:
@@ -180,6 +191,13 @@ func _instanciar_projetil() -> void:
 		Globais.container_projeteis.add_child(projetil)
 	else:
 		get_parent().add_child(projetil)
+
+
+func _processar_empurrao(delta: float) -> void:
+	if _velocidade_empurrao.length() > CORTE_EMPURRAO:
+		_velocidade_empurrao = lerp(_velocidade_empurrao, Vector2.ZERO, desaceleracao_empurrao * delta)
+	else:
+		_velocidade_empurrao = Vector2.ZERO
 
 
 func _connectar_eventos_inimigo(inimigo: Node2D) -> void:
