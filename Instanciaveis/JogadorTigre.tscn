@@ -78,8 +78,10 @@ animations = [ {
 
 [node name="Jogador" instance=ExtResource( 1 )]
 dano_ofensivo = 2.5
-velocidade = 35.0
+velocidade = 2100.0
 vida_max = 20.0
+desaceleracao_empurrao = 6.0
+resistencia_empurrao = 2.0
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 1 )
