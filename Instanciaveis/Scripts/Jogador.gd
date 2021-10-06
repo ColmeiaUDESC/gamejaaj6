@@ -11,6 +11,7 @@ export(PackedScene) var cena_projetil_purificacao: PackedScene
 export(float) var velocidade := 50.0
 export(float) var vida_por_purificacao := 1.0
 export(float) var vida_max := 12.0
+export(float) var forca_empurrao_offensivo = 5000.0
 
 onready var tween_transicao := $TweenCamera
 onready var player_animacao := $AnimationPlayer
@@ -140,6 +141,7 @@ func _gerenciar_ataque_offensivo() -> void:
 			if corpo.has_method("inflige_dano") and not _inimigos_ja_danificados.has(corpo):
 				_connectar_eventos_inimigo(corpo)
 				corpo.inflige_dano(dano_ofensivo, self)
+				corpo.inflingir_empurrao(global_position.direction_to(corpo.global_position) * forca_empurrao_offensivo)
 				_inimigos_ja_danificados.append(corpo)
 
 	if not Input.is_action_just_pressed("ataque_offensivo") or $Ataque.atacando:
