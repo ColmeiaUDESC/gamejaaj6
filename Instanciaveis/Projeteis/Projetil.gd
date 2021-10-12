@@ -11,6 +11,14 @@ signal acertou_inimigo(inimigo)
 
 func _ready() -> void:
 	rotation = direcao.angle()
+	if abs(rotation) < PI * .5:
+		$AnimatedSprite.flip_v = false
+		$AnimatedSprite.rotation = PI * 0.25
+	else:
+		$AnimatedSprite.flip_v = true
+		$AnimatedSprite.rotation = -PI * 0.25
+
+	$AnimatedSprite.play("default")
 
 
 func _process(delta: float) -> void:
