@@ -1,14 +1,20 @@
 extends KinematicBody2D
 
+const CORTE_EMPURRAO := 100.0 # Se o modulo da _velocidade_empurrao for menor que CORTE_EMPURRAO, nao sera mais processado empurrao
+
 export(float) var vida_maxima := 1.0
 export(float) var purificacao_maxima := 1.0
 export(float) var velocidade = 1000
+export(float, 1.0, 100.0) var desaceleracao_empurrao = 3.0
+export(float, 1.0, 100.0) var resistencia_empurrao = 1.0
 
 var jogador = null
 var direcao = Vector2.ZERO
 var movimento = Vector2.ZERO
 var vida: float
 var purificacao: float = 0.0
+
+var _velocidade_empurrao: Vector2 = Vector2()
 
 signal neutralizado(foi_morto)
 signal recebido_dano(dano, agressor, e_offensivo)
@@ -21,9 +27,10 @@ func _ready():
 	$Sprite.purificacao = purificacao
 
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	$GerenciadorEstados.executar(delta)
-	movimento = direcao * velocidade * delta
+	_processar_empurrao(delta)
+	movimento = (direcao * velocidade + _velocidade_empurrao) * delta
 	movimento = move_and_slide(movimento)
 	if $Sprite.animation != "atacando":
 		$Sprite.flip_h = movimento.x >= 0
@@ -43,6 +50,10 @@ func inflige_dano(dano: float, agressor: Node2D) -> void:
 	if esta_morto():
 		emit_signal("neutralizado", true)
 		queue_free()
+
+
+func inflingir_empurrao(vel: Vector2) -> void:
+	_velocidade_empurrao = vel / resistencia_empurrao
 
 
 func purificar(dano: float, agressor: Node2D) -> void:
@@ -86,6 +97,13 @@ func esta_neutralizado() -> bool:
 func animar_ataque(dir: Vector2) -> void:
 	$Sprite.play("atacando")
 	$Sprite.flip_h = dir.x >= 0
+
+
+func _processar_empurrao(delta: float) -> void:
+	if _velocidade_empurrao.length() > CORTE_EMPURRAO:
+		_velocidade_empurrao = lerp(_velocidade_empurrao, Vector2.ZERO, desaceleracao_empurrao * delta)
+	else:
+		_velocidade_empurrao = Vector2.ZERO
 
 
 func _ao_infligir_dano(_dano: int) -> void:

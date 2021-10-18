@@ -73,7 +73,7 @@ animations = [ {
 tempo_carregar_ataque_purificacao = 0.5
 dano_ofensivo = 0.5
 dano_purificacao = 2.0
-velocidade = 75.0
+velocidade = 4500.0
 vida_por_purificacao = 3.0
 vida_max = 5.0
 
