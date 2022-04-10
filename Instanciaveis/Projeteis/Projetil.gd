@@ -10,15 +10,14 @@ var dano := 1.0
 signal acertou_inimigo(inimigo)
 
 func _ready() -> void:
-	rotation = direcao.angle()
-	if abs(rotation) < PI * .5:
-		$AnimatedSprite.flip_v = false
-		$AnimatedSprite.rotation = PI * 0.25
-	else:
-		$AnimatedSprite.flip_v = true
-		$AnimatedSprite.rotation = -PI * 0.25
+	var deslocamento_sprite := $DeslocamentoSprite
+	var sprite := $DeslocamentoSprite/Sprite
+	
+	var flipar = abs(direcao.angle()) >= PI * .5
+	deslocamento_sprite.rotation = direcao.angle() #+ (PI * .5 if flipar else 0)
+#	sprite.flip_v = flipar
 
-	$AnimatedSprite.play("default")
+	sprite.play("default")
 
 
 func _process(delta: float) -> void:
