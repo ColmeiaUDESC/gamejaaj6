@@ -14,8 +14,8 @@ func _ready() -> void:
 	var sprite := $DeslocamentoSprite/Sprite
 	
 	var flipar = abs(direcao.angle()) >= PI * .5
-	deslocamento_sprite.rotation = direcao.angle() #+ (PI * .5 if flipar else 0)
-#	sprite.flip_v = flipar
+	deslocamento_sprite.rotation = direcao.angle() + (PI * .5 if flipar else 0)
+	sprite.flip_h = flipar
 
 	sprite.play("default")
 

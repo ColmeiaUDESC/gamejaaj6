@@ -34,9 +34,7 @@ velocidade = 128.0
 
 [node name="DeslocamentoSprite" parent="." index="0"]
 position = Vector2( 0, -15 )
-rotation = 0.178024
 
 [node name="Sprite" parent="DeslocamentoSprite" index="0"]
 rotation = 0.785398
 frames = SubResource( 5 )
-flip_h = true
