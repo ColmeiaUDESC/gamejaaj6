@@ -56,10 +56,20 @@ animations = [ {
 "name": "atacando_frente",
 "speed": 8.0
 }, {
+"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 28 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "atacando_costas",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "andando_frente",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
 "loop": true,
@@ -70,16 +80,6 @@ animations = [ {
 "loop": true,
 "name": "rezando",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "andando_lado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "andando_frente",
-"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -142,9 +142,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Jogador" type="KinematicBody2D" groups=[
-"jogador",
-]]
+[node name="Jogador" type="KinematicBody2D" groups=["jogador"]]
 collision_layer = 2
 collision_mask = 21
 script = ExtResource( 1 )
@@ -161,7 +159,6 @@ frames = SubResource( 2 )
 animation = "parado"
 
 [node name="PosProjetil" type="Position2D" parent="."]
-position = Vector2( 0, -13 )
 
 [node name="Ataque" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
