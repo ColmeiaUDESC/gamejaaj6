@@ -29,16 +29,6 @@ func _ready():
 
 func _physics_process(delta: float):
 	$GerenciadorEstados.executar(delta)
-	_processar_empurrao(delta)
-	movimento = (direcao * velocidade + _velocidade_empurrao) * delta
-	movimento = move_and_slide(movimento)
-	if $Sprite.animation != "atacando":
-		$Sprite.flip_h = movimento.x >= 0
-		$Sprite.play("andando" if movimento.length() > 0 else "parado")
-
-
-func _process(delta: float):
-	_gerenciar_animacoes()
 
 
 func inflige_dano(dano: float, agressor: Node2D) -> void:
@@ -86,6 +76,10 @@ func mudar_de_estado(novo_estado: String) -> void:
 		$GerenciadorEstados.mudar_estado("Parado")
 
 
+func estado_atual() -> String:
+	return $GerenciadorEstados.estado_atual
+
+
 func esta_purificado() -> bool:
 	return purificacao == purificacao_maxima
 
@@ -112,11 +106,18 @@ func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
 
 	return "lado"
 
-func _gerenciar_animacoes() -> void:
+func gerenciar_animacoes_movimento() -> void:
 	if direcao.length() > 0:
 		var sufixo := _pegar_suffixo_anim_dir(direcao)
 		$Sprite.play("andando_" + sufixo)
 		$Sprite.flip_h = direcao.x < 0 if sufixo == "lado" else false
+
+
+func gerenciar_movimento(delta: float) -> void:
+	_processar_empurrao(delta)
+	movimento = (direcao * velocidade + _velocidade_empurrao) * delta
+	movimento = move_and_slide(movimento)
+	gerenciar_animacoes_movimento()
 
 
 func _processar_empurrao(delta: float) -> void:

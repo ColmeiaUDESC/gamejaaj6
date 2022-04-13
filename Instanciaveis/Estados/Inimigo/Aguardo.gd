@@ -6,8 +6,9 @@ func ao_entrar() -> void:
 	_mudar_direcao_alvo()
 
 
-func executar(_delta: float) -> void:
+func executar(delta: float) -> void:
 	inimigo.direcao = direcao_alvo
+	inimigo.gerenciar_movimento(delta)
 
 func ao_sair() -> void:
 	direcao_alvo = Vector2.ZERO

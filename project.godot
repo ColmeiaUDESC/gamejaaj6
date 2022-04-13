@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Estado",
 "language": "GDScript",
 "path": "res://Instanciaveis/Estados/Estado.gd"
+}, {
+"base": "Node",
+"class": "GerenciadorEstados",
+"language": "GDScript",
+"path": "res://Instanciaveis/Estados/GerenciadorEstados.gd"
 } ]
 _global_script_class_icons={
-"Estado": ""
+"Estado": "",
+"GerenciadorEstados": ""
 }
 
 [application]

@@ -1,3 +1,4 @@
+class_name GerenciadorEstados
 extends Node
 
 export(String) var estado_inicial: String
