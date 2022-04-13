@@ -37,6 +37,10 @@ func _physics_process(delta: float):
 		$Sprite.play("andando" if movimento.length() > 0 else "parado")
 
 
+func _process(delta: float):
+	_gerenciar_animacoes()
+
+
 func inflige_dano(dano: float, agressor: Node2D) -> void:
 	if esta_neutralizado():
 		return
@@ -97,6 +101,22 @@ func esta_neutralizado() -> bool:
 func animar_ataque(dir: Vector2) -> void:
 	$Sprite.play("atacando")
 	$Sprite.flip_h = dir.x >= 0
+
+func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
+	var phi := dir.angle()
+
+	if phi >= PI/4 - 0.1 and phi <= 3*PI/4 + 0.1:
+		return "frente"
+	elif phi <= -PI/4 + 0.1 and phi >= -3*PI/4 - 0.1:
+		return "costas"
+
+	return "lado"
+
+func _gerenciar_animacoes() -> void:
+	if direcao.length() > 0:
+		var sufixo := _pegar_suffixo_anim_dir(direcao)
+		$Sprite.play("andando_" + sufixo)
+		$Sprite.flip_h = direcao.x < 0 if sufixo == "lado" else false
 
 
 func _processar_empurrao(delta: float) -> void:
