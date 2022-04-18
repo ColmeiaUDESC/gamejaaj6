@@ -1,6 +1,7 @@
 extends Node
 
 onready var inimigo = get_parent()
+onready var area_ataque: Area2D = inimigo.get_node("Area_de_ataque")
 
 func _on_Visao_body_entered(body):
 	if body.name == "Jogador" and not inimigo.estado_atual() == "AtaquePulo":
@@ -25,5 +26,5 @@ func _on_Area_de_ataque_body_exited(body):
 		inimigo.mudar_de_estado("Seguir")
 
 
-func _on_AtaquePulo_ataque_terminou():
-	inimigo.mudar_de_estado("Seguir")
+func _on_AtaquePulo_pulo_finalizou():
+	inimigo.mudar_de_estado("AtaquePulo" if inimigo.jogador in area_ataque.get_overlapping_bodies() else "Seguir")
