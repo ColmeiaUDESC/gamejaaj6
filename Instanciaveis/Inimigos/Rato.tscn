@@ -48,7 +48,7 @@ animations = [ {
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "ataque_frente",
 "speed": 8.0
@@ -68,12 +68,12 @@ animations = [ {
 "name": "carregando_ataque",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 24 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "ataque_costas",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 21 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 25 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "ataque_lado",
 "speed": 8.0
@@ -103,6 +103,12 @@ script = ExtResource( 5 )
 
 [node name="AtaquePulo" parent="GerenciadorEstados" index="1" instance=ExtResource( 1 )]
 script = ExtResource( 26 )
+distancia_pulo = 4000.0
+velocidade_pulo = 4000.0
+
+[node name="RayCast2D" type="RayCast2D" parent="GerenciadorEstados/AtaquePulo" index="0"]
+enabled = true
+collision_mask = 2
 
 [node name="Seguir" parent="GerenciadorEstados" index="2" instance=ExtResource( 8 )]
 

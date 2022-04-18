@@ -39,12 +39,9 @@ cena_inimigo = ExtResource( 4 )
 
 [node name="SpawnInimigo2" parent="Componentes/Inimigos" index="1" instance=ExtResource( 2 )]
 position = Vector2( 16, -8 )
-cena_inimigo = ExtResource( 4 )
 
 [node name="SpawnInimigo3" parent="Componentes/Inimigos" index="2" instance=ExtResource( 2 )]
 position = Vector2( 16, 8 )
-cena_inimigo = ExtResource( 4 )
 
 [node name="SpawnInimigo4" parent="Componentes/Inimigos" index="3" instance=ExtResource( 2 )]
 position = Vector2( -16, 8 )
-cena_inimigo = ExtResource( 4 )

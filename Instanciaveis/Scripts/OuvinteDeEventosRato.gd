@@ -6,6 +6,7 @@ func _on_Visao_body_entered(body):
 	if body.name == "Jogador" and not inimigo.estado_atual() == "AtaquePulo":
 		inimigo.jogador = body
 		inimigo.mudar_de_estado("Seguir")
+		
 
 
 func _on_Visao_body_exited(body):

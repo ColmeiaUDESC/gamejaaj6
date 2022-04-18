@@ -110,7 +110,7 @@ func gerenciar_animacoes_movimento() -> void:
 	if direcao.length() > 0:
 		var sufixo := _pegar_suffixo_anim_dir(direcao)
 		$Sprite.play("andando_" + sufixo)
-		$Sprite.flip_h = direcao.x < 0 if sufixo == "lado" else false
+		$Sprite.flip_h = sufixo == "lado" and direcao.x < 0
 
 
 func gerenciar_movimento(delta: float) -> void:
