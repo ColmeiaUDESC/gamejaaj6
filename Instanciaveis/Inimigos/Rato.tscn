@@ -103,11 +103,12 @@ script = ExtResource( 5 )
 
 [node name="AtaquePulo" parent="GerenciadorEstados" index="1" instance=ExtResource( 1 )]
 script = ExtResource( 26 )
-distancia_pulo = 4000.0
 velocidade_pulo = 4000.0
 caminho_raycast = NodePath("../../RayCast2D")
 
 [node name="Timer" type="Timer" parent="GerenciadorEstados/AtaquePulo" index="0"]
+wait_time = 0.5
+one_shot = true
 
 [node name="Seguir" parent="GerenciadorEstados" index="2" instance=ExtResource( 8 )]
 
