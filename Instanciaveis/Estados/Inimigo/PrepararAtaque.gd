@@ -3,10 +3,12 @@ extends Estado
 export var distancia_pulo := 40.0
 export var velocidade_pulo := 100.0
 export var dano := 1
+export var caminho_raycast: NodePath
 
-onready var raycast: RayCast2D = $RayCast2D
+onready var raycast: RayCast2D = get_node(caminho_raycast)
+onready var timer: Timer = $Timer
 
-var distancia_dano := 1000.0
+var distancia_dano := 5.0
 var sprite: AnimatedSprite
 var progresso_pulo := distancia_pulo
 var dir_pulo = Vector2.ZERO
