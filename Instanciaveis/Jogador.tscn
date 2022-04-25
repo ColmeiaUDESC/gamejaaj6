@@ -41,11 +41,6 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 23 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "andando_frente",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "parado",
