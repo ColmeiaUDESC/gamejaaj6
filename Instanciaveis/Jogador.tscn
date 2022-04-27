@@ -46,21 +46,6 @@ animations = [ {
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "atacando_lado",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "atacando_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "andando_lado",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 28 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "atacando_costas",
@@ -71,6 +56,11 @@ animations = [ {
 "name": "andando_frente",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 15 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "atacando_lado",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "andando_costas",
@@ -80,6 +70,16 @@ animations = [ {
 "loop": true,
 "name": "rezando",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "atacando_frente",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -152,6 +152,10 @@ __meta__ = {
 cena_projetil_purificacao = ExtResource( 5 )
 velocidade = 3000.0
 
+[node name="Colisao" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -4 )
+polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
+
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
 position = Vector2( 0, -16 )
@@ -163,15 +167,11 @@ animation = "parado"
 [node name="Ataque" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
 collision_layer = 0
-collision_mask = 4
+collision_mask = 64
 restringir_ataque = false
 
 [node name="Sprite" parent="Ataque" index="1"]
 speed_scale = 2.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, -4 )
-polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

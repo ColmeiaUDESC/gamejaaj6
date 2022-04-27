@@ -14,6 +14,9 @@ var movimento = Vector2.ZERO
 var vida: float
 var purificacao: float = 0.0
 
+var BIT_CAMADA_COLIDE := 2
+var BIT_CAMADA_ATRAVESSA := 6
+
 var _velocidade_empurrao: Vector2 = Vector2()
 
 signal neutralizado(foi_morto)
@@ -105,6 +108,10 @@ func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
 		return "costas"
 
 	return "lado"
+
+func setar_colisao_jogador(colidir: bool):
+	set_collision_mask_bit(BIT_CAMADA_COLIDE, bool(colidir))
+	set_collision_mask_bit(BIT_CAMADA_ATRAVESSA, not bool(colidir))
 
 func gerenciar_animacoes_movimento() -> void:
 	if direcao.length() > 0:

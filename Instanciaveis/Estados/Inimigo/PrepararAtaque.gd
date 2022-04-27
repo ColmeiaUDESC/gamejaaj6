@@ -13,8 +13,6 @@ var dir_pulo = Vector2.ZERO
 var movimento := Vector2.ZERO
 var colidido := false
 
-var BIT_MASCARA_COLISAO_JOGADOR := 1
-
 signal carregando_pulo
 signal pulo_iniciou
 signal pulo_finalizou
@@ -44,7 +42,7 @@ func ao_sair() -> void:
 		sprite.disconnect("animation_finished", self, "_ao_animacao_terminar")
 	if timer.is_connected("timeout", self, "_ao_timer_finalizar"):
 		timer.disconnect("timeout", self, "_ao_timer_finalizar")
-	inimigo.set_collision_mask_bit(BIT_MASCARA_COLISAO_JOGADOR, 1)
+	inimigo.setar_colisao(true)
 
 
 func _ao_timer_finalizar():
@@ -60,7 +58,7 @@ func _ao_animacao_terminar() -> void:
 		timer.start()
 		timer.connect("timeout", self, "_ao_timer_finalizar")
 		
-		inimigo.set_collision_mask_bit(BIT_MASCARA_COLISAO_JOGADOR, 0)
+		inimigo.setar_colisao(false)
 		raycast.cast_to = dir_pulo * distancia_raycast_dano
 		
 		emit_signal("pulo_iniciou")

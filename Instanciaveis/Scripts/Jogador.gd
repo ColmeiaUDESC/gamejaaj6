@@ -142,7 +142,7 @@ func _gerenciar_animacoes() -> void:
 
 func _gerenciar_ataque_offensivo() -> void:
 	if $Ataque.atacando:
-		for corpo in $Ataque.get_overlapping_bodies():
+		for corpo in $Ataque.get_overlapping_areas():
 			if corpo.has_method("inflige_dano") and not _inimigos_ja_danificados.has(corpo):
 				_connectar_eventos_inimigo(corpo)
 				corpo.inflige_dano(dano_ofensivo, self)
