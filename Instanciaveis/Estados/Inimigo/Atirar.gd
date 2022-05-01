@@ -3,10 +3,25 @@ extends Estado
 export(PackedScene) var projetil: PackedScene
 export(float) var dano: float = 1.0
 
-func executar(_delta: float) -> void:
+var _atacando: bool = false
+
+func ao_entrar():
+	inimigo.sprite.connect("animation_finished", self, "_ao_animacao_acabar")
+
+func executar(delta: float) -> void:
 	if $Timer.is_stopped():
 		$Timer.start()
+	if _atacando:
+		return
+	var dir := -Vector2.LEFT
+	if inimigo.jogador:
+		dir = inimigo.global_position.direction_to(inimigo.jogador.global_position)
+	inimigo.direcao = dir
+	inimigo.gerenciar_movimento(delta)
 
+func ao_sair():
+	if inimigo.sprite.is_connected("animation_finished", self, "_ao_animacao_acabar"):
+		inimigo.sprite.disconnect("animation_finished", self, "_ao_animacao_acabar")
 
 func _on_Timer_timeout():
 	if not inimigo.jogador or inimigo.esta_neutralizado():
@@ -18,7 +33,12 @@ func _on_Timer_timeout():
 	projetil_instancia.dano = dano
 	projetil_instancia.position = inimigo.position
 
-	inimigo.animar_ataque(dir)
+	_atacando = true
+	inimigo.sprite.play("atacando")
 	inimigo.get_node("SomAtacar").play()
 
 	inimigo.get_parent().add_child(projetil_instancia)
+
+
+func _ao_animacao_acabar() -> void:
+	_atacando = false

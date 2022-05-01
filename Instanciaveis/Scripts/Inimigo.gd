@@ -4,21 +4,27 @@ const CORTE_EMPURRAO := 100.0 # Se o modulo da _velocidade_empurrao for menor qu
 
 export(float) var vida_maxima := 1.0
 export(float) var purificacao_maxima := 1.0
-export(float) var velocidade = 1000
-export(float, 1.0, 100.0) var desaceleracao_empurrao = 3.0
-export(float, 1.0, 100.0) var resistencia_empurrao = 1.0
+export(float) var velocidade := 1000
+export(float, 1.0, 100.0) var desaceleracao_empurrao := 3.0
+export(float, 1.0, 100.0) var resistencia_empurrao := 1.0
+
+onready var sprite = $Sprite
+onready var gerenciador_estados = $GerenciadorEstados
+onready var som_atacar = $SomAtacar
+onready var som_dano_ofensivo = $SomDanoOffensivo
+onready var som_dano_purificacao = $SomDanoPurificacao 
 
 var jogador = null
-var direcao = Vector2.ZERO
-var movimento = Vector2.ZERO
+var direcao := Vector2.ZERO
+var movimento := Vector2.ZERO
 var vida: float
-var purificacao: float = 0.0
+var purificacao := 0.0
 
 var BIT_CAMADA_COLIDE := 2
 var BIT_CAMADA_ATRAVESSA := 6
 var BIT_MASCARA_JOGADOR := 1
 
-var _velocidade_empurrao: Vector2 = Vector2()
+var _velocidade_empurrao := Vector2()
 
 signal neutralizado(foi_morto)
 signal recebido_dano(dano, agressor, e_offensivo)
@@ -32,7 +38,7 @@ func _ready():
 
 
 func _physics_process(delta: float):
-	$GerenciadorEstados.executar(delta)
+	gerenciador_estados.executar(delta)
 
 
 func inflige_dano(dano: float, agressor: Node2D) -> void:
@@ -42,8 +48,8 @@ func inflige_dano(dano: float, agressor: Node2D) -> void:
 	emit_signal("recebido_dano", dano, agressor, true)
 
 	vida = max(0, vida - dano)
-	$Sprite.executar_anim_dano()
-	$SomDanoOffensivo.play()
+	sprite.executar_anim_dano()
+	som_dano_ofensivo.play()
 
 	if esta_morto():
 		emit_signal("neutralizado", true)
@@ -61,9 +67,9 @@ func purificar(dano: float, agressor: Node2D) -> void:
 	emit_signal("recebido_dano", dano, agressor, false)
 
 	purificacao = min(purificacao_maxima, purificacao + dano)
-	$Sprite.purificacao = purificacao
-	$SomDanoPurificacao.play()
-	$Sprite.emitir_particulas_purificacao()
+	sprite.purificacao = purificacao
+	som_dano_purificacao.play()
+	sprite.emitir_particulas_purificacao()
 	if esta_purificado():
 		set_collision_layer_bit(2, false)
 		set_collision_mask_bit(1, false)
@@ -73,15 +79,15 @@ func purificar(dano: float, agressor: Node2D) -> void:
 
 func mudar_de_estado(novo_estado: String) -> void:
 	if not esta_neutralizado():
-		$GerenciadorEstados.mudar_estado(novo_estado)
+		gerenciador_estados.mudar_estado(novo_estado)
 	elif not esta_morto():
-		$GerenciadorEstados.mudar_estado("Purificado")
+		gerenciador_estados.mudar_estado("Purificado")
 	else:
-		$GerenciadorEstados.mudar_estado("Parado")
+		gerenciador_estados.mudar_estado("Parado")
 
 
 func estado_atual() -> String:
-	return $GerenciadorEstados.estado_atual
+	return gerenciador_estados.estado_atual
 
 
 func esta_purificado() -> bool:
@@ -96,11 +102,10 @@ func esta_neutralizado() -> bool:
 	return esta_purificado() or esta_morto()
 
 
-func animar_ataque(dir: Vector2) -> void:
-	$Sprite.play("atacando")
-	$Sprite.flip_h = dir.x >= 0
-
 func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
+	if dir.length_squared() == 0.0:
+		return "lado"
+	
 	var phi := dir.angle()
 
 	if phi >= PI/4 - 0.1 and phi <= 3*PI/4 + 0.1:
@@ -116,10 +121,10 @@ func setar_colisao_jogador(colidir: bool):
 	set_collision_mask_bit(BIT_MASCARA_JOGADOR, bool(colidir))
 
 func gerenciar_animacoes_movimento() -> void:
-	if direcao.length() > 0:
-		var sufixo := _pegar_suffixo_anim_dir(direcao)
-		$Sprite.play("andando_" + sufixo)
-		$Sprite.flip_h = sufixo == "lado" and direcao.x < 0
+	var sufixo := _pegar_suffixo_anim_dir(direcao)
+	var em_movimento := direcao.length() > 0.0 and velocidade > 0.0
+	sprite.flip_h = sufixo == "lado" and direcao.x < 0
+	sprite.play("andando_" + sufixo if em_movimento else "parado")
 
 
 func gerenciar_movimento(delta: float) -> void:
@@ -138,8 +143,3 @@ func _processar_empurrao(delta: float) -> void:
 
 func _ao_infligir_dano(_dano: int) -> void:
 	emit_signal("infligido_dano")
-
-
-func _on_Sprite_animation_finished():
-	if $Sprite.animation == "atacando":
-		$Sprite.play("andando")
