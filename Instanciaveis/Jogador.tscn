@@ -160,7 +160,7 @@ velocidade = 3000.0
 polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2( 0, -5 )
+position = Vector2( 0, -4 )
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -178,13 +178,10 @@ animation = "parado"
 [node name="PosProjetil" type="Position2D" parent="."]
 
 [node name="Ataque" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -13 )
 collision_layer = 0
 collision_mask = 64
 restringir_ataque = false
-
-[node name="Sprite" parent="Ataque" index="1"]
-speed_scale = 2.0
+multiplicador_velocidade = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -232,5 +229,3 @@ anims/sumir = SubResource( 6 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
-
-[editable path="Ataque"]

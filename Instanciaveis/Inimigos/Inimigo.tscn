@@ -23,7 +23,7 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 4.0
+radius = 7.0
 
 [node name="Inimigo" type="KinematicBody2D"]
 collision_layer = 4
