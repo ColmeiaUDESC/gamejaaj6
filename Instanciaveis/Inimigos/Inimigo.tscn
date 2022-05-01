@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Inimigo.gd" type="Script" id=1]
 [ext_resource path="res://Conteudos/Musicas/Ataques/Padrão/Hit1.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Instanciaveis/Estados/GerenciadorEstados.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Scripts/Hitbox.gd" type="Script" id=5]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Aguardo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sprites/Sombra.png" type="Texture" id=7]
 [ext_resource path="res://Instanciaveis/SpritePersonagem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=9]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Parado.tscn" type="PackedScene" id=10]
@@ -34,6 +35,9 @@ __meta__ = {
 }
 vida_maxima = 10.0
 purificacao_maxima = 3.0
+
+[node name="Sombra" type="Sprite" parent="."]
+texture = ExtResource( 7 )
 
 [node name="Sprite" parent="." instance=ExtResource( 8 )]
 material = SubResource( 1 )

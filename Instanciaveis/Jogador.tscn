@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Monk/monk7.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Sprites/Monk/monk17.png" type="Texture" id=28]
 [ext_resource path="res://Instanciaveis/Scripts/Hitbox.gd" type="Script" id=29]
 [ext_resource path="res://Assets/Sprites/Monk/monk20.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Sombra.png" type="Texture" id=31]
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 7.0
@@ -168,6 +169,9 @@ script = ExtResource( 29 )
 
 [node name="FormatoColisao" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 7 )
+
+[node name="Sombra" type="Sprite" parent="."]
+texture = ExtResource( 31 )
 
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
