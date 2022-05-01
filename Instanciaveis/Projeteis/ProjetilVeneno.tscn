@@ -28,7 +28,7 @@ animations = [ {
 } ]
 
 [node name="Projetil" instance=ExtResource( 1 )]
-collision_mask = 3
+collision_mask = 129
 alcance = 256.0
 velocidade = 128.0
 

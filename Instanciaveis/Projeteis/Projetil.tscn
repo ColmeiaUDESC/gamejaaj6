@@ -20,4 +20,5 @@ shape = SubResource( 1 )
 [node name="Sombra" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[connection signal="body_entered" from="." to="." method="_on_Projetil_body_entered"]
+[connection signal="area_entered" from="." to="." method="_ao_colidir"]
+[connection signal="body_entered" from="." to="." method="_ao_colidir"]

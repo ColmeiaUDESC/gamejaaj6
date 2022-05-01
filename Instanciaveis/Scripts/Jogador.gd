@@ -143,11 +143,18 @@ func _gerenciar_animacoes() -> void:
 func _gerenciar_ataque_offensivo() -> void:
 	if $Ataque.atacando:
 		for corpo in $Ataque.get_overlapping_areas():
-			if corpo.has_method("inflige_dano") and not _inimigos_ja_danificados.has(corpo):
-				_connectar_eventos_inimigo(corpo)
-				corpo.inflige_dano(dano_ofensivo, self)
-				corpo.inflingir_empurrao(global_position.direction_to(corpo.global_position) * forca_empurrao_offensivo)
-				_inimigos_ja_danificados.append(corpo)
+			if not "personagem" in corpo:
+				continue
+			
+			var inimigo = corpo.personagem
+			
+			if _inimigos_ja_danificados.has(inimigo):
+				continue
+			
+			_connectar_eventos_inimigo(inimigo)
+			inimigo.inflige_dano(dano_ofensivo, self)
+			inimigo.inflingir_empurrao(global_position.direction_to(inimigo.global_position) * forca_empurrao_offensivo)
+			_inimigos_ja_danificados.append(inimigo)
 
 	if not Input.is_action_just_pressed("ataque_offensivo") or $Ataque.atacando:
 		return

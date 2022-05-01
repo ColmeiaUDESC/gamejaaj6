@@ -16,6 +16,7 @@ var purificacao: float = 0.0
 
 var BIT_CAMADA_COLIDE := 2
 var BIT_CAMADA_ATRAVESSA := 6
+var BIT_MASCARA_JOGADOR := 1
 
 var _velocidade_empurrao: Vector2 = Vector2()
 
@@ -110,8 +111,9 @@ func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
 	return "lado"
 
 func setar_colisao_jogador(colidir: bool):
-	set_collision_mask_bit(BIT_CAMADA_COLIDE, bool(colidir))
-	set_collision_mask_bit(BIT_CAMADA_ATRAVESSA, not bool(colidir))
+	set_collision_layer_bit(BIT_CAMADA_COLIDE, bool(colidir))
+	set_collision_layer_bit(BIT_CAMADA_ATRAVESSA, not bool(colidir))
+	set_collision_mask_bit(BIT_MASCARA_JOGADOR, bool(colidir))
 
 func gerenciar_animacoes_movimento() -> void:
 	if direcao.length() > 0:

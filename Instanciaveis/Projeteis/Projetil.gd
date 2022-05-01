@@ -14,7 +14,7 @@ func _ready() -> void:
 	var sprite := $DeslocamentoSprite/Sprite
 	
 	var flipar = abs(direcao.angle()) >= PI * .5
-	deslocamento_sprite.rotation = direcao.angle() + (PI * .5 if flipar else 0)
+	deslocamento_sprite.rotation = direcao.angle() + (PI * .5 if flipar else .0)
 	sprite.flip_h = flipar
 
 	sprite.play("default")
@@ -29,10 +29,10 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
-func _on_Projetil_body_entered(body: PhysicsBody2D):
-	if body.has_method("inflige_dano"):
-		emit_signal("acertou_inimigo", body)
-		body.inflige_dano(dano, atirador)
-		if body.has_method("inflingir_empurrao"):
-			body.inflingir_empurrao(global_position.direction_to(body.global_position) * forca_empurrao)
+func _ao_colidir(colisor: CollisionObject2D) -> void:
+	if "personagem" in colisor:
+		var personagem = colisor.personagem
+		emit_signal("acertou_inimigo", personagem)
+		personagem.inflige_dano(dano, atirador)
+		personagem.inflingir_empurrao(global_position.direction_to(personagem.global_position) * forca_empurrao)
 	queue_free()
