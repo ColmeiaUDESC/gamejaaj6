@@ -26,6 +26,11 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "atacando",
@@ -33,12 +38,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "parado",
+"name": "andando_costas",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "andando",
+"name": "andando_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando_frente",
 "speed": 5.0
 } ]
 
@@ -50,11 +60,11 @@ vida_maxima = 8.0
 purificacao_maxima = 2.0
 velocidade = 0.0
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="1"]
 material = SubResource( 1 )
 position = Vector2( 0, -9 )
 frames = SubResource( 2 )
-animation = "parado"
+animation = "andando_lado"
 playing = false
 
 [node name="Visao" type="Area2D" parent="." index="3"]
@@ -68,10 +78,10 @@ shape = SubResource( 3 )
 [node name="OuvinteDeEventos" type="Node" parent="." index="4"]
 script = ExtResource( 12 )
 
-[node name="SomAtacar" parent="." index="5"]
+[node name="SomAtacar" parent="." index="6"]
 stream = ExtResource( 14 )
 
-[node name="GerenciadorEstados" parent="." index="8"]
+[node name="GerenciadorEstados" parent="." index="9"]
 estado_inicial = "Padrao"
 
 [node name="Padrao" type="Node" parent="GerenciadorEstados" index="2"]
@@ -82,7 +92,6 @@ projetil = ExtResource( 13 )
 wait_time = 2.0
 one_shot = true
 
-[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_entered"]
 [connection signal="body_exited" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_exited"]
 [connection signal="timeout" from="GerenciadorEstados/Padrao/Timer" to="GerenciadorEstados/Padrao" method="_on_Timer_timeout"]
