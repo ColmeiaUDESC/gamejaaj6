@@ -42,7 +42,6 @@ texture = ExtResource( 7 )
 [node name="Sprite" parent="." instance=ExtResource( 8 )]
 material = SubResource( 1 )
 position = Vector2( 0, -17 )
-playing = true
 
 [node name="Colisao" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
