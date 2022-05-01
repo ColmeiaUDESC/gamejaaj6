@@ -1,15 +1,14 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Sprites/snake_04.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Backup/snake_01.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Backup/snake_02.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/snake_03.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/snake_attack_02.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra5.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra7.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra6.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra1.png" type="Texture" id=6]
 [ext_resource path="res://Instanciaveis/Estados/Inimigo/Atirar.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Sprites/snake_attack_03.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/snake_attack_01.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/snake_attack_04.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Cobra/Cobra3.png" type="Texture" id=9]
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=11]
 [ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosCobra.gd" type="Script" id=12]
 [ext_resource path="res://Instanciaveis/Projeteis/ProjetilVeneno.tscn" type="PackedScene" id=13]
@@ -26,27 +25,27 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "atacando",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "andando_frente",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "andando_costas",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "andando_lado",
 "speed": 5.0
