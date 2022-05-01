@@ -7,7 +7,6 @@
 [ext_resource path="res://Instanciaveis/Ataque.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 10 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -19,16 +18,24 @@ animations = [ {
 
 [node name="Ataque" type="Area2D"]
 script = ExtResource( 5 )
+altura_ataque = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 10, 0 )
 shape = SubResource( 1 )
 
+[node name="SombraSprite" type="AnimatedSprite" parent="CollisionShape2D"]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.545098 )
+z_index = 10
+frames = SubResource( 2 )
+frame = 2
+flip_h = true
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 visible = false
 z_index = 10
 frames = SubResource( 2 )
-offset = Vector2( 10, 0 )
 flip_h = true
 
-[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="animation_finished" from="CollisionShape2D/SombraSprite" to="." method="_on_Sprite_animation_finished"]

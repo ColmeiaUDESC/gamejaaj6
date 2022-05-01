@@ -26,14 +26,14 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "parado",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "atacando",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "parado",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
@@ -57,9 +57,6 @@ frames = SubResource( 2 )
 animation = "parado"
 playing = false
 
-[node name="SomAtacar" parent="." index="2"]
-stream = ExtResource( 14 )
-
 [node name="Visao" type="Area2D" parent="." index="3"]
 position = Vector2( 0, -6 )
 collision_layer = 0
@@ -71,7 +68,10 @@ shape = SubResource( 3 )
 [node name="OuvinteDeEventos" type="Node" parent="." index="4"]
 script = ExtResource( 12 )
 
-[node name="GerenciadorEstados" parent="." index="7"]
+[node name="SomAtacar" parent="." index="5"]
+stream = ExtResource( 14 )
+
+[node name="GerenciadorEstados" parent="." index="8"]
 estado_inicial = "Padrao"
 
 [node name="Padrao" type="Node" parent="GerenciadorEstados" index="2"]

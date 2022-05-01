@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Monk/monk7.png" type="Texture" id=2]
@@ -28,7 +28,12 @@
 [ext_resource path="res://Assets/Sprites/Monk/monk13.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Sprites/Monk/monk16.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Sprites/Monk/monk17.png" type="Texture" id=28]
+[ext_resource path="res://Instanciaveis/Scripts/Hitbox.gd" type="Script" id=29]
 [ext_resource path="res://Assets/Sprites/Monk/monk20.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Sombra.png" type="Texture" id=31]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 7.0
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -45,11 +50,6 @@ animations = [ {
 "loop": true,
 "name": "parado",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "atacando_lado",
-"speed": 8.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 24 ) ],
 "loop": true,
@@ -71,15 +71,20 @@ animations = [ {
 "name": "andando_frente",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 27 ) ],
 "loop": true,
-"name": "andando_costas",
-"speed": 5.0
+"name": "atacando_lado",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "rezando",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -152,6 +157,22 @@ __meta__ = {
 cena_projetil_purificacao = ExtResource( 5 )
 velocidade = 3000.0
 
+[node name="Colisao" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 0, -4 )
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+script = ExtResource( 29 )
+
+[node name="FormatoColisao" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 7 )
+
+[node name="Sombra" type="Sprite" parent="."]
+texture = ExtResource( 31 )
+
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
 position = Vector2( 0, -16 )
@@ -161,17 +182,10 @@ animation = "parado"
 [node name="PosProjetil" type="Position2D" parent="."]
 
 [node name="Ataque" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -13 )
 collision_layer = 0
-collision_mask = 4
+collision_mask = 64
 restringir_ataque = false
-
-[node name="Sprite" parent="Ataque" index="1"]
-speed_scale = 2.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, -4 )
-polygon = PoolVector2Array( -4, 4, -8, 2, -8, -1, 0, -2, 8, -1, 8, 1, 4, 4 )
+multiplicador_velocidade = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -219,5 +233,3 @@ anims/sumir = SubResource( 6 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Intangibilidade" to="." method="_on_Intangibilidade_timeout"]
-
-[editable path="Ataque"]

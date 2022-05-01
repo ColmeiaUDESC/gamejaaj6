@@ -43,19 +43,14 @@ animations = [ {
 "name": "parado",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 14 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "andando_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "ataque_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "ataque_costas",
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 21 ) ],
@@ -63,19 +58,24 @@ animations = [ {
 "name": "ataque_lado",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "carregando_ataque",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "andando_lado",
+"name": "ataque_frente",
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "andando_costas",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "carregando_ataque",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "ataque_costas",
 "speed": 8.0
 } ]
 
@@ -94,24 +94,11 @@ position = Vector2( 0, -8 )
 frames = SubResource( 2 )
 animation = "parado"
 
-[node name="SomAtacar" parent="." index="2"]
-stream = ExtResource( 3 )
-
 [node name="OuvinteDeEventos" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
 
-[node name="Aguardo" parent="GerenciadorEstados" index="0" instance=ExtResource( 2 )]
-
-[node name="AtaquePulo" parent="GerenciadorEstados" index="1" instance=ExtResource( 1 )]
-script = ExtResource( 26 )
-velocidade_pulo = 7000.0
-caminho_raycast = NodePath("../../RayCast2D")
-
-[node name="Timer" type="Timer" parent="GerenciadorEstados/AtaquePulo" index="0"]
-wait_time = 0.5
-one_shot = true
-
-[node name="Seguir" parent="GerenciadorEstados" index="2" instance=ExtResource( 8 )]
+[node name="SomAtacar" parent="." index="4"]
+stream = ExtResource( 3 )
 
 [node name="Visao" type="Area2D" parent="." index="7"]
 position = Vector2( 0, -6 )
@@ -132,12 +119,27 @@ shape = SubResource( 4 )
 [node name="RayCast2D" type="RayCast2D" parent="." index="9"]
 enabled = true
 cast_to = Vector2( 0, 0 )
-collision_mask = 2
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Aguardo" parent="GerenciadorEstados" index="0" instance=ExtResource( 2 )]
+
+[node name="AtaquePulo" parent="GerenciadorEstados" index="1" instance=ExtResource( 1 )]
+script = ExtResource( 26 )
+velocidade_pulo = 7000.0
+caminho_raycast = NodePath("../../RayCast2D")
+
+[node name="Timer" type="Timer" parent="GerenciadorEstados/AtaquePulo" index="0"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Seguir" parent="GerenciadorEstados" index="2" instance=ExtResource( 8 )]
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
-[connection signal="pulo_finalizou" from="GerenciadorEstados/AtaquePulo" to="OuvinteDeEventos" method="_on_AtaquePulo_pulo_finalizou"]
-[connection signal="pulo_iniciou" from="GerenciadorEstados/AtaquePulo" to="SomAtacar" method="play"]
 [connection signal="body_entered" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_entered"]
 [connection signal="body_exited" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_exited"]
 [connection signal="body_entered" from="Area_de_ataque" to="OuvinteDeEventos" method="_on_Area_de_ataque_body_entered"]
 [connection signal="body_exited" from="Area_de_ataque" to="OuvinteDeEventos" method="_on_Area_de_ataque_body_exited"]
+[connection signal="pulo_finalizou" from="GerenciadorEstados/AtaquePulo" to="OuvinteDeEventos" method="_on_AtaquePulo_pulo_finalizou"]
+[connection signal="pulo_iniciou" from="GerenciadorEstados/AtaquePulo" to="SomAtacar" method="play"]

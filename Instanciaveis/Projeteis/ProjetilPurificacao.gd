@@ -1,10 +1,10 @@
 extends "res://Instanciaveis/Projeteis/Projetil.gd"
 
 
-func _on_Projetil_body_entered(body: PhysicsBody2D) -> void:
-	if body.has_method("purificar"):
-		emit_signal("acertou_inimigo", body)
-		body.purificar(dano, atirador)
-		if body.has_method("inflingir_empurrao"):
-			body.inflingir_empurrao(global_position.direction_to(body.global_position) * forca_empurrao)
+func _ao_colidir(colisor: CollisionObject2D) -> void:
+	if "personagem" in colisor:
+		var personagem = colisor.personagem
+		emit_signal("acertou_inimigo", personagem)
+		personagem.purificar(dano, atirador)
+		personagem.inflingir_empurrao(global_position.direction_to(personagem.global_position) * forca_empurrao)
 	queue_free()
