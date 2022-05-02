@@ -144,6 +144,7 @@ scale = Vector2( -1, 1 )
 direcao = Vector2( -1, 0 )
 
 [node name="PortaDireita" parent="Componentes/Portas" index="1" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.572549 )
 position = Vector2( 80, 40 )
 scale = Vector2( -1, 1 )
 direcao = Vector2( 1, 0 )
@@ -153,5 +154,6 @@ position = Vector2( 80, -40 )
 direcao = Vector2( 0, -1 )
 
 [node name="PortaSul" parent="Componentes/Portas" index="3" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.572549 )
 position = Vector2( -80, 40 )
 direcao = Vector2( 0, 1 )
