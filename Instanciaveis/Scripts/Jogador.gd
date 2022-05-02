@@ -126,7 +126,7 @@ func esta_morto() -> bool:
 
 func _gerenciar_animacoes() -> void:
 	if $Ataque.atacando:
-		var dir_ataque: Vector2 = Vector2.RIGHT.rotated($Ataque.rotation)
+		var dir_ataque: Vector2 = Vector2.RIGHT.rotated($Ataque.angulo_ataque)
 		var sufixo := _pegar_suffixo_anim_dir(dir_ataque)
 		$Sprite.play("atacando_" + sufixo)
 		$Sprite.flip_h = dir_ataque.x < 0 if sufixo == "lado" else false

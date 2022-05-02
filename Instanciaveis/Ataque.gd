@@ -5,6 +5,7 @@ export(float) var deslocamento_ataque := 10.0
 export(float) var altura_ataque:= 10.0
 export(float) var multiplicador_velocidade := 1.0
 var atacando := false
+var angulo_ataque := 0.0
 
 onready var colisao = $CollisionShape2D
 onready var sprite_sombra := $CollisionShape2D/SombraSprite
@@ -21,7 +22,7 @@ func atacar(dir: Vector2) -> void:
 	if not atacando:
 		atacando = true
 		emit_signal("atacou")
-		var angulo_ataque := round(dir.angle() / (PI / 2)) * PI / 2 if restringir_ataque else dir.angle()
+		angulo_ataque = round(dir.angle() / (PI * .5)) * PI * .5 if restringir_ataque else dir.angle()
 		colisao.rotation = angulo_ataque
 		colisao.position = Vector2(cos(angulo_ataque), sin(angulo_ataque)) * deslocamento_ataque
 		sprite.position = colisao.position + Vector2.UP * altura_ataque
