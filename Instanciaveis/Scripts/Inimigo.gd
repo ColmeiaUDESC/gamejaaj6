@@ -13,6 +13,7 @@ onready var gerenciador_estados = $GerenciadorEstados
 onready var som_atacar = $SomAtacar
 onready var som_dano_ofensivo = $SomDanoOffensivo
 onready var som_dano_purificacao = $SomDanoPurificacao 
+onready var hitbox = $Hitbox
 
 var jogador = null
 var direcao := Vector2.ZERO
@@ -71,8 +72,9 @@ func purificar(dano: float, agressor: Node2D) -> void:
 	som_dano_purificacao.play()
 	sprite.emitir_particulas_purificacao()
 	if esta_purificado():
-		set_collision_layer_bit(2, false)
-		set_collision_mask_bit(1, false)
+		set_collision_layer_bit(BIT_CAMADA_COLIDE, false)
+		set_collision_mask_bit(BIT_MASCARA_JOGADOR, false)
+		hitbox.desativar()
 		emit_signal("neutralizado", false)
 		mudar_de_estado("Purificado")
 
