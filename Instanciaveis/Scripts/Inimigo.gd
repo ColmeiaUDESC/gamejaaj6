@@ -72,11 +72,13 @@ func purificar(dano: float, agressor: Node2D) -> void:
 	som_dano_purificacao.play()
 	sprite.emitir_particulas_purificacao()
 	if esta_purificado():
+		emit_signal("neutralizado", false)
+		mudar_de_estado("Purificado")
+		# Mudança de colisoes. Deve ocorrer apos mudar_de_estado("Purificado")
+		# pois um estado pode sobrescrever as colisoes ao sair
 		set_collision_layer_bit(BIT_CAMADA_COLIDE, false)
 		set_collision_mask_bit(BIT_MASCARA_JOGADOR, false)
 		hitbox.desativar()
-		emit_signal("neutralizado", false)
-		mudar_de_estado("Purificado")
 
 
 func mudar_de_estado(novo_estado: String) -> void:
