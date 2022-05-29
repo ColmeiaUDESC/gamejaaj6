@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Cenas/Salas/Nivel0-1/SalaNormal0-1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cenas/Salas/Nivel0-1/SalaInimigo0-1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/Andares/GeradorMapa.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cenas/Salas/Nivel0-1/SalaBoss0-1.tscn" type="PackedScene" id=4]
+
+[node name="Andar2" instance=ExtResource( 3 )]
+media_salas = 1
+tamanho_das_salas = Vector2( 20, 20 )
+cena_sala_inicial = ExtResource( 1 )
+cena_salas_do_boss = [ ExtResource( 4 ) ]
+cenas_salas = [ ExtResource( 2 ) ]

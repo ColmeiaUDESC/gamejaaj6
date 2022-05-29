@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Cenas/Andares/Andar1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cenas/Andares/AndarAnimais.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cenas/Jogo.gd" type="Script" id=3]
 
 [node name="Jogo" type="Node2D"]
