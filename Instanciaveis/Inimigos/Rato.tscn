@@ -38,6 +38,36 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "andando_frente",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "carregando_ataque",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "ataque_frente",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 25 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "ataque_lado",
@@ -47,36 +77,6 @@ animations = [ {
 "loop": true,
 "name": "ataque_costas",
 "speed": 8.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "andando_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "ataque_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "parado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "andando_costas",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "andando_lado",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "carregando_ataque",
-"speed": 10.0
 } ]
 
 [sub_resource type="CircleShape2D" id=5]

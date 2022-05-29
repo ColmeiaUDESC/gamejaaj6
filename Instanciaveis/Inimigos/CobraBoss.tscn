@@ -43,19 +43,27 @@ vida_maxima = 20.0
 purificacao_maxima = 6.0
 velocidade = 0.0
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="1"]
 material = SubResource( 1 )
 position = Vector2( 0, -11 )
 frames = SubResource( 2 )
 animation = "atacando"
 
-[node name="CollisionPolygon2D" parent="." index="1"]
-polygon = PoolVector2Array( -8, 4, -16, 0, -16, -12, 0, -16, 16, -12, 16, 0, 8, 4 )
-
-[node name="SomAtacar" parent="." index="2"]
+[node name="SomAtacar" parent="." index="4"]
 stream = ExtResource( 7 )
 
-[node name="GerenciadorEstados" parent="." index="5"]
+[node name="OuvinteDeEventos" type="Node" parent="." index="6"]
+script = ExtResource( 3 )
+
+[node name="Visao" type="Area2D" parent="." index="7"]
+position = Vector2( 0, -6 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao" index="0"]
+shape = SubResource( 3 )
+
+[node name="GerenciadorEstados" parent="." index="9"]
 estado_inicial = "Padrao"
 
 [node name="Padrao" type="Node" parent="GerenciadorEstados" index="2"]
@@ -71,18 +79,7 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="OuvinteDeEventos" type="Node" parent="." index="6"]
-script = ExtResource( 3 )
-
-[node name="Visao" type="Area2D" parent="." index="7"]
-position = Vector2( 0, -6 )
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao" index="0"]
-shape = SubResource( 3 )
-
-[connection signal="timeout" from="GerenciadorEstados/Padrao/DelayTiroRadial" to="GerenciadorEstados/Padrao" method="_on_DelayTiroRadial_timeout"]
-[connection signal="timeout" from="GerenciadorEstados/Padrao/DelayTiroNormal" to="GerenciadorEstados/Padrao" method="_on_DelayTiroNormal_timeout"]
 [connection signal="body_entered" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_entered"]
 [connection signal="body_exited" from="Visao" to="OuvinteDeEventos" method="_on_Visao_body_exited"]
+[connection signal="timeout" from="GerenciadorEstados/Padrao/DelayTiroRadial" to="GerenciadorEstados/Padrao" method="_on_DelayTiroRadial_timeout"]
+[connection signal="timeout" from="GerenciadorEstados/Padrao/DelayTiroNormal" to="GerenciadorEstados/Padrao" method="_on_DelayTiroNormal_timeout"]

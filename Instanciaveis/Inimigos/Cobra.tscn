@@ -25,9 +25,19 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "atacando",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando_lado",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
@@ -37,17 +47,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "parado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
-"loop": true,
 "name": "andando_costas",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "andando_lado",
 "speed": 5.0
 } ]
 

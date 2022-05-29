@@ -28,35 +28,15 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "atacando_lado",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "andando_frente",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "atacando_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "rezando",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "parado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "andando_costas",
-"speed": 10.0
+"name": "atacando_frente",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
@@ -67,6 +47,26 @@ animations = [ {
 "loop": true,
 "name": "atacando_costas",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "andando_frente",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "atacando_lado",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "rezando",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 10.0
 } ]
 
 [node name="Jogador" instance=ExtResource( 2 )]

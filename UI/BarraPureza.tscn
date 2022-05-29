@@ -23,9 +23,6 @@ custom_styles/bg = SubResource( 2 )
 value = 50.0
 percent_visible = false
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 gradiente = SubResource( 3 )
 imagem_puro = ExtResource( 2 )
 imagem_neutro = ExtResource( 4 )
