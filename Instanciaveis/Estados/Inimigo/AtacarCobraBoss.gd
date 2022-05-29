@@ -38,5 +38,5 @@ func _on_DelayTiroNormal_timeout():
 		return
 	var dir := inimigo.global_position.direction_to(inimigo.jogador.global_position)
 	instanciar_tiro(dir)
-	inimigo.animar_ataque(dir)
+	inimigo.sprite.play("atacando")
 	inimigo.get_node("SomAtacar").play()
