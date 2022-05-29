@@ -154,6 +154,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+tempo_carregar_ataque_purificacao = 0.5
+dano_ofensivo = 2.5
 cena_projetil_purificacao = ExtResource( 5 )
 velocidade = 3000.0
 

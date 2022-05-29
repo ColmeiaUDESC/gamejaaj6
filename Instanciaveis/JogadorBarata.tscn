@@ -70,7 +70,7 @@ animations = [ {
 } ]
 
 [node name="Jogador" instance=ExtResource( 2 )]
-tempo_carregar_ataque_purificacao = 0.5
+tempo_carregar_ataque_purificacao = 0.25
 dano_ofensivo = 0.5
 dano_purificacao = 2.0
 velocidade = 4500.0

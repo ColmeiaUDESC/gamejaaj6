@@ -4,8 +4,9 @@ const TRAUMA_AO_RECEBER_DANO := .5
 const TRAUMA_AO_INFLIGIR_DANO := .2
 const CORTE_EMPURRAO := 100.0 # Se o modulo da _velocidade_empurrao for menor que CORTE_EMPURRAO, nao sera mais processado empurrao
 
-export(float) var tempo_carregar_ataque_purificacao := 1.0
-export(float) var tempo_descarregar_ataque_purificacao := 1.0
+export(float) var tempo_iniciar_descarregamento_purificacao := .5 # Tempo que o jogador deve ficar caminhando para começar a descarregar o ataque de purificação após estiver completamente carregado
+export(float) var tempo_carregar_ataque_purificacao := 1.0 # Tempo que leva para completamente carregar o ataque de purificação
+export(float) var tempo_descarregar_ataque_purificacao := 1.0 # Tempo que leva para completamente descarregar o ataque de purificação
 export(float) var dano_ofensivo: float = 1.0
 export(float) var dano_purificacao: float = 1.0
 export(PackedScene) var cena_projetil_purificacao: PackedScene
@@ -26,6 +27,7 @@ var depois_do_ataque = false
 var _progresso_ataque_purificacao := 0.0
 var _inimigos_ja_danificados := []
 var _velocidade_empurrao: Vector2 = Vector2()
+var _tempo_desfazer_ataque_purificacao := 0.0
 var pureza := 0 setget set_pureza
 
 signal morreu()
@@ -169,14 +171,19 @@ func _gerenciar_ataque_passivo(delta: float) -> void:
 		if _progresso_ataque_purificacao >= 1.0:
 			_instanciar_projetil()
 		_progresso_ataque_purificacao = 0.0
+		_tempo_desfazer_ataque_purificacao = 0.0
 	else:
 		if direcao.length_squared() > 0.0:
-			_progresso_ataque_purificacao = clamp(_progresso_ataque_purificacao - delta * tempo_descarregar_ataque_purificacao, 0.0, 1.0)
+			_tempo_desfazer_ataque_purificacao = clamp(_tempo_desfazer_ataque_purificacao - delta, 0.0, tempo_iniciar_descarregamento_purificacao)
+			if not _tempo_desfazer_ataque_purificacao:
+				_progresso_ataque_purificacao = clamp(_progresso_ataque_purificacao - delta / tempo_descarregar_ataque_purificacao, 0.0, 1.0)
 		else:
 			var ant := _progresso_ataque_purificacao
-			_progresso_ataque_purificacao = clamp(_progresso_ataque_purificacao + delta * tempo_descarregar_ataque_purificacao, 0.0, 1.0)
-			if ant < 1 and _progresso_ataque_purificacao >= 1:
-				$Sprite.emitir_particulas_purificacao()
+			_progresso_ataque_purificacao = clamp(_progresso_ataque_purificacao + delta / tempo_carregar_ataque_purificacao, 0.0, 1.0)
+			if _progresso_ataque_purificacao >= 1:
+				_tempo_desfazer_ataque_purificacao = tempo_iniciar_descarregamento_purificacao
+				if ant < 1:
+					$Sprite.emitir_particulas_purificacao()
 	$Sprite.purificacao = _progresso_ataque_purificacao
 
 
