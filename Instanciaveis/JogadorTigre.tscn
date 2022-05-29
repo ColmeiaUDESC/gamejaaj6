@@ -77,7 +77,8 @@ animations = [ {
 } ]
 
 [node name="Jogador" instance=ExtResource( 1 )]
-dano_ofensivo = 2.5
+tempo_carregar_ataque_purificacao = 1.0
+dano_ofensivo = 4.0
 velocidade = 2100.0
 vida_max = 20.0
 desaceleracao_empurrao = 6.0
