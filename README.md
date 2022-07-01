@@ -5,3 +5,9 @@ O jogo se trata de um monge querendo atingir o nirvana. Para isso, ele explora a
 
 A submissão do jogo se encontra [aqui](https://itch.io/jam/game-jaaj-6/rate/1145659)
 O Game Design Document se encontra [aqui](https://docs.google.com/document/d/1ZWEsbGNVlD8sDXyh1PHFKvxI7cwLOELro9lnSP6MP7U/edit?usp=sharing)
+
+# Baixe o jogo!
+
+Para baixar o jogo, clique no link abaixo, e selecione a versão correspondente ao seu sistema operacional:
+
+[Download](https://github.com/ColmeiaUDESC/gamejaaj6/releases/tag/prealpha)
