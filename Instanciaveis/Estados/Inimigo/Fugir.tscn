@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/Fugir.gd" type="Script" id=1]
+
+[node name="Fugir" type="Node"]
+script = ExtResource( 1 )

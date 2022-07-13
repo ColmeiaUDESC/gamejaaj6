@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Cenas/Salas/SalaBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Conteudos/Tilesets/TilesetAndar1.tres" type="TileSet" id=2]
-[ext_resource path="res://Conteudos/ObjetosDeCenario/Portas/PortasAndar1/PortaMarrom.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/ParedesAndar1/ParedeMarrom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Conteudos/ObjetosDeCenario/Portas/PortasFaseAnimais/PortaMarrom.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/ParedesFaseAnimais/ParedeMarrom.tscn" type="PackedScene" id=4]
 
 [node name="SalaBase" instance=ExtResource( 1 )]
 
