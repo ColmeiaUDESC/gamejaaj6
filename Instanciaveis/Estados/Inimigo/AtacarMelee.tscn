@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/AtacarMelee.gd" type="Script" id=1]
+
+[node name="AtacarMelee" type="Node"]
+script = ExtResource( 1 )
+
+[node name="PreparoAtaque" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="PreparoAtaque" to="." method="atacar"]

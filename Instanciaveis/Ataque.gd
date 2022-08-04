@@ -12,6 +12,7 @@ onready var sprite_sombra := $CollisionShape2D/SombraSprite
 onready var sprite := $Sprite
 
 signal atacou
+signal ataque_finalizou
 
 func _ready():
 	$CollisionShape2D/SombraSprite.speed_scale = multiplicador_velocidade
@@ -42,5 +43,6 @@ func _parar_sprite(s: AnimatedSprite):
 
 func _on_Sprite_animation_finished():
 	atacando = false
+	emit_signal("ataque_finalizou")
 	_parar_sprite(sprite)
 	_parar_sprite(sprite_sombra)

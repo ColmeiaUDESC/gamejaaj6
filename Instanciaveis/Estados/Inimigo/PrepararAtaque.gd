@@ -19,7 +19,7 @@ signal pulo_finalizou
 
 func ao_entrar() -> void:
 	sprite = inimigo.sprite
-	sprite.flip_h = abs(inimigo.position.direction_to(inimigo.jogador.position).angle()) > PI*.5
+	inimigo.virar_sprite_para_node2d(inimigo.jogador)
 	sprite.play("carregando_ataque")
 	sprite.connect("animation_finished", self, "_ao_animacao_terminar")
 	emit_signal("carregando_pulo")

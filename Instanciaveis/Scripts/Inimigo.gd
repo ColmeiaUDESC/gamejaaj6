@@ -119,6 +119,19 @@ func _pegar_suffixo_anim_dir(dir: Vector2) -> String:
 
 	return "lado"
 
+# Define o valor de 'sprite.flip_h' de acordo com o valor do parâmetro 'dir' passado como argumento.
+# Se 'dir' for um vetor com sentido para a direita (x >= 0), define flip_h = false
+# Se 'dir' for um vetor com sentido para a esquerda (x < 0), define flip_h = true
+func virar_sprite_para_dir(dir: Vector2) -> void:
+	sprite.flip_h = dir.x < 0
+
+# Define o valor de 'sprite.flip_h' de acordo com a posição relativa do 'node' passado como argumento
+# Se o 'node' estiver à direita do inimigo, define flip_h = false
+# Se o 'node' estivar à esquerda do inimigo, define flip_h = true
+func virar_sprite_para_node2d(node: Node2D) -> void:
+	sprite.flip_h = node.global_position.x - global_position.x < 0
+
+
 func setar_colisao_jogador(colidir: bool):
 	set_collision_layer_bit(BIT_CAMADA_COLIDE, bool(colidir))
 	set_collision_layer_bit(BIT_CAMADA_ATRAVESSA, not bool(colidir))
@@ -136,6 +149,14 @@ func gerenciar_movimento(delta: float) -> void:
 	movimento = (direcao * velocidade + _velocidade_empurrao) * delta
 	movimento = move_and_slide(movimento)
 	gerenciar_animacoes_movimento()
+
+
+# Esta função inflige dano a um personagem. Sempre utilize esta função para infligir dano
+func infligir_dano_a_personagem(personagem, dano: int, forca_empurrao: Vector2) -> void:
+	if not personagem.is_connected("recebido_dano", self, "_ao_infligir_dano"):
+		personagem.connect("recebido_dano", self, "_ao_infligir_dano", [], CONNECT_ONESHOT)
+	personagem.inflige_dano(dano)
+	personagem.inflingir_empurrao(forca_empurrao)
 
 
 func _processar_empurrao(delta: float) -> void:

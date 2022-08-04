@@ -1,0 +1,147 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka14.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka9.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka8.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka7.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka13.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka10.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka6.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka12.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka5.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka17.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka15.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka16.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka11.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka21.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka4.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka19.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka18.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/GuardaNaraka/GuardaNaraka20.png" type="Texture" id=22]
+[ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=23]
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/Aguardo.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/Seguir.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosGuardaNaraka.gd" type="Script" id=26]
+[ext_resource path="res://Instanciaveis/AtaqueMelee.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/AtacarMelee.tscn" type="PackedScene" id=28]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 23 )
+shader_param/brilho_purificacao = 5.0
+shader_param/progresso_purificacao = 0.0
+shader_param/coeficiente_mix_dano = 0.0
+shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
+shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "ataque_costas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "ataque_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "andando_frente",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "preparando_ataque_frente",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "preparando_ataque_costas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "ataque_frente",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "preparando_ataque_lado",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 19.0
+
+[node name="GuardaNaraka" instance=ExtResource( 1 )]
+velocidade = 2000.0
+
+[node name="Sprite" parent="." index="1"]
+material = SubResource( 2 )
+position = Vector2( 0, -16 )
+frames = SubResource( 1 )
+animation = "parado"
+
+[node name="OuvinteDeEventos" type="Node" parent="." index="2"]
+script = ExtResource( 26 )
+
+[node name="AtacarMelee" parent="GerenciadorEstados" index="0" instance=ExtResource( 28 )]
+tempo_preparo_ataque = 0.7
+caminho_ataque_melee = NodePath("../../AtaqueMelee")
+
+[node name="Seguir" parent="GerenciadorEstados" index="1" instance=ExtResource( 25 )]
+
+[node name="Aguardo" parent="GerenciadorEstados" index="2" instance=ExtResource( 24 )]
+
+[node name="AreaSeguir" type="Area2D" parent="." index="9"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Colisao" type="CollisionShape2D" parent="AreaSeguir" index="0"]
+shape = SubResource( 3 )
+
+[node name="AreaAtacar" type="Area2D" parent="." index="10"]
+collision_layer = 0
+collision_mask = 128
+monitorable = false
+
+[node name="Colisao" type="CollisionShape2D" parent="AreaAtacar" index="0"]
+shape = SubResource( 4 )
+
+[node name="AtaqueMelee" parent="." index="11" instance=ExtResource( 27 )]
+collision_layer = 0
+collision_mask = 128
+input_pickable = false
+restringir_ataque = false
+multiplicador_velocidade = 1.5
+
+[connection signal="finalizado" from="GerenciadorEstados/AtacarMelee" to="OuvinteDeEventos" method="_on_AtacarMelee_finalizado"]
+[connection signal="body_entered" from="AreaSeguir" to="OuvinteDeEventos" method="_on_AreaSeguir_body_entered"]
+[connection signal="body_exited" from="AreaSeguir" to="OuvinteDeEventos" method="_on_AreaSeguir_body_exited"]
+[connection signal="area_entered" from="AreaAtacar" to="OuvinteDeEventos" method="_on_AreaAtacar_area_entered"]
+[connection signal="area_exited" from="AreaAtacar" to="OuvinteDeEventos" method="_on_AreaAtacar_area_exited"]
