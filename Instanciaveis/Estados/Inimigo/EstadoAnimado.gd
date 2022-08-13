@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func ao_entrar() -> void:
 	if _anim_player == null: return
-	_anim_player.play()
+	_anim_player.play("default")
 
 
 func ao_sair() -> void:
@@ -24,5 +24,5 @@ func ao_sair() -> void:
 
 
 func _ao_animacao_finalizar(_nome: String) -> void:
-	emit_signal("finalizado")
 	_anim_player.stop()
+	emit_signal("finalizado")

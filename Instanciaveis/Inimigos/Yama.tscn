@@ -126,7 +126,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 0.0, false ],
+"args": [ "InfoProjetil", 0.0, false ],
 "method": "atirar"
 } ]
 }
@@ -140,7 +140,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 90.0, false ],
+"args": [ "InfoProjetil", 90.0, false ],
 "method": "atirar"
 } ]
 }
@@ -154,7 +154,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 180.0, false ],
+"args": [ "InfoProjetil", 180.0, false ],
 "method": "atirar"
 } ]
 }
@@ -168,7 +168,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 270.0, false ],
+"args": [ "InfoProjetil", 270.0, false ],
 "method": "atirar"
 } ]
 }
@@ -209,7 +209,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 45.0, false ],
+"args": [ "InfoProjetil", 45.0, false ],
 "method": "atirar"
 } ]
 }
@@ -223,7 +223,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 135.0, false ],
+"args": [ "InfoProjetil", 135.0, false ],
 "method": "atirar"
 } ]
 }
@@ -237,7 +237,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 225.0, false ],
+"args": [ "InfoProjetil", 225.0, false ],
 "method": "atirar"
 } ]
 }
@@ -251,7 +251,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 315.0, false ],
+"args": [ "InfoProjetil", 315.0, false ],
 "method": "atirar"
 } ]
 }
@@ -292,7 +292,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 45.0, false ],
+"args": [ "InfoProjetil", 45.0, false ],
 "method": "atirar"
 } ]
 }
@@ -306,7 +306,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 135.0, false ],
+"args": [ "InfoProjetil", 135.0, false ],
 "method": "atirar"
 } ]
 }
@@ -320,7 +320,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 225.0, false ],
+"args": [ "InfoProjetil", 225.0, false ],
 "method": "atirar"
 } ]
 }
@@ -334,7 +334,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 315.0, false ],
+"args": [ "InfoProjetil", 315.0, false ],
 "method": "atirar"
 } ]
 }
@@ -348,7 +348,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 0.0, false ],
+"args": [ "InfoProjetil", 0.0, false ],
 "method": "atirar"
 } ]
 }
@@ -362,7 +362,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 90.0, false ],
+"args": [ "InfoProjetil", 90.0, false ],
 "method": "atirar"
 } ]
 }
@@ -376,7 +376,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 180.0, false ],
+"args": [ "InfoProjetil", 180.0, false ],
 "method": "atirar"
 } ]
 }
@@ -390,12 +390,14 @@ tracks/9/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ NodePath("../../SistemaTiros/InfoProjetil"), 270.0, false ],
+"args": [ "InfoProjetil", 270.0, false ],
 "method": "atirar"
 } ]
 }
 
 [node name="Inimigo" instance=ExtResource( 1 )]
+vida_maxima = 30.0
+purificacao_maxima = 15.0
 
 [node name="Sombra" parent="." index="0"]
 position = Vector2( 0, -7 )
@@ -445,8 +447,15 @@ anims/default = SubResource( 6 )
 
 [node name="AtaqueSpawn" parent="GerenciadorEstados" index="3" instance=ExtResource( 17 )]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GerenciadorEstados/AtaqueSpawn" index="0"]
+
 [node name="SistemaTiros" parent="." index="9" instance=ExtResource( 28 )]
 
 [node name="InfoProjetil" parent="SistemaTiros" index="0" instance=ExtResource( 27 )]
 projetil = ExtResource( 29 )
 dano = 1
+
+[connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial1" to="OuvinteDeEventosYama" method="escolher_ataque"]
+[connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial2" to="OuvinteDeEventosYama" method="escolher_ataque"]
+[connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial3" to="OuvinteDeEventosYama" method="escolher_ataque"]
+[connection signal="finalizado" from="GerenciadorEstados/AtaqueSpawn" to="OuvinteDeEventosYama" method="escolher_ataque"]

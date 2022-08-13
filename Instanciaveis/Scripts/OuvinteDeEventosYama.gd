@@ -1,11 +1,11 @@
 extends Node
 
 export(Array, String) var ataques: Array
-var inimigo = get_parent()
+onready var inimigo = get_parent()
 
 
 func _ready():
-	escolher_ataque()
+	call_deferred("escolher_ataque")
 
 
 func escolher_ataque() -> void:

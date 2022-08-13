@@ -1,18 +1,17 @@
 extends Node
 
-const ERRO_CIP_SEM_PROJETIL := ": node apontado por 'caminho_info_projetil' não possui atributo 'projetil'. Certifique-se que 'caminho_info_projetil' possui o script InfoProjetil."
-const ERRO_CIP_SEM_DANO := ": node apontado por 'caminho_info_projetil' não possui atributo 'dano'. Certifique-se que 'caminho_info_projetil' possui o script InfoProjetil."
+const ERRO_IP_NULO := ":  node filho com nome %s não existe."
+const ERRO_IP_TIPO_INVALIDO := ": node filho com nome %s não possui atributos 'projetil' e/ou 'dano'. Certifique-se que %s possui o script InfoProjetil."
 
 onready var inimigo = get_parent()
 
-func atirar(caminho_info_projetil: NodePath, angulo_deslocamento_graus: float = 0.0, usar_pos_jogador: bool = false) -> void:
-	var info_projetil := get_node(caminho_info_projetil)
+func atirar(nome_info_projetil: String, angulo_deslocamento_graus: float = 0.0, usar_pos_jogador: bool = false) -> void:
+	var info_projetil := get_node(nome_info_projetil)
 	
-	if not "projetil" in info_projetil:
-		printerr(get_path(), ERRO_CIP_SEM_PROJETIL)
-		return
-	if not "dano" in info_projetil:
-		printerr(get_path(), ERRO_CIP_SEM_DANO)
+	if info_projetil == null:
+		printerr(get_parent(), ERRO_IP_NULO % nome_info_projetil)
+	if not "projetil" in info_projetil or not "dano" in info_projetil:
+		printerr(get_path(), ERRO_IP_TIPO_INVALIDO % nome_info_projetil)
 		return
 	
 	var angulo_rad := deg2rad(angulo_deslocamento_graus)
