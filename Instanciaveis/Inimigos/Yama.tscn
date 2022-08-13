@@ -28,7 +28,7 @@
 [ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=26]
 [ext_resource path="res://Instanciaveis/Projeteis/InfoProjetil.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Instanciaveis/Projeteis/SistemaTiros.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Instanciaveis/Projeteis/ProjetilVeneno.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Instanciaveis/Projeteis/ProjetilBolaDeFogo.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosYama.gd" type="Script" id=30]
 
 [sub_resource type="ShaderMaterial" id=2]
