@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Yama/Yama22.png" type="Texture" id=2]
@@ -30,6 +30,9 @@
 [ext_resource path="res://Instanciaveis/Projeteis/SistemaTiros.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Instanciaveis/Projeteis/ProjetilBolaDeFogo.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosYama.gd" type="Script" id=30]
+[ext_resource path="res://Instanciaveis/Scripts/SistemaSpawnInimigo.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Instanciaveis/Inimigos/GuardaNaraka.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Conteudos/Particulas/ParticulasSpawnInimigo.tscn" type="PackedScene" id=33]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -42,19 +45,19 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "atacando_esquerda",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "parado",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 4 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "preparando_spawn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "preparando_ataque_ambos",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "atacando_esquerda",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 23 ) ],
@@ -82,10 +85,10 @@ animations = [ {
 "name": "spawnando",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "preparando_ataque_ambos",
-"speed": 5.0
+"name": "parado",
+"speed": 3.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -395,7 +398,48 @@ tracks/9/keys = {
 } ]
 }
 
-[node name="Inimigo" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=7]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "preparando_spawn", "spawnando" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 0, 1, 0, 1, 0, 1 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../SistemaSpawnInimigo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 32 ), ExtResource( 33 ), Vector2( 10, 30 ) ],
+"method": "spawnar_raio_aleatorio"
+} ]
+}
+
+[node name="Yama" instance=ExtResource( 1 )]
 vida_maxima = 30.0
 purificacao_maxima = 15.0
 
@@ -405,13 +449,12 @@ scale = Vector2( 2.5, 2.22222 )
 
 [node name="OuvinteDeEventosYama" type="Node" parent="." index="1"]
 script = ExtResource( 30 )
-ataques = [ "AtaqueRadial1", "AtaqueRadial2", "AtaqueRadial3" ]
 
 [node name="Sprite" parent="." index="2"]
 material = SubResource( 2 )
 position = Vector2( 0, -32 )
 frames = SubResource( 1 )
-animation = "preparando_ataque_esquerda"
+animation = "preparando_spawn"
 
 [node name="Colisao" parent="." index="3"]
 position = Vector2( 0, -7 )
@@ -448,12 +491,17 @@ anims/default = SubResource( 6 )
 [node name="AtaqueSpawn" parent="GerenciadorEstados" index="3" instance=ExtResource( 17 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GerenciadorEstados/AtaqueSpawn" index="0"]
+root_node = NodePath("../../AtaqueRadial1")
+anims/default = SubResource( 7 )
 
 [node name="SistemaTiros" parent="." index="9" instance=ExtResource( 28 )]
 
 [node name="InfoProjetil" parent="SistemaTiros" index="0" instance=ExtResource( 27 )]
 projetil = ExtResource( 29 )
 dano = 1
+
+[node name="SistemaSpawnInimigo" parent="." index="10" instance=ExtResource( 31 )]
+max_inimigos = 3
 
 [connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial1" to="OuvinteDeEventosYama" method="escolher_ataque"]
 [connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial2" to="OuvinteDeEventosYama" method="escolher_ataque"]

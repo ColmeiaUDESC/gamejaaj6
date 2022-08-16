@@ -119,10 +119,15 @@ func esconder() -> void:
 	$Animacoes.play("sumindo")
 
 
+func add_inimigo(inimigo: Node, particulas: PackedScene = null) -> void:
+	_cont_inimigos_ativos += 1
+	$Componentes/Inimigos.call_deferred("add_child", inimigo)
+	var _err = inimigo.connect("neutralizado", self, "_ao_inimigo_neutralizado")
+
+
 func _spawnar_inimigos() -> void:
 	for spawn_inimigo in spawn_inimigos:
 		spawn_inimigo.spawnar()
-		_cont_inimigos_ativos+=1
 
 
 func _resetar_inimigos() -> void:

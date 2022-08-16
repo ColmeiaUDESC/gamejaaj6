@@ -3,7 +3,9 @@ extends Node
 const ERRO_IP_NULO := ":  node filho com nome %s não existe."
 const ERRO_IP_TIPO_INVALIDO := ": node filho com nome %s não possui atributos 'projetil' e/ou 'dano'. Certifique-se que %s possui o script InfoProjetil."
 
-onready var inimigo = get_parent()
+onready var inimigo = owner
+
+signal disparado
 
 func atirar(nome_info_projetil: String, angulo_deslocamento_graus: float = 0.0, usar_pos_jogador: bool = false) -> void:
 	var info_projetil := get_node(nome_info_projetil)
@@ -24,3 +26,5 @@ func atirar(nome_info_projetil: String, angulo_deslocamento_graus: float = 0.0, 
 	projetil_instancia.position = inimigo.position
 	
 	inimigo.get_parent().add_child(projetil_instancia)
+	
+	emit_signal("disparado")
