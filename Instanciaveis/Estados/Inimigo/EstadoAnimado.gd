@@ -10,7 +10,7 @@ func _ready() -> void:
 	if _anim_player == null:
 		printerr(get_path(), ": Node filho do tipo AnimationPlayer ausente")
 	
-	_anim_player.connect("animation_finished", self, "_ao_animacao_finalizar")
+	var _err := _anim_player.connect("animation_finished", self, "_ao_animacao_finalizar")
 
 
 func ao_entrar() -> void:

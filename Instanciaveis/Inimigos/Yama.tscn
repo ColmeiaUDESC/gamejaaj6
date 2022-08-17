@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Yama/Yama22.png" type="Texture" id=2]
@@ -50,6 +50,11 @@ animations = [ {
 "name": "preparando_spawn",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 15 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "parado",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "preparando_ataque_ambos",
@@ -84,11 +89,6 @@ animations = [ {
 "loop": true,
 "name": "spawnando",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "parado",
-"speed": 3.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -295,7 +295,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 45.0, false ],
+"args": [ "InfoProjetil", 45.0, true ],
 "method": "atirar"
 } ]
 }
@@ -309,7 +309,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 135.0, false ],
+"args": [ "InfoProjetil", 135.0, true ],
 "method": "atirar"
 } ]
 }
@@ -323,7 +323,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 225.0, false ],
+"args": [ "InfoProjetil", 225.0, true ],
 "method": "atirar"
 } ]
 }
@@ -337,7 +337,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 315.0, false ],
+"args": [ "InfoProjetil", 315.0, true ],
 "method": "atirar"
 } ]
 }
@@ -351,7 +351,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 0.0, false ],
+"args": [ "InfoProjetil", 0.0, true ],
 "method": "atirar"
 } ]
 }
@@ -365,7 +365,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 90.0, false ],
+"args": [ "InfoProjetil", 90.0, true ],
 "method": "atirar"
 } ]
 }
@@ -379,7 +379,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 180.0, false ],
+"args": [ "InfoProjetil", 180.0, true ],
 "method": "atirar"
 } ]
 }
@@ -393,7 +393,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "InfoProjetil", 270.0, false ],
+"args": [ "InfoProjetil", 270.0, true ],
 "method": "atirar"
 } ]
 }
@@ -439,9 +439,13 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="CircleShape2D" id=8]
+radius = 219.659
+
 [node name="Yama" instance=ExtResource( 1 )]
 vida_maxima = 30.0
 purificacao_maxima = 15.0
+velocidade = 0.0
 
 [node name="Sombra" parent="." index="0"]
 position = Vector2( 0, -7 )
@@ -454,7 +458,7 @@ script = ExtResource( 30 )
 material = SubResource( 2 )
 position = Vector2( 0, -32 )
 frames = SubResource( 1 )
-animation = "preparando_spawn"
+animation = "preparando_ataque_ambos"
 
 [node name="Colisao" parent="." index="3"]
 position = Vector2( 0, -7 )
@@ -503,7 +507,17 @@ dano = 1
 [node name="SistemaSpawnInimigo" parent="." index="10" instance=ExtResource( 31 )]
 max_inimigos = 3
 
+[node name="Visao" type="Area2D" parent="." index="11"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao" index="0"]
+shape = SubResource( 8 )
+
 [connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial1" to="OuvinteDeEventosYama" method="escolher_ataque"]
 [connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial2" to="OuvinteDeEventosYama" method="escolher_ataque"]
 [connection signal="finalizado" from="GerenciadorEstados/AtaqueRadial3" to="OuvinteDeEventosYama" method="escolher_ataque"]
 [connection signal="finalizado" from="GerenciadorEstados/AtaqueSpawn" to="OuvinteDeEventosYama" method="escolher_ataque"]
+[connection signal="body_entered" from="Visao" to="OuvinteDeEventosYama" method="_on_Visao_body_entered"]
+[connection signal="body_exited" from="Visao" to="OuvinteDeEventosYama" method="_on_Visao_body_exited"]

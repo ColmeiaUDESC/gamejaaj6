@@ -22,10 +22,10 @@ func spawnar(info_inimigo: PackedScene, particulas: PackedScene, deslocamento: V
 		inimigo.get_parent().call_deferred("add_child", particulas_instancia)
 	
 	novo_spawn.position = pos_inimigo
-	novo_spawn.connect("neutralizado", self, "_ao_inimigo_spawnado_ser_neutralizado")
+	var _err = novo_spawn.connect("neutralizado", self, "_ao_inimigo_spawnado_ser_neutralizado")
 	inimigo.get_parent().get_parent().get_parent().add_inimigo(novo_spawn) # RUIM: Tentar pegar a sala de uma forma melhor
 	
-	num_inimigos = clamp(num_inimigos + 1, 0, max_inimigos)
+	num_inimigos = int(clamp(num_inimigos + 1, 0, max_inimigos))
 	
 	emit_signal("spawnado")
 
@@ -45,4 +45,4 @@ func limite_foi_atingido() -> bool:
 
 
 func _ao_inimigo_spawnado_ser_neutralizado(_foi_morto: bool) -> void:
-	num_inimigos = clamp(num_inimigos - 1, 0, max_inimigos)
+	num_inimigos = int(clamp(num_inimigos - 1, 0, max_inimigos))
