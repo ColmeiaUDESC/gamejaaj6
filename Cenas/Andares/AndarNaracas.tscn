@@ -4,7 +4,7 @@
 [ext_resource path="res://Cenas/Salas/NivelNaracas/Sala1Naracas.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cenas/Andares/GeradorMapa.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cenas/Salas/NivelNaracas/Sala2Naracas.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Conteudos/Musicas/Ost/narakas.wav" type="AudioStream" id=5]
+[ext_resource path="res://Conteudos/Musicas/Ost/narakas.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Cenas/Salas/NivelNaracas/SalaBossNaracas.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cenas/Salas/NivelNaracas/Sala3Naracas.tscn" type="PackedScene" id=7]
 
