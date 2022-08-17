@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Cenas/Salas/NivelNaracas/SalaInicialNaracas.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cenas/Salas/NivelNaracas/Sala1Naracas.tscn" type="PackedScene" id=2]
@@ -6,10 +6,13 @@
 [ext_resource path="res://Cenas/Salas/NivelNaracas/Sala2Naracas.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Conteudos/Musicas/Ost/narakas.wav" type="AudioStream" id=5]
 [ext_resource path="res://Cenas/Salas/NivelNaracas/SalaBossNaracas.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Cenas/Salas/NivelNaracas/Sala3Naracas.tscn" type="PackedScene" id=7]
 
 [node name="Andar2" instance=ExtResource( 3 )]
+media_salas = 6
+variancia_de_salas = 2
 tamanho_das_salas = Vector2( 21, 21 )
 cena_sala_inicial = ExtResource( 1 )
 musica = ExtResource( 5 )
 cena_salas_do_boss = [ ExtResource( 6 ) ]
-cenas_salas = [ ExtResource( 2 ), ExtResource( 4 ) ]
+cenas_salas = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ) ]

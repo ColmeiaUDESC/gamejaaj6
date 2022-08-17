@@ -1,0 +1,235 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Conteudos/ObjetosDeCenario/SpawnInimigo/SpawnInimigo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Instanciaveis/Inimigos/GuardaNaraka.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/Salas/SalaBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Instanciaveis/Inimigos/Alma.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Conteudos/ObjetosDeCenario/Paredes/ParedesFaseNaracas/ParedeQuente.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Conteudos/ObjetosDeCenario/Portas/PortasFaseNaracas/PortaQuente.tscn" type="PackedScene" id=6]
+
+[node name="Sala3Naracas" instance=ExtResource( 3 )]
+
+[node name="Chao" parent="." index="0"]
+tile_data = PoolIntArray( -458754, 28, 1, -458753, 28, 1, -524288, 28, 1, -393218, 28, 1, -393217, 28, 1, -458752, 28, 1, -327686, 28, 1, -327685, 28, 1, -327684, 28, 1, -327683, 28, 1, -327682, 28, 1, -327681, 28, 1, -393216, 28, 1, -393215, 28, 1, -393214, 28, 1, -393213, 28, 1, -393212, 28, 1, -262150, 28, 1, -262149, 28, 1, -262148, 28, 1, -262147, 28, 1, -262146, 28, 1, -262145, 28, 1, -327680, 28, 1, -327679, 28, 1, -327678, 28, 1, -327677, 28, 1, -327676, 28, 1, -196614, 28, 1, -196613, 28, 1, -196612, 28, 1, -196611, 28, 1, -196610, 28, 1, -196609, 28, 1, -262144, 28, 1, -262143, 28, 1, -262142, 28, 1, -262141, 28, 1, -262140, 28, 1, -131078, 28, 1, -131077, 28, 1, -131076, 28, 1, -131075, 28, 1, -131074, 28, 0, -131073, 28, 0, -196608, 28, 0, -196607, 28, 1, -196606, 28, 1, -196605, 28, 1, -196604, 28, 1, -65544, 28, 1, -65543, 28, 1, -65542, 28, 1, -65541, 28, 1, -65540, 28, 1, -65539, 28, 0, -65538, 28, 0, -65537, 28, 0, -131072, 28, 0, -131071, 28, 0, -131070, 28, 1, -131069, 28, 1, -131068, 28, 1, -131067, 28, 1, -131066, 28, 1, -8, 28, 1, -7, 28, 1, -6, 28, 1, -5, 28, 1, -4, 28, 1, -3, 28, 0, -2, 28, 0, -1, 28, 0, -65536, 28, 0, -65535, 28, 0, -65534, 28, 1, -65533, 28, 1, -65532, 28, 1, -65531, 28, 1, -65530, 28, 1, 65528, 28, 1, 65529, 28, 1, 65530, 28, 1, 65531, 28, 1, 65532, 28, 1, 65533, 28, 0, 65534, 28, 0, 65535, 28, 0, 0, 28, 0, 1, 28, 0, 2, 28, 1, 3, 28, 1, 4, 28, 1, 5, 28, 1, 6, 28, 1, 131066, 28, 1, 131067, 28, 1, 131068, 28, 1, 131069, 28, 1, 131070, 28, 0, 131071, 28, 0, 65536, 28, 0, 65537, 28, 1, 65538, 28, 1, 65539, 28, 1, 65540, 28, 1, 196602, 28, 1, 196603, 28, 1, 196604, 28, 1, 196605, 28, 1, 196606, 28, 1, 196607, 28, 1, 131072, 28, 1, 131073, 28, 1, 131074, 28, 1, 131075, 28, 1, 131076, 28, 1, 262138, 28, 1, 262139, 28, 1, 262140, 28, 1, 262141, 28, 1, 262142, 28, 1, 262143, 28, 1, 196608, 28, 1, 196609, 28, 1, 196610, 28, 1, 196611, 28, 1, 196612, 28, 1, 327674, 28, 1, 327675, 28, 1, 327676, 28, 1, 327677, 28, 1, 327678, 28, 1, 327679, 28, 1, 262144, 28, 1, 262145, 28, 1, 262146, 28, 1, 262147, 28, 1, 262148, 28, 1, 393214, 28, 1, 393215, 28, 1, 327680, 28, 1, 458750, 28, 1, 458751, 28, 1, 393216, 28, 1 )
+
+[node name="Parede" parent="Componentes/Paredes" index="0" instance=ExtResource( 5 )]
+position = Vector2( -160, 0 )
+
+[node name="Parede2" parent="Componentes/Paredes" index="1" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -144, 8 )
+
+[node name="Parede3" parent="Componentes/Paredes" index="2" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -128, 16 )
+
+[node name="Parede4" parent="Componentes/Paredes" index="3" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -128, 48 )
+
+[node name="Parede5" parent="Componentes/Paredes" index="4" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -112, 24 )
+
+[node name="Parede6" parent="Componentes/Paredes" index="5" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -96, 32 )
+
+[node name="Parede7" parent="Componentes/Paredes" index="6" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -112, 40 )
+
+[node name="Parede8" parent="Componentes/Paredes" index="7" instance=ExtResource( 5 )]
+position = Vector2( -144, -8 )
+
+[node name="Parede9" parent="Componentes/Paredes" index="8" instance=ExtResource( 5 )]
+position = Vector2( -128, -16 )
+
+[node name="Parede10" parent="Componentes/Paredes" index="9" instance=ExtResource( 5 )]
+position = Vector2( -112, -24 )
+
+[node name="Parede11" parent="Componentes/Paredes" index="10" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -96, -32 )
+
+[node name="Parede12" parent="Componentes/Paredes" index="11" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -128, -48 )
+
+[node name="Parede13" parent="Componentes/Paredes" index="12" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -112, -40 )
+
+[node name="Parede14" parent="Componentes/Paredes" index="13" instance=ExtResource( 5 )]
+position = Vector2( -96, -64 )
+
+[node name="Parede15" parent="Componentes/Paredes" index="14" instance=ExtResource( 5 )]
+position = Vector2( -80, -56 )
+
+[node name="Parede16" parent="Componentes/Paredes" index="15" instance=ExtResource( 5 )]
+position = Vector2( -64, -48 )
+
+[node name="Parede17" parent="Componentes/Paredes" index="16" instance=ExtResource( 5 )]
+position = Vector2( -48, -56 )
+
+[node name="Parede18" parent="Componentes/Paredes" index="17" instance=ExtResource( 5 )]
+position = Vector2( -32, -64 )
+
+[node name="Parede19" parent="Componentes/Paredes" index="18" instance=ExtResource( 5 )]
+position = Vector2( -16, -72 )
+
+[node name="Parede20" parent="Componentes/Paredes" index="19" instance=ExtResource( 5 )]
+position = Vector2( 0, -80 )
+
+[node name="Parede21" parent="Componentes/Paredes" index="20" instance=ExtResource( 5 )]
+position = Vector2( 16, -72 )
+
+[node name="Parede22" parent="Componentes/Paredes" index="21" instance=ExtResource( 5 )]
+position = Vector2( 32, -64 )
+
+[node name="Parede23" parent="Componentes/Paredes" index="22" instance=ExtResource( 5 )]
+position = Vector2( 48, -56 )
+
+[node name="Parede24" parent="Componentes/Paredes" index="23" instance=ExtResource( 5 )]
+position = Vector2( 64, -48 )
+
+[node name="Parede25" parent="Componentes/Paredes" index="24" instance=ExtResource( 5 )]
+position = Vector2( 80, -56 )
+
+[node name="Parede26" parent="Componentes/Paredes" index="25" instance=ExtResource( 5 )]
+position = Vector2( 96, -64 )
+
+[node name="Parede27" parent="Componentes/Paredes" index="26" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 128, -48 )
+
+[node name="Parede28" parent="Componentes/Paredes" index="27" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 112, -40 )
+
+[node name="Parede29" parent="Componentes/Paredes" index="28" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 96, -32 )
+
+[node name="Parede30" parent="Componentes/Paredes" index="29" instance=ExtResource( 5 )]
+position = Vector2( 112, -24 )
+
+[node name="Parede31" parent="Componentes/Paredes" index="30" instance=ExtResource( 5 )]
+position = Vector2( 128, -16 )
+
+[node name="Parede32" parent="Componentes/Paredes" index="31" instance=ExtResource( 5 )]
+position = Vector2( 144, -8 )
+
+[node name="Parede33" parent="Componentes/Paredes" index="32" instance=ExtResource( 5 )]
+position = Vector2( 160, 0 )
+
+[node name="Parede34" parent="Componentes/Paredes" index="33" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 144, 8 )
+
+[node name="Parede35" parent="Componentes/Paredes" index="34" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 128, 16 )
+
+[node name="Parede36" parent="Componentes/Paredes" index="35" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 128, 48 )
+
+[node name="Parede37" parent="Componentes/Paredes" index="36" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 112, 40 )
+
+[node name="Parede38" parent="Componentes/Paredes" index="37" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 96, 32 )
+
+[node name="Parede39" parent="Componentes/Paredes" index="38" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 112, 24 )
+
+[node name="Parede40" parent="Componentes/Paredes" index="39" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 96, 64 )
+
+[node name="Parede41" parent="Componentes/Paredes" index="40" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 80, 56 )
+
+[node name="Parede42" parent="Componentes/Paredes" index="41" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 64, 48 )
+
+[node name="Parede43" parent="Componentes/Paredes" index="42" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 48, 56 )
+
+[node name="Parede44" parent="Componentes/Paredes" index="43" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 32, 64 )
+
+[node name="Parede45" parent="Componentes/Paredes" index="44" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 16, 72 )
+
+[node name="Parede46" parent="Componentes/Paredes" index="45" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( 0, 80 )
+
+[node name="Parede47" parent="Componentes/Paredes" index="46" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -16, 72 )
+
+[node name="Parede48" parent="Componentes/Paredes" index="47" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -32, 64 )
+
+[node name="Parede49" parent="Componentes/Paredes" index="48" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -48, 56 )
+
+[node name="Parede50" parent="Componentes/Paredes" index="49" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -96, 64 )
+
+[node name="Parede51" parent="Componentes/Paredes" index="50" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -80, 56 )
+
+[node name="Parede52" parent="Componentes/Paredes" index="51" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -64, 48 )
+
+[node name="PortaSul" parent="Componentes/Portas" index="0" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0.415686 )
+position = Vector2( -112, 56 )
+
+[node name="PortaNorte" parent="Componentes/Portas" index="1" instance=ExtResource( 6 )]
+position = Vector2( 112, -56 )
+
+[node name="PortaDireita" parent="Componentes/Portas" index="2" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0.427451 )
+position = Vector2( 112, 56 )
+scale = Vector2( -1, 1 )
+
+[node name="PortaEsquerda" parent="Componentes/Portas" index="3" instance=ExtResource( 6 )]
+position = Vector2( -112, -56 )
+scale = Vector2( -1, 1 )
+
+[node name="SpawnInimigo" parent="Componentes/Inimigos" index="0" instance=ExtResource( 1 )]
+cena_inimigo = ExtResource( 4 )
+
+[node name="SpawnInimigo2" parent="Componentes/Inimigos" index="1" instance=ExtResource( 1 )]
+position = Vector2( -64, 0 )
+cena_inimigo = ExtResource( 2 )
+
+[node name="SpawnInimigo3" parent="Componentes/Inimigos" index="2" instance=ExtResource( 1 )]
+position = Vector2( 0, -32 )
+cena_inimigo = ExtResource( 2 )
+
+[node name="SpawnInimigo4" parent="Componentes/Inimigos" index="3" instance=ExtResource( 1 )]
+position = Vector2( 64, 0 )
+cena_inimigo = ExtResource( 2 )
+
+[node name="SpawnInimigo5" parent="Componentes/Inimigos" index="4" instance=ExtResource( 1 )]
+position = Vector2( 0, 32 )
+cena_inimigo = ExtResource( 2 )
