@@ -45,6 +45,11 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "spawnando",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 21 ), ExtResource( 4 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "preparando_spawn",
@@ -55,9 +60,9 @@ animations = [ {
 "name": "parado",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 25 ) ],
 "loop": true,
-"name": "preparando_ataque_ambos",
+"name": "preparando_ataque_direita",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 6 ) ],
@@ -70,6 +75,11 @@ animations = [ {
 "name": "atacando_ambos",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "preparando_ataque_ambos",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "preparando_ataque_esquerda",
@@ -78,16 +88,6 @@ animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "atacando_direita",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "preparando_ataque_direita",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "spawnando",
 "speed": 5.0
 } ]
 
