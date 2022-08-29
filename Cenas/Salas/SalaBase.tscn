@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/tileset_teste.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/new_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Cenas/Salas/Sala.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -63,10 +63,10 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="Chao" type="TileMap" parent="."]
-position = Vector2( 0, 32 )
+position = Vector2( 0, 8 )
 mode = 1
 tile_set = ExtResource( 1 )
-cell_size = Vector2( 128, 64 )
+cell_size = Vector2( 32, 16 )
 show_collision = true
 collision_layer = 16
 format = 1

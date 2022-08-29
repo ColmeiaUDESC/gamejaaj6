@@ -3,7 +3,7 @@
 [ext_resource path="res://Instanciaveis/Scripts/Jogador.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Monk/monk7.png" type="Texture" id=2]
 [ext_resource path="res://UI/HP.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Instanciaveis/Ataque.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Instanciaveis/AtaqueMelee.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Instanciaveis/Projeteis/ProjetilPurificacao.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Instanciaveis/SpritePersonagem.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Instanciaveis/Scripts/Camera2D.gd" type="Script" id=7]
@@ -46,25 +46,20 @@ shader_param/cor_dano = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 25 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "parado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "atacando_frente",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "andando_lado",
-"speed": 5.0
+"name": "rezando",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 28 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "atacando_costas",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 16 ) ],
 "loop": true,
@@ -76,15 +71,20 @@ animations = [ {
 "name": "atacando_lado",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "rezando",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "andando_costas",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "atacando_frente",
+"speed": 8.0
 } ]
 
 [sub_resource type="Animation" id=3]

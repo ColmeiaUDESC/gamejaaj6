@@ -1,0 +1,17 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Cenas/Andares/GeradorMapa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cenas/Salas/NivelAnimais/SalaInicial-NivelAnimais.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/Salas/NivelAnimais/Sala2-NivelAnimais.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cenas/Salas/NivelAnimais/Sala4-NivelAnimais.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cenas/Salas/NivelAnimais/Sala3-NivelAnimais.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Conteudos/Musicas/Ost/Andar1.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Cenas/Salas/NivelAnimais/SalaBoss-NivelAnimais.tscn" type="PackedScene" id=7]
+
+[node name="Andar1" instance=ExtResource( 1 )]
+media_salas = 8
+variancia_de_salas = 3
+cena_sala_inicial = ExtResource( 2 )
+musica = ExtResource( 6 )
+cena_salas_do_boss = [ ExtResource( 7 ) ]
+cenas_salas = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ]
