@@ -10,4 +10,4 @@ O Game Design Document se encontra [aqui](https://docs.google.com/document/d/1ZW
 
 Para baixar o jogo, clique no link abaixo, e selecione a versão correspondente ao seu sistema operacional:
 
-[Download](https://github.com/ColmeiaUDESC/gamejaaj6/releases/tag/prealpha)
+[Download](https://github.com/ColmeiaUDESC/gamejaaj6/releases/tag/pa-v2.0)
