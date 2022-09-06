@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Cenas/Andares/GeradorMapa.tscn" type="PackedScene" id=1]
+
+[node name="Andar3" instance=ExtResource( 1 )]
+media_salas = 5
+variancia_de_salas = 5
