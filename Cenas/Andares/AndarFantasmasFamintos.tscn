@@ -8,3 +8,4 @@ media_salas = 5
 variancia_de_salas = 5
 tamanho_das_salas = Vector2( 30, 30 )
 cena_sala_inicial = ExtResource( 2 )
+cenas_salas = [ null ]
