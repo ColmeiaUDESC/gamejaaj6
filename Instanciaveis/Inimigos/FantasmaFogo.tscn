@@ -1,0 +1,143 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo16.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo22.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo18.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo7.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo6.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo5.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo24.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo21.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo19.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo13.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo23.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo11.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo15.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo9.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo17.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo20.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo14.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo12.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo3.png" type="Texture" id=19]
+[ext_resource path="res://Instanciaveis/Inimigos/Inimigo.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo4.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo1.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo10.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo8.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/FantasmaFogo/FantasmaFogo2.png" type="Texture" id=25]
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/Seguir.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Instanciaveis/Scripts/OuvinteDeEventosFantasmaFogo.gd" type="Script" id=27]
+[ext_resource path="res://Conteudos/Shaders/ShaderPersonagem.shader" type="Shader" id=28]
+[ext_resource path="res://Instanciaveis/Estados/Inimigo/EstadoAnimado.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Instanciaveis/Projeteis/SistemaTiros.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Instanciaveis/Projeteis/ProjetilBolaDeFogo.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Instanciaveis/Projeteis/InfoProjetil.tscn" type="PackedScene" id=32]
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 28 )
+shader_param/brilho_purificacao = 5.0
+shader_param/progresso_purificacao = 0.0
+shader_param/coeficiente_mix_dano = 0.0
+shader_param/cor_purificacao = Color( 0.360784, 0.847059, 1, 1 )
+shader_param/cor_dano = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 24 ), ExtResource( 14 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "andando_costas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "andando_frente",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 15 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "andando_lado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "atacando",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "atacando" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SistemaTiros")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "BolaDeFogo", 0.0, true ],
+"method": "atirar"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 103.019
+
+[node name="Inimigo" instance=ExtResource( 20 )]
+velocidade = 3000.0
+
+[node name="OuvinteDeEventosFantasmaFogo" type="Node" parent="." index="0"]
+script = ExtResource( 27 )
+
+[node name="Timer" type="Timer" parent="OuvinteDeEventosFantasmaFogo" index="0"]
+
+[node name="Sprite" parent="." index="2"]
+material = SubResource( 3 )
+position = Vector2( 0, -16 )
+frames = SubResource( 1 )
+animation = "atacando"
+
+[node name="Seguir" parent="GerenciadorEstados" index="2" instance=ExtResource( 26 )]
+
+[node name="Atacar" parent="GerenciadorEstados" index="3" instance=ExtResource( 29 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GerenciadorEstados/Atacar" index="0"]
+root_node = NodePath("../../..")
+anims/default = SubResource( 4 )
+
+[node name="Visao" type="Area2D" parent="." index="9"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visao" index="0"]
+shape = SubResource( 2 )
+
+[node name="SistemaTiros" parent="." index="10" instance=ExtResource( 30 )]
+
+[node name="BolaDeFogo" parent="SistemaTiros" index="0" instance=ExtResource( 32 )]
+projetil = ExtResource( 31 )
+dano = 3
+
+[connection signal="timeout" from="OuvinteDeEventosFantasmaFogo/Timer" to="OuvinteDeEventosFantasmaFogo" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Visao" to="OuvinteDeEventosFantasmaFogo" method="_on_Visao_body_entered"]
+[connection signal="body_exited" from="Visao" to="OuvinteDeEventosFantasmaFogo" method="_on_Visao_body_exited"]
