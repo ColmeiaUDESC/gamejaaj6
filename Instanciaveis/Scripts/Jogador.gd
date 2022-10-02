@@ -49,15 +49,15 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_pressed("andar_pra_cima"):
 		direcao += Vector2(0, -1)
-
-	elif Input.is_action_pressed("andar_pra_baixo"):
+	if Input.is_action_pressed("andar_pra_baixo"):
 		direcao += Vector2(0, 1)
-
 	if Input.is_action_pressed("andar_pra_esquerda"):
-		direcao += Vector2(-1, 0)
+		direcao += Vector2(-2, 0)
+	if Input.is_action_pressed("andar_pra_direita"):
+		direcao += Vector2(2, 0)
 
-	elif Input.is_action_pressed("andar_pra_direita"):
-		direcao += Vector2(1, 0)
+	# Com Vector2(2, 0), quando o jogador anda na vertical, ele agora não se
+	# desvia para os lados. 
 
 	_processar_empurrao(delta)
 	movimento = (direcao.normalized() * velocidade + _velocidade_empurrao) * delta
