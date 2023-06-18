@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Cenas/Andares/GeradorMapa.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cenas/Salas/NivelFantasmasFamintos/SalaInicialFantasmasFamintos.tscn" type="PackedScene" id=2]
+
+[node name="Andar3" instance=ExtResource( 1 )]
+media_salas = 5
+variancia_de_salas = 5
+tamanho_das_salas = Vector2( 30, 30 )
+cena_sala_inicial = ExtResource( 2 )
+cenas_salas = [ null ]
